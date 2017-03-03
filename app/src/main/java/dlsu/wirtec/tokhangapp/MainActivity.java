@@ -1,5 +1,6 @@
 package dlsu.wirtec.tokhangapp;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,15 +10,13 @@ import android.widget.Button;
 
 import java.util.Random;
 
-import dlsu.wirtec.tokhangapp.R;
-
 public class MainActivity extends AppCompatActivity {
 
     /* UI Components */
 
     private ViewGroup layoutSuperParent;
     //private TextView tvTitle;
-    private Button btnStartNewGame, btnContinue, btnOptions;
+    private Button btnStartNewGame, btnContinue, btnLeaderboard;
 
     private static final int[] BACKGROUND_IDS = {
         R.drawable.background_tokhang1,
@@ -27,16 +26,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         getSupportActionBar().hide();
+        setContentView(R.layout.activity_main);
 
         /* Parse UI Components */
         layoutSuperParent = (ViewGroup) findViewById(R.id.container_super_parent);
         //tvTitle = (TextView) findViewById(R.id.tv_title);
         btnStartNewGame = (Button) findViewById(R.id.btn_start_new_game);
         btnContinue = (Button) findViewById(R.id.btn_continue);
-        btnOptions = (Button) findViewById(R.id.btn_options);
+        btnLeaderboard = (Button) findViewById(R.id.btn_leaderboard);
 
         /* Process UI Components */
         Random random = new Random(new Random().nextLong());
@@ -44,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         layoutSuperParent.setBackgroundResource(backgroundID);
 
         /* Attach listeners to buttons */
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: Go to Continue Game Activity
+            }
+        });
         btnStartNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,16 +56,11 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        btnContinue.setOnClickListener(new View.OnClickListener() {
+        btnLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Go to Continue Game Activity
-            }
-        });
-        btnOptions.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO: Go to Options Activity
+                Intent i = new Intent(getBaseContext(), LeaderboardActivity.class);
+                startActivity(i);
             }
         });
     }

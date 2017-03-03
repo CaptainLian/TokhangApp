@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Drug Reduction</string>
+    <string name="title_activity_new_leaderboard">NewLeaderboardActivity</string>
+</resources>
