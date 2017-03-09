@@ -23,10 +23,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="dlsu.wirtec.tokhangapp.LeaderboardActivity" />
         <activity
-            android:name="dlsu.wirtec.tokhangapp.NewLeaderboardActivity"
-            android:label="@string/title_activity_new_leaderboard"
+            android:name="dlsu.wirtec.tokhangapp.LeaderboardActivity"
+            android:label="@string/title_activity_leaderboard"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="dlsu.wirtec.tokhangapp.GameMapActivity"
+            android:label="@string/title_activity_game_map"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

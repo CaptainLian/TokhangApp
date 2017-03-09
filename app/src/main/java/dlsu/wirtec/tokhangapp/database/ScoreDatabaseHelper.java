@@ -107,7 +107,6 @@ public class ScoreDatabaseHelper extends SQLiteOpenHelper {
                 Score.TABLE,
                 Score.COLUMN_ID + " = ?",
                 whereArg
-
         );
 
         db.close();

@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -22,11 +23,18 @@ public class LeaderboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_leaderboard);
+//        getSupportActionBar().hide();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
         btnBack = (FloatingActionButton) findViewById(R.id.btn_back);
         rvPlayer = (RecyclerView) findViewById(R.id.rv_player);
+
+        rvPlayer.setLayoutManager(new LinearLayoutManager(
+                getBaseContext(),
+                LinearLayoutManager.VERTICAL,
+                false
+        ));
 
         scoreDatabase = new ScoreDatabaseHelper(getBaseContext());
 
@@ -42,12 +50,12 @@ public class LeaderboardActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        Cursor c = scoreDatabase.getAllScores();
         if(rvPlayer.getAdapter() == null){
-            Cursor c = scoreDatabase.getAllScores();
             scoreAdapter = new ScoreAdapter(getBaseContext(), c);
             rvPlayer.setAdapter(scoreAdapter);
         }else{
-            scoreAdapter.changeCursor(scoreDatabase.getAllScores());
-        }//else
+            scoreAdapter.changeCursor(c);
+        }//if rvPlayer.getAdapter() == null
     }//function onResume
 }// class LeaderboardActivity

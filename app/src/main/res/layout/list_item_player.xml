@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_number"
         android:text="abc"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.5" />
@@ -15,7 +15,7 @@
     <TextView
         android:id="@+id/tv_name"
         android:text="abc"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="5" />
@@ -23,7 +23,7 @@
     <TextView
         android:id="@+id/tv_score"
         android:text="abc"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"/>

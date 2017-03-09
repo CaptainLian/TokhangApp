@@ -27,7 +27,7 @@ public class ScoreAdapter extends CursorRecyclerViewAdapter<ScoreAdapter.ScoreVi
     public void onBindViewHolder(ScoreViewHolder v, Cursor c) {
         final int id = c.getInt(c.getColumnIndex(Score.COLUMN_ID));
         final String name = c.getString(c.getColumnIndex(Score.COLUMN_NAME));
-        final int score = c.getInt(c.getColumnIndex(Score.COLUMN_ID));
+        final int score = c.getInt(c.getColumnIndex(Score.COLUMN_SCORE));
 
         v.tvNumber.setText(String.valueOf(id));
         v.tvName.setText(name);

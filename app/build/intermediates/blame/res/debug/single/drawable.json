@@ -120,16 +120,20 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_btn_borderless_material.xml"
-    },
-    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_t.jpg",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\icon_t.jpg"
     },
     {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\side_nav_bar.xml",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
@@ -152,12 +156,12 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ratingbar_indicator_material.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_btn_radio_material.xml"
-    },
-    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_bottom_navigation_item_background.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\drawable\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_radio_material.xml",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_btn_radio_material.xml"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",

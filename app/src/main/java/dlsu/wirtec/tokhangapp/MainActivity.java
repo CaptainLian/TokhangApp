@@ -47,13 +47,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: Go to Continue Game Activity
+                goToMap();
+
             }
         });
         btnStartNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //TODO: Go to New Game Activity
-
+            goToMap();
             }
         });
         btnLeaderboard.setOnClickListener(new View.OnClickListener() {
@@ -63,5 +65,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+    }
+
+    private final void goToMap(){
+        Intent i = new Intent(getBaseContext(), GameMapActivity.class);
+        startActivity(i);
     }
 }
