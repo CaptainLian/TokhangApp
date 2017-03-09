@@ -15,26 +15,29 @@ public class ScoreDatabaseHelper extends SQLiteOpenHelper {
     public static final String SCHEMA = "TokhangDB";
     public static final int VERSION = 1;
 
+    static final String QUERY_ON_CREATE
+            = "CREATE TABLE IF NOT EXISTS " + Score.TABLE + " ( "
+            + Score.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + Score.COLUMN_NAME + " TEXT NOT NULL, "
+            + Score.COLUMN_SCORE + " INTEGER, "
+            + Score.COLUMN_DATECREATED + "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ); ";
+
+    static final String QUERY_DROP_TABLE
+            = "DROP TABLE IF EXISTS " + Score.TABLE + ";";
+
+
     public ScoreDatabaseHelper(Context context) {
         super(context, SCHEMA, null, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query
-                = "CREATE TABLE IF NOT EXISTS " + Score.TABLE + " ( "
-                + Score.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + Score.COLUMN_NAME + " TEXT NOT NULL, "
-                + Score.COLUMN_SCORE + " INTEGER, "
-                + Score.COLUMN_DATECREATED + "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ); ";
-
-        db.execSQL(query);
+        db.execSQL(QUERY_ON_CREATE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS " + Score.TABLE + ";";
-        db.execSQL(sql);
+        db.execSQL(QUERY_DROP_TABLE);
 
         onCreate(db);
     }
