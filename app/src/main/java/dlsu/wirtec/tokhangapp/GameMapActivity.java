@@ -3,61 +3,148 @@ package dlsu.wirtec.tokhangapp;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.ViewFlipper;
 
-public class GameMapActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import dlsu.wirtec.tokhangapp.ui.MapPerspective;
+import dlsu.wirtec.tokhangapp.ui.ShopPerspective;
 
-    private Toolbar toolbar;
-    private DrawerLayout drawer;
-    private NavigationView navigationView;
+public class GameMapActivity extends AppCompatActivity implements Animation.AnimationListener {
+
+    private ViewFlipper viewFlipper;
 
     private FloatingActionButton fab;
+    private Button btnBack;
+
+    /* Flipper Perspectives */
+    MapPerspective map;
+    ShopPerspective shop;
+
+    /* animation stuffs */
+    private boolean isMapShown = true;
+    private boolean isFlipping = false;
+    private static final long ANIMATION_DURATION = 300;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_game_map);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        viewFlipper = (ViewFlipper) findViewById(R.id.container_viewFlipper);
         fab = (FloatingActionButton) findViewById(R.id.fab);
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        btnBack = (Button) findViewById(R.id.btn_back);
+
+        map = new MapPerspective(this);
+        shop = new ShopPerspective(this);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(!isFlipping)
+                    flipPerspective();
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isFlipping)
+                        flipPerspective();
+            }
+        });
+    }
 
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+    private final void flipPerspective(){
+        float firstFromX, firstToX, firstFromY, firstToY,
+                secondFromX, secondToX, secondFromY, secondToY;
 
-        navigationView.setNavigationItemSelectedListener(this);
+        TranslateAnimation first = null;
+        TranslateAnimation second = null;
+
+        if(isMapShown){//goUp
+            firstFromX = 0f;
+            firstFromY = 0f;
+            firstToX = 0f;
+            firstToY = -1f;
+
+            secondFromX = 0f;
+            secondFromY = 1f;
+            secondToX = 0f;
+            secondToY = 0f;
+
+            first = new TranslateAnimation(
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstToX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromY,
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstToY
+            );
+            first.setDuration(ANIMATION_DURATION);
+
+            second = new TranslateAnimation(
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondToX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromY,
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondToY
+            );
+            second.setDuration(ANIMATION_DURATION);
+
+            viewFlipper.setInAnimation(second);
+            viewFlipper.setOutAnimation(first);
+
+            viewFlipper.showNext();
+        }else{//goDown
+            firstFromX = 0f;
+            firstFromY = -1f;
+            firstToX = 0f;
+            firstToY = 0f;
+
+            secondFromX = 0f;
+            secondFromY = 0f;
+            secondToX = 0f;
+            secondToY = 1f;
+
+            first = new TranslateAnimation(
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstToX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromY,
+                    TranslateAnimation.RELATIVE_TO_PARENT, firstToY
+            );
+            first.setDuration(ANIMATION_DURATION);
+
+            second = new TranslateAnimation(
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondToX,
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromY,
+                    TranslateAnimation.RELATIVE_TO_PARENT, secondToY
+            );
+            second.setDuration(ANIMATION_DURATION);
+
+            viewFlipper.setInAnimation(first);
+            viewFlipper.setOutAnimation(second);
+
+            viewFlipper.showPrevious();
+        }
+
+        first.setAnimationListener(this);
+        second.setAnimationListener(this);
+
+        isMapShown = !isMapShown;
     }
 
     @Override
     public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+       if(map.isDrawerOpen()){
+           map.closeDrawer();
+       }else{
+           super.onBackPressed();
+       }
     }
 
     @Override
@@ -72,21 +159,22 @@ public class GameMapActivity extends AppCompatActivity implements NavigationView
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        final int id = item.getItemId();
-
-
+        map.onOptionsItemSelected(item);
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        final int id = item.getItemId();
+    public void onAnimationStart(Animation animation) {
+        isFlipping = true;
+    }
 
+    @Override
+    public void onAnimationEnd(Animation animation) {
+        isFlipping = false;
+    }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    @Override
+    public void onAnimationRepeat(Animation animation) {
+        return;
     }
 }

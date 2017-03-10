@@ -31,7 +31,7 @@ MERGED from [com.android.support:support-core-ui:25.1.1] C:\Users\lyssa\AndroidS
 MERGED from [com.android.support:support-core-utils:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:10:9-47
 	android:supportsRtl
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:11:9-35
 	android:allowBackup

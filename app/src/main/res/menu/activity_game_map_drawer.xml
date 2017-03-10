@@ -3,7 +3,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_statistics"
-            android:title="Statistics" />
+            android:icon="@drawable/icon_statistics1"
+            android:title="@string/navigation_item_title_statistics" />
+
+        <item
+            android:id="@+id/nav_equipment"
+            android:icon="@drawable/icon_equipment1"
+            android:title="@string/navigation_item_title_equipment" />
+
+        <item
+            android:id="@+id/nav_save"
+            android:title="@string/navigation_item_title_save"/>
+        <item
+            android:id="@+id/nav_quit"
+            android:icon="@drawable/icon_quit1"
+            android:title="@string/navigation_item_title_quit" />
     </group>
 
     <!--

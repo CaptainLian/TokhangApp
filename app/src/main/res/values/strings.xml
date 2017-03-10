@@ -1,10 +1,19 @@
 <resources>
-    <string name="app_name">Drug Reduction</string>
+    <string name="app_name">Drug Reduction Force</string>
+    <string name="app_name_short">Dre Force</string>
+
     <string name="title_activity_leaderboard">LeaderBoardActivity</string>
     <string name="title_activity_game_map">Philippines Map</string>
 
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- navigation items -->
+    <string name="navigation_item_title_statistics">Statistics</string>
+    <string name="navigation_item_title_equipment">Equipment</string>
+    <string name="navigation_item_title_save">Save</string>
+    <string name="navigation_item_title_quit">Give Up</string>
 
     <string name="action_settings">Settings</string>
 </resources>

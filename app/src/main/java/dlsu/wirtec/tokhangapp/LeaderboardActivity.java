@@ -19,6 +19,7 @@ public class LeaderboardActivity extends AppCompatActivity {
     private ScoreDatabaseHelper scoreDatabase;
     private ScoreAdapter scoreAdapter;
 
+    private boolean isMapShown = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class LeaderboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_leaderboard);
 //        getSupportActionBar().hide();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
 
         btnBack = (FloatingActionButton) findViewById(R.id.btn_back);
         rvPlayer = (RecyclerView) findViewById(R.id.rv_player);
