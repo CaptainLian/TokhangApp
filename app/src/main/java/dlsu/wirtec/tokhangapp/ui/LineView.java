@@ -30,7 +30,6 @@ public class LineView extends View {
         paint.setAntiAlias(true);
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(strokeWidth);
-        paint.setAlpha(0x80);
         paint.setDither(true);
 
     }

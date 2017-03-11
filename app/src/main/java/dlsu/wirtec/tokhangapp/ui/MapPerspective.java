@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import dlsu.wirtec.tokhangapp.GameMapActivity;
 import dlsu.wirtec.tokhangapp.R;
@@ -19,6 +20,7 @@ import dlsu.wirtec.tokhangapp.R;
  */
 
 public class MapPerspective implements NavigationView.OnNavigationItemSelectedListener {
+
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -26,7 +28,7 @@ public class MapPerspective implements NavigationView.OnNavigationItemSelectedLi
     private ImageButton btnMakati, btnPaco;
 
 
-    public MapPerspective(GameMapActivity activity){
+    public MapPerspective(final GameMapActivity activity){
         toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
         activity.setSupportActionBar(toolbar);
 
@@ -41,7 +43,6 @@ public class MapPerspective implements NavigationView.OnNavigationItemSelectedLi
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
         navigationView.setNavigationItemSelectedListener(this);
 
         new LineView(activity.getBaseContext(), 0, 0, 50, 50);
@@ -50,13 +51,13 @@ public class MapPerspective implements NavigationView.OnNavigationItemSelectedLi
         btnMakati.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(activity.getBaseContext(), "Makati Clicked", Toast.LENGTH_SHORT).show();
             }
         });
         btnPaco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Toast.makeText(activity.getBaseContext(), "Paco Clicked", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -78,6 +79,10 @@ public class MapPerspective implements NavigationView.OnNavigationItemSelectedLi
             }break;
 
             case R.id.nav_quit: {
+
+            }break;
+
+            case R.id.nav_save: {
 
             }break;
         }

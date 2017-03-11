@@ -4,34 +4,8 @@
     android:id="@+id/container_super_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dlsu.wirtec.tokhangapp.MainActivity">
-    <Button
-        android:id="@+id/btn_continue"
-        android:text="Continue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/btn_start_new_game"
-        android:layout_alignEnd="@+id/btn_start_new_game" />
-
-    <Button
-        android:id="@+id/btn_start_new_game"
-        android:text="Start New Game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@id/btn_continue"/>
-
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:text="@string/app_name"
-        android:textSize="32sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_continue"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp" />
+    tools:context="dlsu.wirtec.tokhangapp.MainActivity"
+    android:background="@drawable/background_tokhang2">
 
 
     <Button
@@ -39,8 +13,35 @@
         android:text="Leader Boards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_start_new_game"
-        android:layout_alignStart="@+id/btn_start_new_game"
-        android:layout_alignEnd="@+id/btn_start_new_game" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/btn_start_new_game"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btn_start_new_game"
+        android:text="Start New Game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_leaderboard"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btn_continue"
+        android:text="Continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_start_new_game"
+        android:layout_alignEnd="@+id/btn_start_new_game"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:text="@string/app_name"
+        android:textSize="35sp"
+        android:textColor="#407bc4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_continue"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
