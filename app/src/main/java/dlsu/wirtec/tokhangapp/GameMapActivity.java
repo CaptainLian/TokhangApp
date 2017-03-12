@@ -62,88 +62,88 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
     }
 
     private final void flipPerspective(){
-        float firstFromX, firstToX, firstFromY, firstToY,
-                secondFromX, secondToX, secondFromY, secondToY;
+        if(!isFlipping){
+            float firstFromX, firstToX, firstFromY, firstToY,
+                    secondFromX, secondToX, secondFromY, secondToY;
 
-        TranslateAnimation first = null;
-        TranslateAnimation second = null;
+            TranslateAnimation first = null;
+            TranslateAnimation second = null;
 
-        if(isMapShown){//goUp
-            firstFromX = 0f;
-            firstFromY = 0f;
-            firstToX = 0f;
-            firstToY = -1f;
+            if(isMapShown){//goUp
+                firstFromX = 0f;
+                firstFromY = 0f;
+                firstToX = 0f;
+                firstToY = -1f;
 
-            secondFromX = 0f;
-            secondFromY = 1f;
-            secondToX = 0f;
-            secondToY = 0f;
+                secondFromX = 0f;
+                secondFromY = 1f;
+                secondToX = 0f;
+                secondToY = 0f;
 
-            first = new TranslateAnimation(
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstToX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromY,
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstToY
-            );
-            first.setDuration(ANIMATION_DURATION);
+                first = new TranslateAnimation(
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstFromX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstToX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstFromY,
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstToY
+                );
+                first.setDuration(ANIMATION_DURATION);
 
-            second = new TranslateAnimation(
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondToX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromY,
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondToY
-            );
-            second.setDuration(ANIMATION_DURATION);
+                second = new TranslateAnimation(
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondFromX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondToX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondFromY,
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondToY
+                );
+                second.setDuration(ANIMATION_DURATION);
 
-            viewFlipper.setInAnimation(second);
-            viewFlipper.setOutAnimation(first);
+                viewFlipper.setInAnimation(second);
+                viewFlipper.setOutAnimation(first);
 
-            viewFlipper.showNext();
-        }else{//goDown
-            firstFromX = 0f;
-            firstFromY = -1f;
-            firstToX = 0f;
-            firstToY = 0f;
+                viewFlipper.showNext();
+            }else{//goDown
+                firstFromX = 0f;
+                firstFromY = -1f;
+                firstToX = 0f;
+                firstToY = 0f;
 
-            secondFromX = 0f;
-            secondFromY = 0f;
-            secondToX = 0f;
-            secondToY = 1f;
+                secondFromX = 0f;
+                secondFromY = 0f;
+                secondToX = 0f;
+                secondToY = 1f;
 
-            first = new TranslateAnimation(
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstToX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstFromY,
-                    TranslateAnimation.RELATIVE_TO_PARENT, firstToY
-            );
-            first.setDuration(ANIMATION_DURATION);
+                first = new TranslateAnimation(
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstFromX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstToX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstFromY,
+                        TranslateAnimation.RELATIVE_TO_PARENT, firstToY
+                );
+                first.setDuration(ANIMATION_DURATION);
 
-            second = new TranslateAnimation(
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondToX,
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondFromY,
-                    TranslateAnimation.RELATIVE_TO_PARENT, secondToY
-            );
-            second.setDuration(ANIMATION_DURATION);
+                second = new TranslateAnimation(
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondFromX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondToX,
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondFromY,
+                        TranslateAnimation.RELATIVE_TO_PARENT, secondToY
+                );
+                second.setDuration(ANIMATION_DURATION);
 
-            viewFlipper.setInAnimation(first);
-            viewFlipper.setOutAnimation(second);
+                viewFlipper.setInAnimation(first);
+                viewFlipper.setOutAnimation(second);
 
-            viewFlipper.showPrevious();
+                viewFlipper.showPrevious();
+            }
+
+            first.setAnimationListener(this);
+            second.setAnimationListener(this);
+
+            isMapShown = !isMapShown;
         }
-
-        first.setAnimationListener(this);
-        second.setAnimationListener(this);
-
-        isMapShown = !isMapShown;
     }
 
     @Override
     public void onBackPressed() {
        if(map.isDrawerOpen()){
            map.closeDrawer();
-       }else{
-           super.onBackPressed();
        }
     }
 

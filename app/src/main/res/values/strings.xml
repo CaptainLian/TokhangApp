@@ -16,4 +16,11 @@
     <string name="navigation_item_title_quit">Give Up</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- QuitDialogFragment.java -->
+    <string name="dialog_quit_title">Quit?! Pft.</string>
+    <string name="dialog_quit_message">Are you sure you want to quit? All unsaved changes will be gone</string>
+    <string name="dialog_quit_positive">Yes!</string>
+    <string name="dialog_quit_negative">No!</string>
+    <string name="dialog_quit_neutral">Meh.</string>
 </resources>

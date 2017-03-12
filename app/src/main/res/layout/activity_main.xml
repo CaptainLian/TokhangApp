@@ -6,8 +6,6 @@
     android:layout_height="match_parent"
     tools:context="dlsu.wirtec.tokhangapp.MainActivity"
     android:background="@drawable/background_tokhang2">
-
-
     <Button
         android:id="@+id/btn_leaderboard"
         android:text="Leader Boards"
