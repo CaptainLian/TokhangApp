@@ -1,5 +1,9 @@
 package dlsu.wirtec.tokhangapp.ui;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -45,8 +49,16 @@ public class MapPerspective implements NavigationView.OnNavigationItemSelectedLi
 
         navigationView.setNavigationItemSelectedListener(this);
 
-        new LineView(activity.getBaseContext(), 0, 0, 50, 50);
-        new LineView(activity.getBaseContext(), btnMakati.getX(), btnMakati.getY(), btnPaco.getX(), btnPaco.getY());
+        Bitmap bitmap = Bitmap.createBitmap(1000, 1000, Bitmap.Config.ARGB_8888);
+
+        Canvas c = new Canvas(bitmap);
+
+        Paint p = new Paint();
+        p.setColor(Color.BLACK);
+        p.setAntiAlias(true);
+        p.setDither(true);
+
+        c.drawLine(btnMakati.getX(), btnMakati.getY(), btnPaco.getX(), btnPaco.getY(), p);
 
         btnMakati.setOnClickListener(new View.OnClickListener() {
             @Override

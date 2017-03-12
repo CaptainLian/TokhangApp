@@ -131,13 +131,13 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
                 viewFlipper.setOutAnimation(second);
 
                 viewFlipper.showPrevious();
-            }
+            }//isMapShown
 
             first.setAnimationListener(this);
             second.setAnimationListener(this);
 
             isMapShown = !isMapShown;
-        }
+        }//isFlipping
     }
 
     @Override

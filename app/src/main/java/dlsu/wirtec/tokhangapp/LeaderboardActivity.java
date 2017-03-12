@@ -19,8 +19,6 @@ public class LeaderboardActivity extends AppCompatActivity {
     private ScoreDatabaseHelper scoreDatabase;
     private ScoreAdapter scoreAdapter;
 
-    private boolean isMapShown = true;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
