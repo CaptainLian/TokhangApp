@@ -48,17 +48,16 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFlipping)
-                    flipPerspective();
+                flipPerspective();
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isFlipping)
-                        flipPerspective();
+                flipPerspective();
             }
         });
+
     }
 
     private final void flipPerspective(){

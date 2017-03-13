@@ -8,6 +8,11 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
+    <ImageView
+        android:id="@+id/id_map_drawArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <include
         layout="@layout/app_bar_game_map"
         android:layout_width="match_parent"
