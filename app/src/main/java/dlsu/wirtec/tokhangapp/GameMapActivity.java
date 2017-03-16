@@ -2,8 +2,14 @@ package dlsu.wirtec.tokhangapp;
 
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,9 +19,10 @@ import android.widget.Button;
 import android.widget.ViewFlipper;
 
 import dlsu.wirtec.tokhangapp.ui.MapPerspective;
+import dlsu.wirtec.tokhangapp.ui.QuitDialogFragment;
 import dlsu.wirtec.tokhangapp.ui.ShopPerspective;
 
-public class GameMapActivity extends AppCompatActivity implements Animation.AnimationListener {
+public class GameMapActivity extends AppCompatActivity implements Animation.AnimationListener, NavigationView.OnNavigationItemSelectedListener {
 
     private ViewFlipper viewFlipper;
 
@@ -31,6 +38,10 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
     private boolean isFlipping = false;
     private static final long ANIMATION_DURATION = 300;
 
+    private Toolbar toolbar;
+    private DrawerLayout drawer;
+    private NavigationView navigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +49,24 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
         setContentView(R.layout.activity_game_map);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        drawer = (DrawerLayout) findViewById(R.id.container_map);
+
         viewFlipper = (ViewFlipper) findViewById(R.id.container_viewFlipper);
         fab = (FloatingActionButton) findViewById(R.id.fab);
         btnBack = (Button) findViewById(R.id.btn_back);
 
         map = new MapPerspective(this);
         shop = new ShopPerspective(this);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +81,7 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
             }
         });
 
-    }
+    }//onCreate
 
     private final void flipPerspective(){
         if(!isFlipping){
@@ -141,9 +164,9 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
 
     @Override
     public void onBackPressed() {
-       if(map.isDrawerOpen()){
-           map.closeDrawer();
-       }
+        if(drawer.isDrawerOpen(GravityCompat.START)){
+            drawer.closeDrawer(GravityCompat.START);
+        }
     }
 
     @Override
@@ -175,5 +198,32 @@ public class GameMapActivity extends AppCompatActivity implements Animation.Anim
     @Override
     public void onAnimationRepeat(Animation animation) {
         return;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        final int id = item.getItemId();
+
+        switch (id){
+            case R.id.nav_statistics:{
+
+            }break;
+
+            case R.id.nav_equipment: {
+
+            }break;
+
+            case R.id.nav_quit: {
+                QuitDialogFragment dialog = new QuitDialogFragment();
+                dialog.show(getSupportFragmentManager(), "MapActivity");
+            }break;
+
+            case R.id.nav_save: {
+
+            }break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }

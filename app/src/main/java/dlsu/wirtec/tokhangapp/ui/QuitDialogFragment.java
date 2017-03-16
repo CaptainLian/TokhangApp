@@ -3,10 +3,12 @@ package dlsu.wirtec.tokhangapp.ui;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
+import dlsu.wirtec.tokhangapp.MainActivity;
 import dlsu.wirtec.tokhangapp.R;
 
 /**
@@ -25,7 +27,9 @@ public class QuitDialogFragment extends DialogFragment {
                 .setPositiveButton(R.string.dialog_quit_positive, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Intent i = new Intent(getContext(), MainActivity.class);
+                        startActivity(i);
+                        getActivity().finish();
                     }
                 })
                 .setNegativeButton(R.string.dialog_quit_negative, new DialogInterface.OnClickListener() {

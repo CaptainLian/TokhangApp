@@ -1,45 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container_super_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="dlsu.wirtec.tokhangapp.MainActivity"
-    android:background="@drawable/background_tokhang2">
-    <Button
-        android:id="@+id/btn_leaderboard"
-        android:text="Leader Boards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/btn_start_new_game"
-        android:layout_alignParentStart="true" />
+    android:id="@+id/container_superParent">
 
-    <Button
-        android:id="@+id/btn_start_new_game"
-        android:text="Start New Game"
+    <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_leaderboard"
-        android:layout_alignParentStart="true" />
+        android:layout_height="130dp"
+        android:paddingTop="15dp"
+        android:src="@drawable/header"
+        android:layout_centerHorizontal="true"/>
 
-    <Button
+    <ImageButton
+        android:paddingTop="0dp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:background="?android:selectableItemBackground"
         android:id="@+id/btn_continue"
-        android:text="Continue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_start_new_game"
-        android:layout_alignEnd="@+id/btn_start_new_game"
-        android:layout_alignParentStart="true" />
+        android:src="@mipmap/cnue"
+        android:layout_centerInParent="true"/>
 
-    <TextView
-        android:id="@+id/tv_title"
-        android:text="@string/app_name"
-        android:textSize="35sp"
-        android:textColor="#407bc4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btn_continue"
-        android:layout_alignParentStart="true" />
+    <ImageButton
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/btn_startGame"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/sgame"
+        android:layout_below="@+id/btn_continue"/>
+
+    <ImageButton
+        android:paddingTop="10dp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:background="?android:selectableItemBackground"
+        android:id="@+id/btn_leaderboard"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/hscore"
+        android:layout_below="@+id/btn_startGame"/>
 
 </RelativeLayout>

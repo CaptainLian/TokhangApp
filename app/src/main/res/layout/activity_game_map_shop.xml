@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Tindahan ni Aling Nena"
+        android:text="@string/shop_title"
         android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -21,7 +21,6 @@
         android:orientation="horizontal">
         <TextView
             android:id="@+id/tv_name"
-            android:text="Name: _____"
             android:textSize="12sp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -44,25 +43,25 @@
         android:layout_height="0dp"
         android:layout_weight="0.3">
         <TextView
-            android:text="Buy"
+            android:text="@string/shop_buy"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.3"/>
 
         <TextView
-            android:text="Icon"
+            android:text="@string/shop_icon"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.7" />
 
         <TextView
-            android:text="Name"
+            android:text="@string/shop_name"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
 
         <TextView
-            android:text="Cost"
+            android:text="@string/shop_cost"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5" />

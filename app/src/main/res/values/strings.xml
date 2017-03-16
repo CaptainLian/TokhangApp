@@ -23,4 +23,10 @@
     <string name="dialog_quit_positive">Yes!</string>
     <string name="dialog_quit_negative">No!</string>
     <string name="dialog_quit_neutral">Meh.</string>
+
+    <string name="shop_title">Tindahan ni Aling Nena</string>
+    <string name="shop_name">Name</string>
+    <string name="shop_icon">Icon</string>
+    <string name="shop_buy">Buy</string>
+    <string name="shop_cost">Cost</string>
 </resources>
