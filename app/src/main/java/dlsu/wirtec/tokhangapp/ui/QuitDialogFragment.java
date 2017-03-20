@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
-import dlsu.wirtec.tokhangapp.MainActivity;
 import dlsu.wirtec.tokhangapp.R;
+import dlsu.wirtec.tokhangapp.activities.MainActivity;
 
 /**
  * Created by lyssa on 11/03/2017.

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml
@@ -18,7 +18,7 @@ ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidM
 	android:name
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:5:22-63
 application
-ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:7:5-32:19
+ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:7:5-33:19
 MERGED from [com.android.support:design:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\AndroidManifest.xml:22:5-20
@@ -42,10 +42,10 @@ MERGED from [com.android.support:support-compat:25.1.1] C:\Users\lyssa\AndroidSt
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:9:9-40
 	android:theme
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:12:9-40
-activity#dlsu.wirtec.tokhangapp.MainActivity
+activity#dlsu.wirtec.tokhangapp.activities.MainActivity
 ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:13:9-19:20
 	android:name
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:13:19-47
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:13:19-58
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
 ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:14:13-18:29
 action#android.intent.action.MAIN
@@ -56,29 +56,25 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:17:17-77
 	android:name
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:17:27-74
-activity#dlsu.wirtec.tokhangapp.LeaderboardActivity
+activity#dlsu.wirtec.tokhangapp.activities.LeaderboardActivity
 ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:20:9-23:59
 	android:label
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:22:13-63
 	android:theme
 		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:23:13-56
 	android:name
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:21:13-48
-activity#dlsu.wirtec.tokhangapp.GameMapActivity
-ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:24:9-27:68
-	android:label
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:26:13-60
-	android:theme
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:27:13-56
-	android:name
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:25:13-44
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:21:13-59
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:29:9-31:69
+ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:28:9-30:69
 MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:31:13-66
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:30:13-66
 	android:name
-		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:30:13-58
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:29:13-58
+activity#dlsu.wirtec.tokhangapp.activities.MapActivity
+ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:32:9-69
+	android:name
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:32:19-57
 uses-sdk
 INJECTED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:21:5-23:62

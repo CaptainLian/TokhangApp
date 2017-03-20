@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private final void goToMap() {
-        return;
+        Intent i = new Intent(getBaseContext(), MapActivity.class);
+        startActivity(i);
     }
 }
