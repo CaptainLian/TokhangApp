@@ -680,9 +680,14 @@
     <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
     <string name="search_menu_title">Search</string>
+    <string name="shop_buy">Buy</string>
+    <string name="shop_cost">Cost</string>
+    <string name="shop_icon">Icon</string>
+    <string name="shop_name">Name</string>
+    <string name="shop_title">Tindahan ni Aling Nena</string>
     <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="title_activity_game_map">Philippines Map</string>
-    <string name="title_activity_leaderboard">LeaderBoardActivity</string>
+    <string name="title_activity_game_map">Action Map</string>
+    <string name="title_activity_leaderboard">High Scores</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

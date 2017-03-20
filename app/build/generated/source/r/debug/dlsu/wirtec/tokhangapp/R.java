@@ -2843,11 +2843,11 @@ containing a value of this type.
         public static final int bottom=0x7f0d0026;
         public static final int btn_back=0x7f0d007e;
         public static final int btn_buy=0x7f0d009c;
-        public static final int btn_continue=0x7f0d0083;
-        public static final int btn_leaderboard=0x7f0d0085;
-        public static final int btn_makati=0x7f0d008a;
-        public static final int btn_paco=0x7f0d0089;
-        public static final int btn_startGame=0x7f0d0084;
+        public static final int btn_continue=0x7f0d0082;
+        public static final int btn_leaderboard=0x7f0d0084;
+        public static final int btn_makati=0x7f0d0089;
+        public static final int btn_paco=0x7f0d0088;
+        public static final int btn_startGame=0x7f0d0083;
         public static final int buttonPanel=0x7f0d0052;
         public static final int cancel_action=0x7f0d00a5;
         public static final int center=0x7f0d0027;
@@ -2860,10 +2860,10 @@ containing a value of this type.
         public static final int collapseActionView=0x7f0d003d;
         public static final int container_map=0x7f0d007f;
         public static final int container_player=0x7f0d0099;
-        public static final int container_superParent=0x7f0d0082;
+        public static final int container_superParent=0x7f0d0081;
         public static final int container_viewFlipper=0x7f0d007a;
         public static final int contentPanel=0x7f0d0055;
-        public static final int content_game_map=0x7f0d0088;
+        public static final int content_game_map=0x7f0d0087;
         public static final int custom=0x7f0d005c;
         public static final int customPanel=0x7f0d005b;
         public static final int dark=0x7f0d0044;
@@ -2883,7 +2883,7 @@ containing a value of this type.
         public static final int exitUntilCollapsed=0x7f0d001b;
         public static final int expand_activities_button=0x7f0d004c;
         public static final int expanded_menu=0x7f0d0061;
-        public static final int fab=0x7f0d0087;
+        public static final int fab=0x7f0d0086;
         public static final int fill=0x7f0d0034;
         public static final int fill_horizontal=0x7f0d0035;
         public static final int fill_vertical=0x7f0d002b;
@@ -2893,7 +2893,7 @@ containing a value of this type.
         public static final int icon=0x7f0d0050;
         public static final int icon_group=0x7f0d00b2;
         public static final int icon_only=0x7f0d0041;
-        public static final int id_map_drawArea=0x7f0d0080;
+        public static final int id_map_drawArea=0x7f0d008a;
         public static final int ifRoom=0x7f0d003e;
         public static final int image=0x7f0d004d;
         public static final int imageView=0x7f0d009f;
@@ -2916,7 +2916,7 @@ containing a value of this type.
         public static final int nav_quit=0x7f0d00bd;
         public static final int nav_save=0x7f0d00bc;
         public static final int nav_statistics=0x7f0d00ba;
-        public static final int nav_view=0x7f0d0081;
+        public static final int nav_view=0x7f0d0080;
         public static final int navigation_header_container=0x7f0d0093;
         public static final int never=0x7f0d003f;
         public static final int none=0x7f0d0014;
@@ -2982,7 +2982,7 @@ containing a value of this type.
         public static final int title=0x7f0d0051;
         public static final int titleDividerNoCustom=0x7f0d0060;
         public static final int title_template=0x7f0d005e;
-        public static final int toolbar=0x7f0d0086;
+        public static final int toolbar=0x7f0d0085;
         public static final int top=0x7f0d002f;
         public static final int topPanel=0x7f0d005d;
         public static final int touch_outside=0x7f0d008f;
@@ -3185,9 +3185,14 @@ containing a value of this type.
         public static final int path_password_eye_mask_visible=0x7f070054;
         public static final int path_password_strike_through=0x7f070055;
         public static final int search_menu_title=0x7f070030;
+        public static final int shop_buy=0x7f070056;
+        public static final int shop_cost=0x7f070057;
+        public static final int shop_icon=0x7f070058;
+        public static final int shop_name=0x7f070059;
+        public static final int shop_title=0x7f07005a;
         public static final int status_bar_notification_info_overflow=0x7f070031;
-        public static final int title_activity_game_map=0x7f070056;
-        public static final int title_activity_leaderboard=0x7f070057;
+        public static final int title_activity_game_map=0x7f07005b;
+        public static final int title_activity_leaderboard=0x7f07005c;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f0900a2;

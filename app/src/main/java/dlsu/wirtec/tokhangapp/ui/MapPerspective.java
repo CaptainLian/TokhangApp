@@ -18,9 +18,7 @@ import dlsu.wirtec.tokhangapp.R;
  *
  * Created by lyssa on 10/03/2017.
  */
-
 public class MapPerspective{
-
 
     private ImageView drawArea;
 
@@ -29,7 +27,6 @@ public class MapPerspective{
 
     public MapPerspective(final GameMapActivity activity){
 
-
         drawArea = (ImageView) activity.findViewById(R.id.id_map_drawArea);
 
         btnMakati = (ImageButton) activity.findViewById(R.id.btn_makati);
@@ -37,6 +34,7 @@ public class MapPerspective{
 
         paint = new Paint();
         paint.setAntiAlias(true);
+
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(12f);
 
@@ -57,30 +55,26 @@ public class MapPerspective{
             @Override
             public void onGlobalLayout() {
                 drawArea.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                int[] pacoPoint = new int[2];
-                int[] makatiPoint = new int[2];
-
-                btnPaco.getLocationInWindow(pacoPoint);
-                btnMakati.getLocationInWindow(makatiPoint);
 
                 Bitmap bitmap = Bitmap.createBitmap(drawArea.getWidth(), drawArea.getHeight(), Bitmap.Config.ARGB_8888);
                 Canvas c = new Canvas(bitmap);
 
-                c.drawLine(pacoPoint[0], pacoPoint[1], makatiPoint[0], makatiPoint[1], paint);
+                float pacoMidX =  btnPaco.getX() + btnPaco.getWidth()/2.0f;
+                float pacoMidY = btnPaco.getY() + btnPaco.getHeight()/2.0f;
+                float makatiMidX = btnMakati.getX() + btnMakati.getWidth()/2.0f;
+                float makatiMidY = btnMakati.getY() + btnMakati.getHeight()/2.0f;
+
+                c.drawLine(pacoMidX, pacoMidY, makatiMidX, makatiMidY, paint);
 
                 drawArea.setImageBitmap(bitmap);
             }
         });
-
     }
-
-
 
     public void onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         final int id = item.getItemId();
-
     }
 }
