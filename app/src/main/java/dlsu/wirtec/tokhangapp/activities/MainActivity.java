@@ -1,4 +1,4 @@
-package dlsu.wirtec.tokhangapp;
+package dlsu.wirtec.tokhangapp.activities;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import dlsu.wirtec.tokhangapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,8 +57,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private final void goToMap() {
-        Intent i = new Intent(getBaseContext(), GameMapActivity.class);
-        startActivity(i);
-        finish();
+        return;
     }
 }

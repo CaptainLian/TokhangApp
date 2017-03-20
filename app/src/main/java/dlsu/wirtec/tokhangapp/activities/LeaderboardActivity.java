@@ -1,4 +1,4 @@
-package dlsu.wirtec.tokhangapp;
+package dlsu.wirtec.tokhangapp.activities;
 
 import android.content.pm.ActivityInfo;
 import android.database.Cursor;
@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import dlsu.wirtec.tokhangapp.R;
 import dlsu.wirtec.tokhangapp.database.ScoreDatabaseHelper;
 import dlsu.wirtec.tokhangapp.ui.ScoreAdapter;
 
