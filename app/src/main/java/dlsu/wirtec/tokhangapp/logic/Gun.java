@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 public class Gun {
 
     private String name;
+    private String description;
 
     private int damage;
 
@@ -22,7 +23,12 @@ public class Gun {
      */
     private long reloadTime;
 
+    private int maxAmmoCapacity = -1;
+
+
     private int cost;
+
+    private GunSound gunSound;
 
     /**
      *
@@ -32,12 +38,27 @@ public class Gun {
      * @param reloadTime Amount of time required to reload the gun in miliseconds.
      * @param cost Cost in any abritrary currency.
      */
-    public Gun(@Nullable String name, int damage, long fireDelayTime, long reloadTime, int cost){
+    public Gun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost){
+        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, null);
+    }
+
+    /**
+     *
+     * @param name
+     * @param damage
+     * @param fireDelayTime Delay between each time a gun can be fired in miliseconds.
+     * @param reloadTime Amount of time required to reload the gun in miliseconds.
+     * @param cost Cost in any abritrary currency.
+     * @param gunSound
+     */
+    public Gun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, @Nullable GunSound gunSound){
         setName(name);
         setDamage(damage);
+        setMaxAmmoCapacity(maxAmmoCapacity);
         setFireDelayTime(fireDelayTime);
         setReloadTime(reloadTime);
         setCost(cost);
+        setGunSound(gunSound);
     }
 
     public void setDamage(int damage){
@@ -80,8 +101,28 @@ public class Gun {
         this.cost = cost;
     }
 
+    public void setDescription(@Nullable String description){
+        this.description = description;
+    }
+
+    /**
+     * Sets the maximum amount of shots a gun has
+     * @param maxAmmoCapacity the maximum amount of shots before reloading, a value of zero or negative means infinite number of shots.
+     */
+    public void setMaxAmmoCapacity(int maxAmmoCapacity){
+       this.maxAmmoCapacity = maxAmmoCapacity;
+    }
+
+    public void setGunSound(@Nullable GunSound gunSound){
+        this.gunSound = gunSound;
+    }
+
     public String getName() {
         return this.name;
+    }
+
+    public @Nullable String getDescription (){
+        return this.description;
     }
 
     public int getDamage() {
@@ -98,6 +139,10 @@ public class Gun {
 
     public int getCost(){
         return this.cost;
+    }
+
+    public @Nullable GunSound getGunSound(){
+        return gunSound;
     }
 
     /**

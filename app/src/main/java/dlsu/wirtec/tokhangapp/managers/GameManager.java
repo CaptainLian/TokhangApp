@@ -1,6 +1,9 @@
 package dlsu.wirtec.tokhangapp.managers;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+
+import dlsu.wirtec.tokhangapp.logic.Gun;
 
 /**
  * Created by lyssa on 26/03/2017.
@@ -8,29 +11,31 @@ import android.content.Context;
 
 public class GameManager {
 
-    private static Context context = null;
-
     private static SoundManager soundManager;
+    private static GunManager gunManager;
 
     /**
      * Initializes the game manager
      * @param context
      * @throws IllegalStateException If the manager is already initalized
      */
-    public static void initialize(Context context) throws IllegalStateException {
-        if(context != null){
-            throw new IllegalStateException("Manager already initalized");
+    public static void initialize(@NonNull Context context) throws IllegalStateException {
+        if(gunManager == null || soundManager == null) {
+            soundManager = new SoundManager(context);
+            gunManager = new GunManager(soundManager);
         }
-        GameManager.context = context;
     }
 
+    /**
+     *
+     * @return A sound manager
+     * @throws IllegalStateException If the manager is not initialized
+     */
     public static SoundManager getSoundManager() throws IllegalStateException {
-        if(context == null){
-            throw new IllegalStateException("Manager not initialized!");
-        }
-        if(soundManager == null){
-            soundManager = new SoundManager(context);
-        }
         return soundManager;
+    }
+
+    public static GunManager getGunManager(){
+        return gunManager;
     }
 }

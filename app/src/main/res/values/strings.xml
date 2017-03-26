@@ -22,4 +22,25 @@
     <string name="shop_icon">Icon</string>
     <string name="shop_buy">Buy</string>
     <string name="shop_cost">Cost</string>
+
+    <string name="shop_purchase">Purchase</string>
+    <string name="shop_purchase_positive">Yes</string>
+    <string name="shop_purchase_negative">No</string>
+    <string name="shop_purchase_neutral">I\'ll think about it</string>
+
+    <!-- gun names -->
+    <string name="gun_pistol_name">Water Gun</string>
+    <string name="gun_pistol_description"></string>
+
+    <string name="gun_rifle_name">Semi-automatic Rifle</string>
+    <string name="gun_rifle_description"></string>
+
+    <string name="gun_shotgun_name">Shotgun</string>
+    <string name="gun_shotgun_description"></string>
+
+    <string name="gun_sniper_name">Sniper</string>
+    <string name="gun_sniper_description"></string>
+
+    <string name="gun_rocket_name">Rocket Launcher</string>
+    <string name="gun_rocket_description"></string>
 </resources>

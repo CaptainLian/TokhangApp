@@ -17,6 +17,12 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import dlsu.wirtec.tokhangapp.R;
+import dlsu.wirtec.tokhangapp.logic.Gun;
+import dlsu.wirtec.tokhangapp.logic.GunSound;
+import dlsu.wirtec.tokhangapp.logic.SimpleGunSound;
+import dlsu.wirtec.tokhangapp.managers.GameManager;
+import dlsu.wirtec.tokhangapp.managers.GunManager;
+import dlsu.wirtec.tokhangapp.managers.SoundManager;
 
 public class MapActivity extends AppCompatActivity{
 
@@ -29,7 +35,11 @@ public class MapActivity extends AppCompatActivity{
     private Button btnShop;
 
     /* shop */
-    private ImageButton btnGunPistol, btnGunAuto, btnGunShotgun, btnGunSniper, btnGunRocket, btnReturn;
+    private ImageButton btnGunPistol, btnGunAuto, btnGunShotgun, btnGunSniper, btnGunRocket;
+    private Button btnReturn;
+
+    private SoundManager soundManager;
+    private GunManager gunManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +49,13 @@ public class MapActivity extends AppCompatActivity{
         setContentView(R.layout.activity_map);
 
         viewFlipper = (ViewFlipper) findViewById(R.id.container_viewFlipper);
+
+        View.OnClickListener toggleClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flipView();
+            }
+        };
 
         /* node view initalization */
         drawArea = (ImageView) findViewById(R.id.iv_drawArea);
@@ -68,12 +85,7 @@ public class MapActivity extends AppCompatActivity{
             }
         });
 
-        btnShop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                flipView();
-            }
-        });
+        btnShop.setOnClickListener(toggleClickListener);
 
         drawArea.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -104,15 +116,72 @@ public class MapActivity extends AppCompatActivity{
         });
         /* node view initialization end */
 
+
         /* shop view initialization */
+
+
         btnGunPistol = (ImageButton) findViewById(R.id.btn_default);
         btnGunAuto = (ImageButton) findViewById(R.id.btn_auto);
         btnGunShotgun = (ImageButton) findViewById(R.id.btn_shotgun);
         btnGunSniper = (ImageButton) findViewById(R.id.btn_sniper);
         btnGunRocket = (ImageButton) findViewById(R.id.btn_rocket);
-
+        btnReturn = (Button) findViewById(R.id.btn_back);
         /* shop view initialization end */
 
+        soundManager = GameManager.getSoundManager();
+        gunManager = GameManager.getGunManager();
+
+        btnGunPistol.setTag(gunManager.PISTOL);
+        btnGunAuto.setTag(gunManager.RIFLE);
+        btnGunShotgun.setTag(gunManager.SHOTGUN);
+        btnGunSniper.setTag(gunManager.SNIPER);
+        btnGunRocket.setTag(gunManager.ROCKET);
+
+        View.OnClickListener listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Gun g = (Gun) v.getTag();
+                if(gunClickedListener != null){
+                    gunClickedListener.onGunClicked(g);
+                }
+                GunSound sound = g.getGunSound();
+                if(sound != null){
+                    int onViewID = sound.getOnShopViewSoundID();
+                    if(onViewID != SimpleGunSound.ID_NONE){
+                        soundManager.playSound(onViewID);
+                    }
+                }
+                Toast.makeText(getBaseContext(), "Gun clicked: " + g.getName(), Toast.LENGTH_SHORT).show();
+            }
+        };
+        btnGunPistol.setOnClickListener(listener);
+        btnGunAuto.setOnClickListener(listener);
+        btnGunShotgun.setOnClickListener(listener);
+        btnGunSniper.setOnClickListener(listener);
+        btnGunRocket.setOnClickListener(listener);
+
+        btnReturn.setOnClickListener(toggleClickListener);
+
+        View.OnLongClickListener longListener = new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Gun g = (Gun) v.getTag();
+                if(gunClickedListener != null){
+
+                    gunLongClickedListener.onGunLongClicked(g);
+                }
+                Toast.makeText(getBaseContext(), "Gun long clicked: " + g.getName(), Toast.LENGTH_SHORT).show();
+
+
+
+                return true;
+            }
+        };
+        btnGunPistol.setOnLongClickListener(longListener);
+        btnGunAuto.setOnLongClickListener(longListener);
+        btnGunShotgun.setOnLongClickListener(longListener);
+        btnGunSniper.setOnLongClickListener(longListener);
+        btnGunRocket.setOnLongClickListener(longListener);
     }
 
     private final void flipView(){
@@ -123,4 +192,23 @@ public class MapActivity extends AppCompatActivity{
         }
         isMapView = !isMapView;
     }
+
+    private GunClickedListener gunClickedListener;
+    private GunLongClickedListener gunLongClickedListener;
+
+    public void setOnGunClickedListener(GunClickedListener listener){
+        this.gunClickedListener = listener;
+    }
+
+    public void setOnGunLongClickedListener(GunLongClickedListener listener){
+        this.gunLongClickedListener = listener;
+    }
+
+    public interface GunClickedListener {
+        public void onGunClicked(Gun g);
+    }
+    public interface GunLongClickedListener {
+        public void onGunLongClicked(Gun g);
+    }
+
 }//Class MapActivity

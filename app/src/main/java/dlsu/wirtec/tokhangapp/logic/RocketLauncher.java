@@ -9,19 +9,35 @@ import android.support.annotation.Nullable;
 public class RocketLauncher extends Gun {
 
     private int explosiveRadius;
-
-     /**
+    /**
      * @param name
      * @param damage
-     * @param fireDelayTime Delay between each time a gun can be fired in miliseconds.
-     * @param reloadTime    Amount of time required to reload the gun in miliseconds.
-     * @param cost          Cost in any abritrary currency.
+     * @param maxAmmoCapacity
+     * @param fireDelayTime   Delay between each time a gun can be fired in miliseconds.
+     * @param reloadTime      Amount of time required to reload the gun in miliseconds.
+     * @param cost            Cost in any abritrary currency.
      * @param explosiveRadius
+     * @throws IllegalArgumentException
      */
-    public RocketLauncher(@Nullable String name, int damage, long fireDelayTime, long reloadTime, int cost, int explosiveRadius) {
-        super(name, damage, fireDelayTime, reloadTime, cost);
+    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int explosiveRadius) throws IllegalArgumentException {
+        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, explosiveRadius, null);
+    }
+
+    /**
+     * @param name
+     * @param damage
+     * @param maxAmmoCapacity
+     * @param fireDelayTime   Delay between each time a gun can be fired in miliseconds.
+     * @param reloadTime      Amount of time required to reload the gun in miliseconds.
+     * @param cost            Cost in any abritrary currency.
+     * @param explosiveRadius
+     * @param gunSound
+     */
+    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int explosiveRadius, @Nullable GunSound gunSound) {
+        super(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, gunSound);
         setExplosiveRadius(explosiveRadius);
     }
+
 
     public void setExplosiveRadius(int explosiveRadius){
         if(explosiveRadius < 0){

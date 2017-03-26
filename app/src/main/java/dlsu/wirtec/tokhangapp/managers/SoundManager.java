@@ -32,12 +32,15 @@ public class SoundManager{
     /* UI sounds */
     public final int SOUND_MENU_ERROR1;
     public final int SOUND_SHOP_PURCHASE1;
+    public final int SOUND_SHOP_UI_BRRT;
+    public final int SOUND_SHOP_UI_PEW;
 
     /* Gun sounds */
     public final int SOUND_GUN_SHOTGUN_FIRE1;
     public final int SOUND_GUN_SHOTGUN_RELOAD1;
     public final int SOUND_GUN_SHOTGUN_COCK1;
 
+    public final int SOUND_POWERUP_PICKUP1;
     SoundManager(Context context){
         this(context, 1.0f);
     }
@@ -57,12 +60,16 @@ public class SoundManager{
         /* load ui sounds*/
         SOUND_MENU_ERROR1 = soundPlayer.load(context, R.raw.sound_menu_error1, DEFAULT_LOAD_PRIORITY);
         SOUND_SHOP_PURCHASE1 = soundPlayer.load(context, R.raw.sound_shop_purchase1, DEFAULT_LOAD_PRIORITY);
+        SOUND_SHOP_UI_BRRT = soundPlayer.load(context, R.raw.sound_shop_ui_brrt, DEFAULT_LOAD_PRIORITY);
+        SOUND_SHOP_UI_PEW = soundPlayer.load(context, R.raw.sound_shop_ui_pew, DEFAULT_LOAD_PRIORITY);
 
         /* Load gun sounds */
         //shotgun
         SOUND_GUN_SHOTGUN_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_fire1, DEFAULT_LOAD_PRIORITY);
         SOUND_GUN_SHOTGUN_RELOAD1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_reload1, DEFAULT_LOAD_PRIORITY);
         SOUND_GUN_SHOTGUN_COCK1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_cock1, DEFAULT_LOAD_PRIORITY);
+
+        SOUND_POWERUP_PICKUP1 = soundPlayer.load(context, R.raw.sound_powerup_pickup1, DEFAULT_LOAD_PRIORITY);
     }
 
     public void playSound(int soundID){
@@ -78,6 +85,10 @@ public class SoundManager{
 
         currentMusicPlayer = MediaPlayer.create(context, rawID);
         currentMusicPlayer.start();
+    }
+
+    public Context getContext(){
+        return context;
     }
 
 

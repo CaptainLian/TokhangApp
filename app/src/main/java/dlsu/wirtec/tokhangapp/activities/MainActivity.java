@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import dlsu.wirtec.tokhangapp.R;
+import dlsu.wirtec.tokhangapp.managers.GameManager;
+import dlsu.wirtec.tokhangapp.managers.SoundManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,8 +20,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvTitle;
     private ImageButton btnStartNewGame, btnContinue, btnLeaderboard;
 
+    private SoundManager soundManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         getSupportActionBar().hide();
@@ -50,14 +54,21 @@ public class MainActivity extends AppCompatActivity {
         btnLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), LeaderboardActivity.class);
-                startActivity(i);
+                goToLeaderboard();
             }
         });
+
+        GameManager.initialize(getBaseContext());
+        soundManager = GameManager.getSoundManager();
     }
 
     private final void goToMap() {
         Intent i = new Intent(getBaseContext(), MapActivity.class);
+        startActivity(i);
+    }
+
+    private final void goToLeaderboard(){
+        Intent i = new Intent(getBaseContext(), LeaderboardActivity.class);
         startActivity(i);
     }
 }
