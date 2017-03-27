@@ -23,6 +23,7 @@ import dlsu.wirtec.tokhangapp.logic.SimpleGunSound;
 import dlsu.wirtec.tokhangapp.managers.GameManager;
 import dlsu.wirtec.tokhangapp.managers.GunManager;
 import dlsu.wirtec.tokhangapp.managers.SoundManager;
+import dlsu.wirtec.tokhangapp.ui.ShopDialogFragment;
 
 public class MapActivity extends AppCompatActivity{
 
@@ -167,16 +168,22 @@ public class MapActivity extends AppCompatActivity{
             public boolean onLongClick(View v) {
                 Gun g = (Gun) v.getTag();
                 if(gunClickedListener != null){
-
                     gunLongClickedListener.onGunLongClicked(g);
                 }
-                Toast.makeText(getBaseContext(), "Gun long clicked: " + g.getName(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getBaseContext(), "Gun long clicked: " + g.getName(), Toast.LENGTH_SHORT).show();
 
+                Bundle args = new Bundle();
+                args.putString(ShopDialogFragment.ARGUMENT_GUN_NAME, g.getName());
+                args.putString(ShopDialogFragment.ARGUMENT_GUN_DESCRIPTION, g.getDescription());
+                args.putInt(ShopDialogFragment.ARGUMENT_GUN_COST, g.getCost());
 
-
+                ShopDialogFragment dialog = new ShopDialogFragment();
+                dialog.setArguments(args);
+                dialog.show(getSupportFragmentManager(), ShopDialogFragment.DIALOG_TAG_SHOP);
                 return true;
             }
         };
+
         btnGunPistol.setOnLongClickListener(longListener);
         btnGunAuto.setOnLongClickListener(longListener);
         btnGunShotgun.setOnLongClickListener(longListener);

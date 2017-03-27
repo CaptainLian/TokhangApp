@@ -24,6 +24,7 @@ public class ShopDialogFragment extends DialogFragment {
     public static final String ARGUMENT_GUN_COST = "GUN_COST";
     public static final String ARGUMENT_GUN_DESCRIPTION = "GUN_DESCRIPTION";
 
+    public static final String DIALOG_TAG_SHOP = "DIALOG_TAG_SHOP";
 
     @NonNull
     @Override
