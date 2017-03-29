@@ -1,5 +1,6 @@
 package dlsu.wirtec.tokhangapp.activities;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import dlsu.wirtec.tokhangapp.R;
+import dlsu.wirtec.tokhangapp.game.House;
+import dlsu.wirtec.tokhangapp.game.Stage;
 import dlsu.wirtec.tokhangapp.logic.Gun;
 import dlsu.wirtec.tokhangapp.logic.GunSound;
 import dlsu.wirtec.tokhangapp.logic.SimpleGunSound;
@@ -26,6 +29,8 @@ import dlsu.wirtec.tokhangapp.managers.SoundManager;
 import dlsu.wirtec.tokhangapp.ui.ShopDialogFragment;
 
 public class MapActivity extends AppCompatActivity{
+
+    public static final int ACTIVITY_REQUEST_CODE_GAME = 0;
 
     private ViewFlipper viewFlipper;
     private boolean isMapView = true;
@@ -45,7 +50,6 @@ public class MapActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_map);
 
@@ -71,6 +75,18 @@ public class MapActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Toast.makeText(getBaseContext(), "Sector 1", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), GameActivity.class);
+
+                String[] houseNames = {
+                        House.BUNGALOW,
+                        House.SKWATER,
+                        House.SKWATER
+                };
+                Stage stage = new Stage("Sector1", 4, houseNames, 900);
+                i.putExtra(Stage.EXTRA_STAGE, stage);
+                //startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
+                startActivity(i);
+                finish();
             }
         });
         tvSector2.setOnClickListener(new View.OnClickListener() {

@@ -25,8 +25,6 @@ public class LeaderboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
 //        getSupportActionBar().hide();
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
 
         btnBack = (FloatingActionButton) findViewById(R.id.btn_back);
         rvPlayer = (RecyclerView) findViewById(R.id.rv_player);

@@ -23,9 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private SoundManager soundManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 

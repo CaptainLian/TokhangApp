@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\house3.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\house3.png"
+    },
+    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
     },
@@ -10,10 +14,6 @@
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_cart.png",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\icon_cart.png"
-    },
-    {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu5.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\menu5.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_edit_text_material.xml",
@@ -32,16 +32,20 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_plus_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
-    },
-    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
     {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
+    },
+    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_text_cursor_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\soldier1.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\soldier1.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_bg.xml",
@@ -56,40 +60,44 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_go_search_api_material.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sprak.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\sprak.png"
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shabu.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\shabu.png"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_shop.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\background_shop.png"
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\sprak.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\sprak.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_switch_thumb_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_t.jpg",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\icon_t.jpg"
-    },
-    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\soldier.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\soldier.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\header.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\header.png"
-    },
-    {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_tokhang1.jpg",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\background_tokhang1.jpg"
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\shabu1.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\shabu1.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_dark.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_plus_signin_btn_icon_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_menu2.jpg",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\background_menu2.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ui_game_addictionlevel.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\ui_game_addictionlevel.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_ab_back_material.xml",
@@ -102,10 +110,6 @@
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_item_background_holo_dark.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_item_background_holo_dark.xml"
-    },
-    {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\menu4.JPG",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\menu4.JPG"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_thumb_material.xml",
@@ -132,6 +136,10 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_list_selector_holo_light.xml"
     },
     {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\smoke.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\smoke.png"
+    },
+    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
@@ -140,8 +148,20 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\drug2.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\drug2.png"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\soldier3.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\soldier3.png"
+    },
+    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_textfield_search_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\citybg2.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\citybg2.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\pew.png",
@@ -168,12 +188,16 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\icon_statistics1.png"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_tokhang2.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\background_tokhang2.png"
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\innocent.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\innocent.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_google_signin_btn_icon_light.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_google_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\house1.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\house1.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\notification_icon_background.xml",
@@ -200,8 +224,16 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\menu_header.png"
     },
     {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\cocaine1.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\cocaine1.png"
+    },
+    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_icon_light.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_plus_signin_btn_icon_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\soldier4.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\soldier4.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_voice_search_api_material.xml",
@@ -220,16 +252,20 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\brrrrt.png"
     },
     {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\soldier2.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\soldier2.png"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_menu1.jpg",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\background_menu1.jpg"
+    },
+    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_cab_background_top_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_password_eye.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\drawable\\design_password_eye.xml"
-    },
-    {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_cart1.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\icon_cart1.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\design_fab_background.xml",
@@ -250,10 +286,6 @@
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ratingbar_small_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\drawable\\abc_ratingbar_small_material.xml"
-    },
-    {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\title.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\title.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_colored_material.xml",
@@ -278,6 +310,10 @@
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\navigation_empty_icon.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\25.1.1\\res\\drawable\\navigation_empty_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_shop.jpg",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\background_shop.jpg"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_spinner_textfield_background_material.xml",

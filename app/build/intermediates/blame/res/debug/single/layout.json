@@ -28,12 +28,12 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\layout\\notification_template_icon_group.xml"
-    },
-    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_map_shop.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\layout\\activity_map_shop.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\layout\\notification_template_icon_group.xml"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_player.xml",
@@ -48,12 +48,12 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_weapon.xml",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\layout\\list_item_weapon.xml"
-    },
-    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\list_item_weapon.xml",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\layout\\list_item_weapon.xml"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
@@ -78,6 +78,10 @@
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.1.1\\res\\layout\\abc_action_mode_close_item_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_game.xml",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\layout\\activity_game.xml"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
