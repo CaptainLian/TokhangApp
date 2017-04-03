@@ -1,6 +1,5 @@
 package dlsu.wirtec.tokhangapp.activities;
 
-import android.content.pm.ActivityInfo;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -26,7 +25,7 @@ public class LeaderboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_leaderboard);
 //        getSupportActionBar().hide();
 
-        btnBack = (FloatingActionButton) findViewById(R.id.btn_back);
+        btnBack = (FloatingActionButton) findViewById(R.id.btn_return);
         rvPlayer = (RecyclerView) findViewById(R.id.rv_player);
 
         rvPlayer.setLayoutManager(new LinearLayoutManager(

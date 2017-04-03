@@ -32,8 +32,11 @@ public class SoundManager{
     /* UI sounds */
     public final int SOUND_MENU_ERROR1;
     public final int SOUND_SHOP_PURCHASE1;
-    public final int SOUND_SHOP_UI_BRRT;
-    public final int SOUND_SHOP_UI_PEW;
+    public final int SOUND_SHOP_BRRT;
+    public final int SOUND_SHOP_PEW;
+    public final int SOUND_SHOP_SPRAK;
+    public final int SOUND_SHOP_BOOM;
+
 
     /* Gun sounds */
     public final int SOUND_GUN_SHOTGUN_FIRE1;
@@ -41,6 +44,7 @@ public class SoundManager{
     public final int SOUND_GUN_SHOTGUN_COCK1;
 
     public final int SOUND_POWERUP_PICKUP1;
+
     SoundManager(Context context){
         this(context, 1.0f);
     }
@@ -60,8 +64,10 @@ public class SoundManager{
         /* load ui sounds*/
         SOUND_MENU_ERROR1 = soundPlayer.load(context, R.raw.sound_menu_error1, DEFAULT_LOAD_PRIORITY);
         SOUND_SHOP_PURCHASE1 = soundPlayer.load(context, R.raw.sound_shop_purchase1, DEFAULT_LOAD_PRIORITY);
-        SOUND_SHOP_UI_BRRT = soundPlayer.load(context, R.raw.sound_shop_ui_brrt, DEFAULT_LOAD_PRIORITY);
-        SOUND_SHOP_UI_PEW = soundPlayer.load(context, R.raw.sound_shop_ui_pew, DEFAULT_LOAD_PRIORITY);
+        SOUND_SHOP_BOOM = soundPlayer.load(context, R.raw.sound_shop_boom, DEFAULT_LOAD_PRIORITY);
+        SOUND_SHOP_BRRT = soundPlayer.load(context, R.raw.sound_shop_brrt, DEFAULT_LOAD_PRIORITY);
+        SOUND_SHOP_PEW = soundPlayer.load(context, R.raw.sound_shop_pew, DEFAULT_LOAD_PRIORITY);
+        SOUND_SHOP_SPRAK = soundPlayer.load(context, R.raw.sound_shop_sprak, DEFAULT_LOAD_PRIORITY);
 
         /* Load gun sounds */
         //shotgun
@@ -85,6 +91,33 @@ public class SoundManager{
 
         currentMusicPlayer = MediaPlayer.create(context, rawID);
         currentMusicPlayer.start();
+    }
+
+   public MediaPlayer getCurrentMusicPlayer(){
+       return currentMusicPlayer;
+   }
+
+    public void stopMusic(){
+        if(currentMusicPlayer != null){
+            currentMusicPlayer.stop();
+        }
+    }
+
+    public float getVolume(){
+        return this.volume;
+    }
+
+    public void setVolume(float volume){
+        if(volume < 0)
+            throw new IllegalArgumentException("Volume cannot be negative.");
+        if(volume > 1.0f){
+            throw new IllegalArgumentException("Volume cannot be greater than one (1).");
+        }
+        this.volume = volume;
+    }
+
+    public void setVolumeFast(float volume){
+        this.volume = volume;
     }
 
     public Context getContext(){

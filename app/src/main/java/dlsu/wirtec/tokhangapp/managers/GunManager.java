@@ -21,6 +21,12 @@ public class GunManager {
     public final Gun SNIPER;
     public final RocketLauncher ROCKET;
 
+    public final int GUN_PISTOL_ID = 1;
+    public final int GUN_RIFLE_ID = 2;
+    public final int GUN_SHOTGUN_ID = 3;
+    public final int GUN_SNIPER_ID = 4;
+    public final int GUN_ROCKET_ID = 5;
+
     public final Gun[] ALL_GUNS;
 
     GunManager(SoundManager soundManager){
@@ -33,7 +39,14 @@ public class GunManager {
                16, // ammo
                500, //fireDelay
                400, // reloadDelay
-               0 // cost
+               0, // cost,
+               new SimpleGunSound(
+                       -1,
+                       -1,
+                       -1,
+                       -1
+               ),
+               r.getString(R.string.gun_pistol_description)
        );
 
         RIFLE = new Gun(
@@ -47,8 +60,9 @@ public class GunManager {
                         -1,
                         -1,
                         -1,
-                        soundManager.SOUND_SHOP_UI_BRRT
-                )
+                        soundManager.SOUND_SHOP_BRRT
+                ),
+                r.getString(R.string.gun_rifle_description)
         );
 
         SHOTGUN = new Shotgun(
@@ -65,8 +79,9 @@ public class GunManager {
                         soundManager.SOUND_GUN_SHOTGUN_FIRE1,
                         soundManager.SOUND_GUN_SHOTGUN_RELOAD1,
                         soundManager.SOUND_GUN_SHOTGUN_COCK1,
-                        -1
-                )
+                        soundManager.SOUND_SHOP_SPRAK
+                ),
+                r.getString(R.string.gun_shotgun_description)
         );
 
         SNIPER = new Gun(
@@ -80,8 +95,9 @@ public class GunManager {
                         -1,
                         -1,
                         -1,
-                        soundManager.SOUND_SHOP_UI_PEW
-                )
+                        soundManager.SOUND_SHOP_PEW
+                ),
+                r.getString(R.string.gun_sniper_description)
         );
 
         ROCKET = new RocketLauncher(
@@ -91,11 +107,41 @@ public class GunManager {
                 0,
                 1200,
                 3200,
-                700
+                700,
+                new SimpleGunSound(
+                        -1,
+                        -1,
+                        -1,
+                        soundManager.SOUND_SHOP_BOOM
+                ),
+                r.getString(R.string.gun_rocket_description)
         );
+
+        PISTOL.setGunID(GUN_PISTOL_ID);
+        RIFLE.setGunID(GUN_RIFLE_ID);
+        SHOTGUN.setGunID(GUN_SHOTGUN_ID);
+        SNIPER.setGunID(GUN_SNIPER_ID);
+        ROCKET.setGunID(GUN_ROCKET_ID);
 
         ALL_GUNS = new Gun[]{PISTOL, RIFLE, SHOTGUN, SNIPER, ROCKET};
     }//constructor
+
+    public Gun getGun(int gunID){
+        switch (gunID){
+            case GUN_PISTOL_ID:
+                return PISTOL;
+            case GUN_RIFLE_ID:
+                return RIFLE;
+            case GUN_SHOTGUN_ID:
+                return SHOTGUN;
+            case GUN_SNIPER_ID:
+                return SNIPER;
+            case GUN_ROCKET_ID:
+                return ROCKET;
+            default:
+                return null;
+        }
+    }
 
 
 }

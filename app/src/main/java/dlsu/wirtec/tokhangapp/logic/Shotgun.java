@@ -35,7 +35,7 @@ public class Shotgun extends Gun {
      * @throws IllegalArgumentException
      */
     public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int spreadRadius, int pelletRadius, int pelletAmount) throws IllegalArgumentException{
-        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, spreadRadius, pelletRadius, pelletAmount, null);
+        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, spreadRadius, pelletRadius, pelletAmount, null, null);
     }
 
     /**
@@ -52,8 +52,8 @@ public class Shotgun extends Gun {
      * @param gunSound
      * @throws IllegalArgumentException
      */
-    public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int spreadRadius, int pelletRadius, int pelletAmount, @Nullable GunSound gunSound) {
-        super(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, gunSound);
+    public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int spreadRadius, int pelletRadius, int pelletAmount, @Nullable GunSound gunSound, @Nullable String description) {
+        super(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, gunSound, description);
         setSpreadRadius(spreadRadius);
         setPelletAmount(pelletAmount);
         setPelletRadius(pelletRadius);

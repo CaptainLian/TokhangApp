@@ -17,6 +17,7 @@ import dlsu.wirtec.tokhangapp.activities.MainActivity;
 
 public class QuitDialogFragment extends DialogFragment {
 
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -32,19 +33,8 @@ public class QuitDialogFragment extends DialogFragment {
                         getActivity().finish();
                     }
                 })
-                .setNegativeButton(R.string.dialog_quit_negative, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-
-                })
-                .setNeutralButton(R.string.dialog_quit_neutral, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                })
+                .setNegativeButton(R.string.dialog_quit_negative, null)
+                .setNeutralButton(R.string.dialog_quit_neutral, null)
                 .create();
     }
 }

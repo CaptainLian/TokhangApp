@@ -30,6 +30,8 @@ public class Gun {
 
     private GunSound gunSound;
 
+    private int id;
+
     /**
      *
      * @param name
@@ -39,7 +41,7 @@ public class Gun {
      * @param cost Cost in any abritrary currency.
      */
     public Gun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost){
-        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, null);
+        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, null, null);
     }
 
     /**
@@ -51,7 +53,7 @@ public class Gun {
      * @param cost Cost in any abritrary currency.
      * @param gunSound
      */
-    public Gun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, @Nullable GunSound gunSound){
+    public Gun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, @Nullable GunSound gunSound, @Nullable String description){
         setName(name);
         setDamage(damage);
         setMaxAmmoCapacity(maxAmmoCapacity);
@@ -59,6 +61,7 @@ public class Gun {
         setReloadTime(reloadTime);
         setCost(cost);
         setGunSound(gunSound);
+        setDescription(description);
     }
 
     public void setDamage(int damage){
@@ -153,4 +156,14 @@ public class Gun {
     public void fire(int x, int y){
 
     }
+
+    public int getGunID(){
+        return id;
+    }
+
+    public void setGunID(int id){
+        this.id = id;
+    }
+
+
 }

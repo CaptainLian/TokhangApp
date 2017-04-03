@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="dlsu.wirtec.tokhangapp.activities.ShopActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background_shop">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/btn_rifle"
+            android:src="@drawable/brrrrt"
+            android:background="@color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/shop_weapon_padding"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:id="@+id/btn_shotgun"
+            android:src="@drawable/sprak"
+            android:background="@color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/shop_weapon_padding"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:id="@+id/btn_sniper"
+            android:src="@drawable/pew"
+            android:background="@color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/shop_weapon_padding"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:id="@+id/btn_rocket"
+            android:src="@drawable/booom"
+            android:background="@color/transparent"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/shop_weapon_padding"
+            android:scaleType="fitCenter" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:padding="@dimen/shop_weapon_padding"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="#ffffff"/>
+        <TextView
+            android:id="@+id/tv_money"
+            android:text="@string/shop_money"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/tv_money_amount"
+            android:text="0"
+            android:textColor="#000000"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/tv_money"
+            android:gravity="center_vertical">
+        </TextView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3">
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_return"
+            android:text="@string/ui_return"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</LinearLayout>

@@ -8,12 +8,16 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="ui_return">Return</string>
+
     <!-- QuitDialogFragment.java -->
     <string name="dialog_quit_title">Quit?! Pft.</string>
     <string name="dialog_quit_message">Are you sure you want to quit? All unsaved changes will be gone</string>
     <string name="dialog_quit_positive">Yes!</string>
     <string name="dialog_quit_negative">No!</string>
     <string name="dialog_quit_neutral">Meh.</string>
+
+    <!-- NewGameDialogFragment -->
 
     <!-- GameMapActivity Shop -->
     <string name="shop">Shop</string>
@@ -22,25 +26,37 @@
     <string name="shop_icon">Icon</string>
     <string name="shop_buy">Buy</string>
     <string name="shop_cost">Cost</string>
+    <string name="shop_money">Money: </string>
 
     <string name="shop_purchase">Purchase</string>
     <string name="shop_purchase_positive">Yes</string>
     <string name="shop_purchase_negative">No</string>
     <string name="shop_purchase_neutral">I\'ll think about it</string>
 
+
+    <!-- Generic values -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="equipment">Equipment</string>
+    <string name="name">Name</string>
+    <string name="proceed">Proceed</string>
+
+    <!-- CreatePlayerActivity -->
+    <string name="create_player_enter_name">Enter your name</string>
+
     <!-- gun names -->
     <string name="gun_pistol_name">Water Gun</string>
-    <string name="gun_pistol_description"></string>
+    <string name="gun_pistol_description">A basic reliant weapon that requires alot of tapping</string>
 
     <string name="gun_rifle_name">Semi-automatic Rifle</string>
-    <string name="gun_rifle_description"></string>
+    <string name="gun_rifle_description">A more automated kind of weapon, which requires less tapping</string>
 
     <string name="gun_shotgun_name">Shotgun</string>
-    <string name="gun_shotgun_description"></string>
+    <string name="gun_shotgun_description">A slow but powerful area-of-effect weapon that spreads pellets within a radius and each pellet deals area-of-effect damage</string>
 
     <string name="gun_sniper_name">Sniper</string>
-    <string name="gun_sniper_description"></string>
+    <string name="gun_sniper_description">A high damage weapon</string>
 
     <string name="gun_rocket_name">Rocket Launcher</string>
-    <string name="gun_rocket_description"></string>
+    <string name="gun_rocket_description">A high damage area-of-effect weapon :D</string>
 </resources>

@@ -31,9 +31,7 @@
             android:label="@string/title_activity_leaderboard"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name="dlsu.wirtec.tokhangapp.activities.GameActivity"
-            android:screenOrientation="sensorLandscape" />
+
         <!--
      ATTENTION: This was auto-generated to add Google Play services to your project for
      App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -43,7 +41,19 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="dlsu.wirtec.tokhangapp.activities.MapActivity"
+            android:name="dlsu.wirtec.tokhangapp.activities.ShopActivity"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name="dlsu.wirtec.tokhangapp.activities.NodeActivity"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name="dlsu.wirtec.tokhangapp.activities.EquipmentActivity"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name="dlsu.wirtec.tokhangapp.activities.GameActivity"
+            android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name="dlsu.wirtec.tokhangapp.activities.CreatePlayerActivity"
             android:screenOrientation="sensorLandscape" />
     </application>
 

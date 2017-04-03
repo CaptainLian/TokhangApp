@@ -20,7 +20,7 @@ public class RocketLauncher extends Gun {
      * @throws IllegalArgumentException
      */
     public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int explosiveRadius) throws IllegalArgumentException {
-        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, explosiveRadius, null);
+        this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, explosiveRadius, null, null);
     }
 
     /**
@@ -33,8 +33,8 @@ public class RocketLauncher extends Gun {
      * @param explosiveRadius
      * @param gunSound
      */
-    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int explosiveRadius, @Nullable GunSound gunSound) {
-        super(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, gunSound);
+    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int explosiveRadius, @Nullable GunSound gunSound, @Nullable String description) {
+        super(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, gunSound, description);
         setExplosiveRadius(explosiveRadius);
     }
 
