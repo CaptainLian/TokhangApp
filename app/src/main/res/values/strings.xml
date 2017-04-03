@@ -40,6 +40,7 @@
     <string name="equipment">Equipment</string>
     <string name="name">Name</string>
     <string name="proceed">Proceed</string>
+    <string name="cancel">Cancel</string>
 
     <!-- CreatePlayerActivity -->
     <string name="create_player_enter_name">Enter your name</string>

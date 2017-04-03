@@ -23,7 +23,6 @@ public class LeaderboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leaderboard);
-//        getSupportActionBar().hide();
 
         btnBack = (FloatingActionButton) findViewById(R.id.btn_return);
         rvPlayer = (RecyclerView) findViewById(R.id.rv_player);

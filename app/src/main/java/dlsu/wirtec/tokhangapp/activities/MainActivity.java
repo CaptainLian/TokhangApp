@@ -19,8 +19,6 @@ import dlsu.wirtec.tokhangapp.ui.NewGameDialogFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     private ImageButton btnStartNewGame, btnContinue, btnLeaderboard;
 
     @Override
@@ -39,15 +37,12 @@ public class MainActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Go to Continue Game Activity
                 goToMap();
-
             }
         });
         btnStartNewGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Go to New Game Activity
                 if(GameManager.getGameManager().isSavedPlayerExist()){
                     NewGameDialogFragment dialog = new NewGameDialogFragment();
                     dialog.setDialogListener(new DialogInterface.OnClickListener() {
@@ -56,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                             switch(which){
                                 // clicked yes
                                 case DialogInterface.BUTTON_POSITIVE:
-                                    //TODO CREATE NEW PLAYER
                                     goToCreatePlayer();
                                     break;
                             }//switch(which)
@@ -64,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                     });// setDialogListener
                     dialog.show(getFragmentManager(), NewGameDialogFragment.DIALOG_TAG_OVERWRITE_SAVE );
                 }else{
-                    //TODO CREATE NEW PLAYER
                     goToCreatePlayer();
                 }
             }
@@ -85,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private final void goToLeaderboard(){
+    private final  void goToLeaderboard(){
         Intent i = new Intent(getBaseContext(), LeaderboardActivity.class);
         startActivity(i);
     }
@@ -98,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
         btnContinue.setClickable(GameManager.getGameManager().isSavedPlayerExist());
     }
 }
