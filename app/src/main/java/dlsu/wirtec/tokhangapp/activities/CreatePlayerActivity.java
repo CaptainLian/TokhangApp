@@ -39,7 +39,7 @@ public class CreatePlayerActivity extends AppCompatActivity {
                 String name = etName.getText().toString();
 
                 if(SPACES.matcher(name).replaceAll("").length() == 0){
-                    etName.setError("Name cannot be empty.");
+                    etName.setError(getResources().getString(R.string.create_player_empty_name));
                 }else{
                     GameManager gameManager = GameManager.getGameManager();
                     gameManager.createNewPlayerOverwrite(etName.getText().toString());

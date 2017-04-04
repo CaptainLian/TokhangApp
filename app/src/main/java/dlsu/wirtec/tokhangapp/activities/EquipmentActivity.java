@@ -13,7 +13,8 @@ import dlsu.wirtec.tokhangapp.managers.GameManager;
 import dlsu.wirtec.tokhangapp.managers.GunManager;
 import dlsu.wirtec.tokhangapp.ui.GunIconAdapter;
 
-public class EquipmentActivity extends AppCompatActivity {
+public class
+EquipmentActivity extends AppCompatActivity {
 
     private Button btnReturn;
     private ImageButton btnDefault, btnRifle, btnShotgun, btnSniper, btnRocket;
@@ -72,9 +73,9 @@ public class EquipmentActivity extends AppCompatActivity {
         for(ImageButton b: buttons){
             GunIconAdapter gia = (GunIconAdapter) b.getTag();
             if(p.isGunOwned(gia.gun)){
-                b.setBackgroundResource(gia.gunIcon);
+                b.setImageResource(gia.gunIcon);
             }else{
-                b.setBackgroundResource(R.drawable.icon_equipment_locked);
+                b.setImageResource(R.drawable.icon_equipment_locked);
             }
         }
     }
