@@ -25,13 +25,13 @@ public class Shotgun extends Gun {
      * @param name
      * @param damage The damage of each pellet.
      * @param maxAmmoCapacity
-     * @param fireDelayTime   Delay between each time a gun can be fired in miliseconds.
-     * @param reloadTime      Amount of time required to reload the gun in miliseconds.
+     * @param fireDelayTime   Delay between each time a GUN can be fired in miliseconds.
+     * @param reloadTime      Amount of time required to reload the GUN in miliseconds.
      * @param cost            Cost in any abritrary currency.
      * @param cost Cost in any abritrary currency.
      * @param spreadRadius The range the pellet will scatter.
      * @param pelletRadius The damage radius of each pellet.
-     * @param pelletAmount The amount of pellets the gun fires.
+     * @param pelletAmount The amount of pellets the GUN fires.
      * @throws IllegalArgumentException
      */
     public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int spreadRadius, int pelletRadius, int pelletAmount) throws IllegalArgumentException{
@@ -42,13 +42,13 @@ public class Shotgun extends Gun {
      * @param name
      * @param damage The damage of each pellet.
      * @param maxAmmoCapacity
-     * @param fireDelayTime   Delay between each time a gun can be fired in miliseconds.
-     * @param reloadTime      Amount of time required to reload the gun in miliseconds.
+     * @param fireDelayTime   Delay between each time a GUN can be fired in miliseconds.
+     * @param reloadTime      Amount of time required to reload the GUN in miliseconds.
      * @param cost            Cost in any abritrary currency.
      * @param cost Cost in any abritrary currency.
      * @param spreadRadius The range the pellet will scatter.
      * @param pelletRadius The damage radius of each pellet.
-     * @param pelletAmount The amount of pellets the gun fires.
+     * @param pelletAmount The amount of pellets the GUN fires.
      * @param gunSound
      * @throws IllegalArgumentException
      */

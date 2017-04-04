@@ -5,21 +5,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import dlsu.wirtec.tokhangapp.R;
 import dlsu.wirtec.tokhangapp.logic.Gun;
 import dlsu.wirtec.tokhangapp.logic.Player;
 import dlsu.wirtec.tokhangapp.managers.GameManager;
 import dlsu.wirtec.tokhangapp.managers.GunManager;
-import dlsu.wirtec.tokhangapp.ui.GunIconAdapter;
+import dlsu.wirtec.tokhangapp.ui.EquipmentGunIconAdapter;
 
-public class
-EquipmentActivity extends AppCompatActivity {
+public class EquipmentActivity extends AppCompatActivity {
 
     private Button btnReturn;
     private ImageButton btnDefault, btnRifle, btnShotgun, btnSniper, btnRocket;
+    private ImageView ivLoadout;
     private ImageButton[] buttons;
 
+    View.OnClickListener gunClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            EquipmentGunIconAdapter egia = (EquipmentGunIconAdapter) v.getTag();
+
+            GameManager.getGameManager().getPlayer().equipGun(egia.GUN);
+            ivLoadout.setImageResource(egia.DRAWABLE_ID_GUN_UNLOCKED);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +39,6 @@ EquipmentActivity extends AppCompatActivity {
 
         GunManager gunManager = GameManager.getGunManager();
 
-        View.OnClickListener gunListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        };
 
         btnDefault = (ImageButton) findViewById(R.id.btn_default);
         btnRifle = (ImageButton) findViewById(R.id.btn_rifle);
@@ -43,17 +47,13 @@ EquipmentActivity extends AppCompatActivity {
         btnRocket = (ImageButton) findViewById(R.id.btn_rocket);
         btnReturn = (Button) findViewById(R.id.btn_return);
 
-        btnDefault.setTag(new GunIconAdapter(gunManager.PISTOL, R.drawable.defaultgun));
-        btnRifle.setTag(new GunIconAdapter(gunManager.RIFLE, R.drawable.brrrrt));
-        btnShotgun.setTag(new GunIconAdapter(gunManager.SHOTGUN, R.drawable.sprak));
-        btnSniper.setTag(new GunIconAdapter(gunManager.SNIPER, R.drawable.pew));
-        btnRocket.setTag(new GunIconAdapter(gunManager.ROCKET, R.drawable.booom));
+        ivLoadout = (ImageView) findViewById(R.id.iv_icon_loadout);
 
-        btnDefault.setOnClickListener(gunListener);
-        btnRifle.setOnClickListener(gunListener);
-        btnShotgun.setOnClickListener(gunListener);
-        btnSniper.setOnClickListener(gunListener);
-        btnRocket.setOnClickListener(gunListener);
+        btnDefault.setTag(new EquipmentGunIconAdapter(gunManager.PISTOL, R.drawable.icon_weapon_pistol));
+        btnRifle.setTag(new EquipmentGunIconAdapter(gunManager.RIFLE, R.drawable.icon_weapon_rifle));
+        btnShotgun.setTag(new EquipmentGunIconAdapter(gunManager.SHOTGUN, R.drawable.icon_weapon_shotgun));
+        btnSniper.setTag(new EquipmentGunIconAdapter(gunManager.SNIPER, R.drawable.icon_weapon_sniper));
+        btnRocket.setTag(new EquipmentGunIconAdapter(gunManager.ROCKET, R.drawable.icon_weapon_rocket));
 
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +62,7 @@ EquipmentActivity extends AppCompatActivity {
             }
         });
 
-        buttons = new ImageButton[]{btnRifle, btnShotgun, btnSniper, btnRocket};
+        buttons = new ImageButton[]{btnDefault, btnRifle, btnShotgun, btnSniper, btnRocket};
     }
 
     @Override
@@ -70,13 +70,21 @@ EquipmentActivity extends AppCompatActivity {
         super.onResume();
         Player p = GameManager.getGameManager().getPlayer();
 
+        Gun equppedGun = p.getEquippedGun();
         for(ImageButton b: buttons){
-            GunIconAdapter gia = (GunIconAdapter) b.getTag();
-            if(p.isGunOwned(gia.gun)){
-                b.setImageResource(gia.gunIcon);
+            final EquipmentGunIconAdapter gia = (EquipmentGunIconAdapter) b.getTag();
+            if(p.isGunOwned(gia.GUN)){
+                b.setImageResource(gia.DRAWABLE_ID_GUN_UNLOCKED);
+                b.setOnClickListener(gunClickListener);
             }else{
                 b.setImageResource(R.drawable.icon_equipment_locked);
             }
+
+            if(gia.GUN == equppedGun){
+                ivLoadout.setImageResource(gia.DRAWABLE_ID_GUN_UNLOCKED);
+            }
         }
+
+
     }
 }

@@ -29,7 +29,7 @@ public class NodeActivity extends AppCompatActivity {
     private TextView tvSector1, tvSector2, tvSector3;
     private Button btnShop, btnEquipment;
 
-    Bitmap lines;
+    private Bitmap lines;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

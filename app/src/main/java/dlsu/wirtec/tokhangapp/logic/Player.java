@@ -37,8 +37,8 @@ public class Player {
     public Player(String name,  Gun defaultGun){
         this.setName(name);
 
-        this.addGun(defaultGun);
-        this.equipGun(defaultGun);
+        this.ownedGuns.add(defaultGun);
+        this.equippedGun = defaultGun;
     }
 
     public @NonNull Player setName(@Nullable String name){
@@ -98,6 +98,7 @@ public class Player {
 
     public boolean purchaseGun(Gun g){
         if(canPurchaseGun(g)){
+            this.money -= g.getCost();
             return addGun(g);
         }
         return false;
@@ -113,6 +114,10 @@ public class Player {
             return true;
         }
         return false;
+    }
+
+    public Gun getEquippedGun(){
+        return this.equippedGun;
     }
 
     public Gun[] getOwnedGuns(){

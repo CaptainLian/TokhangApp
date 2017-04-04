@@ -69,7 +69,7 @@ public class SoundManager{
         SOUND_SHOP_PEW = soundPlayer.load(context, R.raw.sound_shop_pew, DEFAULT_LOAD_PRIORITY);
         SOUND_SHOP_SPRAK = soundPlayer.load(context, R.raw.sound_shop_sprak, DEFAULT_LOAD_PRIORITY);
 
-        /* Load gun sounds */
+        /* Load GUN sounds */
         //shotgun
         SOUND_GUN_SHOTGUN_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_fire1, DEFAULT_LOAD_PRIORITY);
         SOUND_GUN_SHOTGUN_RELOAD1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_reload1, DEFAULT_LOAD_PRIORITY);

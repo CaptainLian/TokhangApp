@@ -381,7 +381,7 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void animateMainCharacterGunShot() {
-        // animates gun shot animation while main char have remaining gunshot secs
+        // animates GUN shot animation while main char have remaining gunshot secs
         if(gunshotRemainingSeconds >= -50 && gunshotRemainingSeconds <= 50 && mainChar.isAlive()) {
             mainChar.setSpriteAnimation(defaultSourceFrame, defaultDestinationFrame);
         }

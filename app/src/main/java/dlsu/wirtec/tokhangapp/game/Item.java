@@ -7,7 +7,7 @@ package dlsu.wirtec.tokhangapp.game;
 public class Item {
     private String name;
     private Sprite sprite;
-    private int effect; // 1 - time stop // 2 - health pack // 3 - x-ray vision // 4 - machine gun
+    private int effect; // 1 - time stop // 2 - health pack // 3 - x-ray vision // 4 - machine GUN
 
     public Item () {
 

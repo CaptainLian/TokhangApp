@@ -13,8 +13,8 @@ public class RocketLauncher extends Gun {
      * @param name
      * @param damage
      * @param maxAmmoCapacity
-     * @param fireDelayTime   Delay between each time a gun can be fired in miliseconds.
-     * @param reloadTime      Amount of time required to reload the gun in miliseconds.
+     * @param fireDelayTime   Delay between each time a GUN can be fired in miliseconds.
+     * @param reloadTime      Amount of time required to reload the GUN in miliseconds.
      * @param cost            Cost in any abritrary currency.
      * @param explosiveRadius
      * @throws IllegalArgumentException
@@ -27,8 +27,8 @@ public class RocketLauncher extends Gun {
      * @param name
      * @param damage
      * @param maxAmmoCapacity
-     * @param fireDelayTime   Delay between each time a gun can be fired in miliseconds.
-     * @param reloadTime      Amount of time required to reload the gun in miliseconds.
+     * @param fireDelayTime   Delay between each time a GUN can be fired in miliseconds.
+     * @param reloadTime      Amount of time required to reload the GUN in miliseconds.
      * @param cost            Cost in any abritrary currency.
      * @param explosiveRadius
      * @param gunSound

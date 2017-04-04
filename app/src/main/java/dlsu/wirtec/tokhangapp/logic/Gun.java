@@ -36,8 +36,8 @@ public class Gun {
      *
      * @param name
      * @param damage
-     * @param fireDelayTime Delay between each time a gun can be fired in miliseconds.
-     * @param reloadTime Amount of time required to reload the gun in miliseconds.
+     * @param fireDelayTime Delay between each time a GUN can be fired in miliseconds.
+     * @param reloadTime Amount of time required to reload the GUN in miliseconds.
      * @param cost Cost in any abritrary currency.
      */
     public Gun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost){
@@ -48,8 +48,8 @@ public class Gun {
      *
      * @param name
      * @param damage
-     * @param fireDelayTime Delay between each time a gun can be fired in miliseconds.
-     * @param reloadTime Amount of time required to reload the gun in miliseconds.
+     * @param fireDelayTime Delay between each time a GUN can be fired in miliseconds.
+     * @param reloadTime Amount of time required to reload the GUN in miliseconds.
      * @param cost Cost in any abritrary currency.
      * @param gunSound
      */
@@ -83,7 +83,7 @@ public class Gun {
     }
 
     /**
-     * Set the amount of time to reload a gun.
+     * Set the amount of time to reload a GUN.
      * @param reloadTime time in miliseconds
      */
     public void setReloadTime(long reloadTime){
@@ -109,7 +109,7 @@ public class Gun {
     }
 
     /**
-     * Sets the maximum amount of shots a gun has
+     * Sets the maximum amount of shots a GUN has
      * @param maxAmmoCapacity the maximum amount of shots before reloading, a value of zero or negative means infinite number of shots.
      */
     public void setMaxAmmoCapacity(int maxAmmoCapacity){
@@ -149,7 +149,7 @@ public class Gun {
     }
 
     /**
-     * Fires the gun at the specified point (x, y)
+     * Fires the GUN at the specified point (x, y)
      * @param x x-coordinate
      * @param y y-coordinate
      */

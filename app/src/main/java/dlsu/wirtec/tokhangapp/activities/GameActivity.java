@@ -11,13 +11,12 @@ import dlsu.wirtec.tokhangapp.game.Stage;
 
 public class GameActivity extends AppCompatActivity {
 
-    GameView gameView;
+    private GameView gameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-
 
         Stage stage = getIntent().getParcelableExtra("stage");
         gameView = new GameView(this, stage);
