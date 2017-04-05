@@ -37,6 +37,9 @@ public class SoundManager{
     public final int SOUND_SHOP_SPRAK;
     public final int SOUND_SHOP_BOOM;
 
+    public final int SOUND_EQUIPMENT_LOAD1;
+    public final int SOUND_EQUIPMENT_LOAD2;
+    public final int SOUND_EQUIPMENT_LOAD3;
 
     /* Gun sounds */
     public final int SOUND_GUN_SHOTGUN_FIRE1;
@@ -76,6 +79,10 @@ public class SoundManager{
         SOUND_GUN_SHOTGUN_COCK1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_cock1, DEFAULT_LOAD_PRIORITY);
 
         SOUND_POWERUP_PICKUP1 = soundPlayer.load(context, R.raw.sound_powerup_pickup1, DEFAULT_LOAD_PRIORITY);
+
+        SOUND_EQUIPMENT_LOAD1 = soundPlayer.load(context, R.raw.sound_equipment_load1, DEFAULT_LOAD_PRIORITY);
+        SOUND_EQUIPMENT_LOAD2 = soundPlayer.load(context, R.raw.sound_equipment_load2, DEFAULT_LOAD_PRIORITY);
+        SOUND_EQUIPMENT_LOAD3 = soundPlayer.load(context, R.raw.sound_equipment_load3, DEFAULT_LOAD_PRIORITY);
     }
 
     public void playSound(int soundID){

@@ -7,11 +7,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.util.Random;
+
 import dlsu.wirtec.tokhangapp.R;
 import dlsu.wirtec.tokhangapp.logic.Gun;
 import dlsu.wirtec.tokhangapp.logic.Player;
 import dlsu.wirtec.tokhangapp.managers.GameManager;
 import dlsu.wirtec.tokhangapp.managers.GunManager;
+import dlsu.wirtec.tokhangapp.managers.SoundManager;
 import dlsu.wirtec.tokhangapp.ui.EquipmentGunIconAdapter;
 
 public class EquipmentActivity extends AppCompatActivity {
@@ -28,6 +31,22 @@ public class EquipmentActivity extends AppCompatActivity {
 
             GameManager.getGameManager().getPlayer().equipGun(egia.GUN);
             ivLoadout.setImageResource(egia.DRAWABLE_ID_GUN_UNLOCKED);
+
+            SoundManager soundManager = GameManager.getSoundManager();
+            Random r = new Random(new Random().nextLong());
+
+            int rand = r.nextInt(3);
+            switch(rand){
+                default:
+                    soundManager.playSound(soundManager.SOUND_EQUIPMENT_LOAD1);
+                    break;
+                case 1:
+                    soundManager.playSound(soundManager.SOUND_EQUIPMENT_LOAD2);
+                    break;
+                case 2:
+                    soundManager.playSound(soundManager.SOUND_EQUIPMENT_LOAD3);
+                    break;
+            }
         }
     };
 
@@ -38,7 +57,6 @@ public class EquipmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_equipment);
 
         GunManager gunManager = GameManager.getGunManager();
-
 
         btnDefault = (ImageButton) findViewById(R.id.btn_default);
         btnRifle = (ImageButton) findViewById(R.id.btn_rifle);
@@ -84,7 +102,5 @@ public class EquipmentActivity extends AppCompatActivity {
                 ivLoadout.setImageResource(gia.DRAWABLE_ID_GUN_UNLOCKED);
             }
         }
-
-
     }
 }

@@ -72,7 +72,6 @@ public class GameManager {
         SharedPreferences.Editor preferences = PreferenceManager.getDefaultSharedPreferences(this.context).edit();
         preferences.clear();
         this.player.save(preferences);
-        preferences.apply();
         return this.player;
     }
 

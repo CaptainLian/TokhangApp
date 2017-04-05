@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="dlsu.wirtec.tokhangapp">
 
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -46,10 +47,8 @@
         <activity
             android:name=".activities.GameActivity"
             android:screenOrientation="sensorLandscape" />
-
         <activity
             android:name=".activities.CreatePlayerActivity"
             android:screenOrientation="sensorLandscape" />
     </application>
-
 </manifest>

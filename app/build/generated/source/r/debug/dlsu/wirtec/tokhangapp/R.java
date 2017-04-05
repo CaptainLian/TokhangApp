@@ -3126,20 +3126,23 @@ containing a value of this type.
         public static final int menu_button_start=0x7f030005;
     }
     public static final class raw {
-        public static final int sound_gun_shotgun_cock1=0x7f070000;
-        public static final int sound_gun_shotgun_fire1=0x7f070001;
-        public static final int sound_gun_shotgun_reload1=0x7f070002;
-        public static final int sound_menu_error1=0x7f070003;
-        public static final int sound_player_death2=0x7f070004;
-        public static final int sound_player_pain1=0x7f070005;
-        public static final int sound_player_pain2=0x7f070006;
-        public static final int sound_player_pain3=0x7f070007;
-        public static final int sound_powerup_pickup1=0x7f070008;
-        public static final int sound_shop_boom=0x7f070009;
-        public static final int sound_shop_brrt=0x7f07000a;
-        public static final int sound_shop_pew=0x7f07000b;
-        public static final int sound_shop_purchase1=0x7f07000c;
-        public static final int sound_shop_sprak=0x7f07000d;
+        public static final int sound_equipment_load1=0x7f070000;
+        public static final int sound_equipment_load2=0x7f070001;
+        public static final int sound_equipment_load3=0x7f070002;
+        public static final int sound_gun_shotgun_cock1=0x7f070003;
+        public static final int sound_gun_shotgun_fire1=0x7f070004;
+        public static final int sound_gun_shotgun_reload1=0x7f070005;
+        public static final int sound_menu_error1=0x7f070006;
+        public static final int sound_player_death2=0x7f070007;
+        public static final int sound_player_pain1=0x7f070008;
+        public static final int sound_player_pain2=0x7f070009;
+        public static final int sound_player_pain3=0x7f07000a;
+        public static final int sound_powerup_pickup1=0x7f07000b;
+        public static final int sound_shop_boom=0x7f07000c;
+        public static final int sound_shop_brrt=0x7f07000d;
+        public static final int sound_shop_pew=0x7f07000e;
+        public static final int sound_shop_purchase1=0x7f07000f;
+        public static final int sound_shop_sprak=0x7f070010;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f080000;
