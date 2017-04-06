@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 
+import dlsu.wirtec.tokhangapp.game.House;
+import dlsu.wirtec.tokhangapp.game.Stage;
 import dlsu.wirtec.tokhangapp.logic.Player;
 
 /**
@@ -19,6 +21,9 @@ public class GameManager {
 
     private Context context;
     private Player player;
+    private Stage[] stages;
+
+
     private GameManager(Context context){
         this.context = context;
     }
@@ -37,8 +42,47 @@ public class GameManager {
             if(gameManager.isSavedPlayerExist()){
                 gameManager.player = Player.getPlayer(PreferenceManager.getDefaultSharedPreferences(context), gunManager);
             }
-        }
-    }
+
+            gameManager.stages =  new Stage[]{
+                    new Stage(
+                            "Sector 1",
+                            3,
+                            new String[]{
+                                    House.BUNGALOW,
+                                    House.SKWATER
+                            },
+                            700
+                    ),
+                    new Stage(
+                            "Sector 2",
+                            5,
+                            new String[]{
+                                House.BUNGALOW
+                            },
+                            600
+                    ),
+                    new Stage(
+                            "Sector 3",
+                            5,
+                            new String[]{
+                               House.SKWATER
+                            },
+                            600
+                    ),
+                    new Stage(
+                            "Sector 4",
+                            7,
+                            new String[]{
+                                    House.SKWATER,
+                                    House.BUNGALOW,
+                                    House.BUNGALOW,
+                                    House.SKWATER
+                            },
+                            550
+                    )
+            };//Stage array
+        }//if gameManager or SoundManager or gunManager is null.
+    }//function initialize()
 
     /**
      *
@@ -46,14 +90,25 @@ public class GameManager {
      * @throws IllegalStateException If the manager is not initialized
      */
     public static SoundManager getSoundManager() throws IllegalStateException {
+        if(soundManager == null){
+            throw new IllegalStateException("Game Manager not initialized.");
+        }
         return soundManager;
     }
 
-    public static GunManager getGunManager(){
+
+    public static GunManager getGunManager() throws IllegalStateException {
+        if(gunManager == null){
+            throw new IllegalStateException("Game Manager not initialized.");
+        }
         return gunManager;
     }
 
-    public static GameManager getGameManager(){
+    public static GameManager getGameManager() throws IllegalStateException{
+        if(gameManager == null){
+            throw new IllegalStateException("Game Manager not initialized.");
+        }
+
         return gameManager;
     }
 
@@ -85,5 +140,13 @@ public class GameManager {
      */
     public Player getPlayer(){
         return this.player;
+    }
+
+    public Stage getStage(int level){
+        if(level < 0 || level >= stages.length){
+            throw new IllegalArgumentException("Invalid level " + level + ". Min: 0, Max: " + stages.length);
+        }
+
+        return stages[level];
     }
 }

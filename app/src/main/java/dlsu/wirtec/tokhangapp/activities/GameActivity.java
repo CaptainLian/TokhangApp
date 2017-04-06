@@ -1,8 +1,7 @@
 package dlsu.wirtec.tokhangapp.activities;
 
-import android.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import dlsu.wirtec.tokhangapp.game.GameView;
