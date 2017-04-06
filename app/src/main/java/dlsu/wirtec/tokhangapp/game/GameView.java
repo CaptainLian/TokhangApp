@@ -59,6 +59,7 @@ public class GameView extends SurfaceView implements Runnable {
     // Touch Data
     private float touchX;
     private float touchY;
+    private boolean isCurrentlyTouched; //true if the screen is currently touched
 
     // House Data
     private House currentHouse;
@@ -103,12 +104,20 @@ public class GameView extends SurfaceView implements Runnable {
     private int shakeIntensity = 7;
     private int characterInterval;
 
+    // Item data
+    private ArrayList<Item> items;
+    private Sprite defaultItemSprite;
+    private int itemWidth = 150;
+    private int itemLength = 150;
+    private int slotX = 1700;
+    private int slotY = 1200;
+
     // extras
     private int points;
     private Timer timer;
-    private boolean counterStarted;
     private int currentMillisecond;
-    private int count = 0;
+    private int characterCount = 0;
+    private int countTouch;
 
     public GameView(final Context context, Stage stage) {
         super(context);
@@ -147,6 +156,14 @@ public class GameView extends SurfaceView implements Runnable {
         mainChar = new MainCharacter(mainCharacterAnimation, mainCharX, mainCharY, 17, 17, healthAnimation);
         mainCharBitmap.recycle();
         healthBitmap.recycle();
+        //Item instantiation
+        items = new ArrayList<Item>();
+        Bitmap slotBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.itemslot1);
+        slotBitmap = Bitmap.createScaledBitmap(slotBitmap, itemWidth, itemLength, false);
+        defaultItemSprite = new Sprite(slotBitmap);
+        items.add(new Item("empty", defaultItemSprite, 0, slotX, slotY));
+        items.add(new Item("empty", defaultItemSprite, 0, slotX+200, slotY));
+        items.add(new Item("empty", defaultItemSprite, 0, slotX+400, slotY));
         initialize(context);
     }
 
@@ -166,10 +183,10 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void update() {
-        if((currentMillisecond -1000)% characterInterval <= 20) {
+        if((currentMillisecond -1000)% characterInterval <= 10) {
             characterSpawned = false;
         }
-        if(currentMillisecond % characterInterval <= 20  && currentMillisecond != 0) {
+        if(currentMillisecond % characterInterval <= 10  && currentMillisecond != 0) {
             // will create a new character
             if(currentState == GAME_STATE && currentHouse.getRemainingCharacterSpawns() > 0) {
                 spawnCharacter();
@@ -185,6 +202,7 @@ public class GameView extends SurfaceView implements Runnable {
         checkCharacterIfDue();
         checkIfMainCharacterDead();
         checkTouchedCharacters();
+        checkTouchedItem();
         checkIfHouseDone();
         moveHouse(houseTranslationDuration);
         moveCharacter();
@@ -208,6 +226,9 @@ public class GameView extends SurfaceView implements Runnable {
             canvas.drawText("SCORE: " + points , 1500, 50, paint);
             canvas.drawBitmap(mainChar.getAddictionSprite().getBitmap(),0,0,paint);
             canvas.drawBitmap(mainChar.getCurrentSprite().getBitmap(), mainChar.getX(), mainChar.getY(), paint);
+            for(int i = 0; i < items.size();i++) {
+                canvas.drawBitmap(items.get(i).getSprite().getBitmap(), items.get(i).getX(), items.get(i).getY(), paint);
+            }
 
             if(debug) {
                 paint.setColor(Color.WHITE);
@@ -218,7 +239,7 @@ public class GameView extends SurfaceView implements Runnable {
                 canvas.drawText(mainChar.getSourceSpriteIndex() + "." + mainChar.getCurrentSpriteIndex() + "." + mainChar.getDestinationSpriteIndex(), 20, 160, paint);
                 canvas.drawText("HP: " + mainChar.getAddiction(), 20, 200, paint);
                 canvas.drawText("House X: " + currentHouse.getX(), 20, 240, paint);
-                canvas.drawText("Remaining houses: " + stage.getNumberOfHouses() + " " + count, 20, 280, paint);
+                canvas.drawText("Remaining houses: " + stage.getNumberOfHouses() + " " + characterCount + " " + countTouch, 20, 280, paint);
             }
             if(currentState == END_STATE) {
                 paint.setColor(Color.WHITE);
@@ -248,8 +269,12 @@ public class GameView extends SurfaceView implements Runnable {
     public void destroy() {
         bgBitmap.recycle();
         mainChar.destroyBitmaps();
+        defaultItemSprite.destroyBitmap();
         for(int i = 0; i < chars.size(); i++) {
             chars.get(i).destroyBitmaps();
+        }
+        for(int i = 0; i < items.size(); i++) {
+            items.get(i).getSprite().destroyBitmap();
         }
     }
 
@@ -257,21 +282,24 @@ public class GameView extends SurfaceView implements Runnable {
     public boolean onTouchEvent(MotionEvent motionEvent) {
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK) {
             case MotionEvent.ACTION_DOWN:
-                touchX = motionEvent.getX();
-                touchY = motionEvent.getY();
-                if(mainChar.isAlive() && currentState == GAME_STATE) {
-                    mainCharacterShoot();
-                }
-                else if (currentState == END_STATE) {
-                    /*
-                    Intent i = new Intent(getContext(), MainActivity.class);
-                    getContext().startActivity(i);
-                    ((Activity)getContext()).finish();
-                    */
+                if(!isCurrentlyTouched) {
+                    isCurrentlyTouched = true;
+                    countTouch ++;
+                    touchX = motionEvent.getX();
+                    touchY = motionEvent.getY();
+                    if (mainChar.isAlive() && currentState == GAME_STATE) {
+                        mainCharacterShoot();
+                    } else if (currentState == END_STATE) {
+                        /*
+                        Intent i = new Intent(getContext(), MainActivity.class);
+                        getContext().startActivity(i);
+                        ((Activity) getContext()).finish();*/
+                    }
                 }
                 break;
 
             case MotionEvent.ACTION_UP:
+                isCurrentlyTouched = false;
                 touchX = -1;
                 touchY = -1;
                 if(mainChar.isAlive() && currentState == GAME_STATE) {
@@ -312,26 +340,42 @@ public class GameView extends SurfaceView implements Runnable {
         // spawns a random character based on the given spawn locations of the current house
         int spawnIndex = new Random().nextInt(currentHouse.getxSpawns().length);
         if(!isXandYSpawned(currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex])) {
-            count++;
+            characterCount++;
             Bitmap smoke = BitmapFactory.decodeResource(this.getResources(), R.drawable.smoke);
             smoke = Bitmap.createScaledBitmap(smoke, 500, 100, false);
             SpriteAnimation animation2 = createAnimation(smoke, 1, 5, 100, 100, charWidth, charHeight);
             smoke.recycle();
 
-            int r = new Random().nextInt(2); // spawns a drug if 0, spawns an innocent if 1
+            int r = new Random().nextInt(3); // spawns a drug if 0, spawns an innocent if 1, spawns an item if 2
             if(r ==  0) {
-                Bitmap charactter = BitmapFactory.decodeResource(this.getResources(), R.drawable.drug2);
-                charactter = Bitmap.createScaledBitmap(charactter, 100, 100, false);
-                SpriteAnimation animation1 = createAnimation(charactter, 1, 1, 100, 100, charWidth, charHeight);
-                charactter.recycle();
-                chars.add(new Character("drugs", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 5, 0, 0, 5));
+                int charType = new Random().nextInt(1);
+                if(charType == 0) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.drug2);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("drugs", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 5, 0, 0, 5));
+                }
             }
             else if (r == 1) {
-                Bitmap charactter = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
-                charactter = Bitmap.createScaledBitmap(charactter, 100, 100, false);
-                SpriteAnimation animation1 = createAnimation(charactter, 1, 1, 100, 100, charWidth, charHeight);
-                charactter.recycle();
-                chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, -5, 0, 0, 5));
+                int charType = new Random().nextInt(1);
+                if (charType == 0) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, -5, 0, 0, 5));
+                }
+            }
+            else if (r == 2) {
+                int charType = new Random().nextInt(1);
+                if (charType == 0) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.health);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("item_health", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 0, 0, 0, 5));
+                }
             }
 
 
@@ -381,7 +425,7 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void animateMainCharacterGunShot() {
-        // animates GUN shot animation while main char have remaining gunshot secs
+        // animates gun shot animation while main char have remaining gunshot secs
         if(gunshotRemainingSeconds >= -50 && gunshotRemainingSeconds <= 50 && mainChar.isAlive()) {
             mainChar.setSpriteAnimation(defaultSourceFrame, defaultDestinationFrame);
         }
@@ -406,10 +450,15 @@ public class GameView extends SurfaceView implements Runnable {
         // if the animation reaches its last frame, it is removed from the arraylist,
         // adds score to the player and deduct the character spawns  of the house
         for(int i = 0; i < chars.size(); i ++) {
-            if (chars.get(i).getCurrentSpriteIndex() == chars.get(i).getSprites().size()-1) {
-                points+= chars.get(i).getScore();
+            Character c = chars.get(i);
+            if (c.getCurrentSpriteIndex() == c.getSprites().size()-1) {
+                points+= c.getScore();
+                if(c.getName().split("_")[0].equals("item")) {
+                    if(c.getName().split("_")[1].equals("health")) {
+                        setItem(c.getName().split("_")[1], 1, c.getSprites().get(0));
+                    }
+                }
                 chars.remove(i);
-
             }
         }
     }
@@ -419,7 +468,7 @@ public class GameView extends SurfaceView implements Runnable {
         // if the Character is due its duration, it will be removed
         for (int i= 0; i< chars.size(); i++) {
             if(currentMillisecond - chars.get(i).getSpawnTime() >= chars.get(i).getDuration()+1000 && !chars.get(i).isTouched() && !chars.get(i).isDue()) {
-                if(chars.get(i).getName().equals("innocent")) {
+                if(!chars.get(i).getName().equals("drugs")) {
                     chars.remove(i--);
                 }
                 else {
@@ -444,6 +493,19 @@ public class GameView extends SurfaceView implements Runnable {
         }
     }
 
+    public void checkTouchedItem() {
+        for(int i = 0; i < items.size(); i ++) {
+            if(items.get(i).getEffect() != 0 && items.get(i).checkIfItemTouched(touchX, touchY)) {
+                if(items.get(i).getEffect() == 1) {
+                    mainChar.decreaseAddiction();
+                    items.get(i).setSprite(defaultItemSprite);
+                    items.get(i).setName("empty");
+                    items.get(i).setEffect(0);
+                }
+            }
+        }
+    }
+
     public void checkIfMainCharacterDead() {
         // checks if the main character is dead and not yet on the last death frame
         if(!mainChar.isAlive() && mainChar.getCurrentSpriteIndex() != 12) {
@@ -452,6 +514,17 @@ public class GameView extends SurfaceView implements Runnable {
         }
         if(mainChar.getCurrentSpriteIndex() == 12 && mainChar.getSourceSpriteIndex() != 12) {
             mainChar.setSpriteAnimation(12,12);
+        }
+    }
+
+    public void setItem (String name, int effect, Sprite sprite) {
+        for(int i = 0; i < items.size(); i ++) {
+            if(items.get(i).getEffect() == 0) {
+                items.get(i).setName("health");
+                items.get(i).setEffect(1);
+                items.get(i).setSprite(sprite);
+                i=items.size();
+            }
         }
     }
 

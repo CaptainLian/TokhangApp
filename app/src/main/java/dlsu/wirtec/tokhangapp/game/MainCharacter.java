@@ -30,7 +30,10 @@ public class MainCharacter extends SpriteAnimation {
         return getCurrentSprite().getBitmap();
     }
 
-    //public void decreaseHealth() { if(addiction > 0) addiction--; }
+    public void decreaseAddiction() {
+        if(addiction > 0)
+            addiction--;
+    }
 
     public void increaseAddiction() {
         if(addiction < 3) {
