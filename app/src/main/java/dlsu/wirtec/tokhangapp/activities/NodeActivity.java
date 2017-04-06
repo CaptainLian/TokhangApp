@@ -17,6 +17,7 @@ import android.widget.Toast;
 import dlsu.wirtec.tokhangapp.R;
 import dlsu.wirtec.tokhangapp.game.House;
 import dlsu.wirtec.tokhangapp.game.Stage;
+import dlsu.wirtec.tokhangapp.managers.GameManager;
 
 public class NodeActivity extends AppCompatActivity {
     public static final int ACTIVITY_RESULT_OKAY = 0;
@@ -28,7 +29,7 @@ public class NodeActivity extends AppCompatActivity {
     private ImageView drawArea;
     private TextView tvSector1, tvSector2, tvSector3;
     private Button btnShop, btnEquipment;
-
+    private Button btnSave;
     private Bitmap lines;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +46,11 @@ public class NodeActivity extends AppCompatActivity {
 
         btnShop = (Button) findViewById(R.id.btn_shop);
         btnEquipment = (Button) findViewById(R.id.btn_equipment);
+        btnSave = (Button) findViewById(R.id.btn_save);
 
         tvSector1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), "Sector 1", Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(getBaseContext(), GameActivity.class);
 
                 String[] houseNames = {
@@ -69,13 +70,37 @@ public class NodeActivity extends AppCompatActivity {
         tvSector2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), "Sector 2", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), GameActivity.class);
+
+                String[] houseNames = {
+                        House.BUNGALOW,
+                        House.SKWATER,
+                        House.SKWATER
+                };
+
+                Stage s = new Stage("Sector 2", 6, houseNames, 700);
+                i.putExtra("stage", s);
+                //startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
+                startActivity(i);
+                finish();
             }
         });
         tvSector3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getBaseContext(), "Sector 3", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getBaseContext(), GameActivity.class);
+
+                String[] houseNames = {
+                        House.BUNGALOW,
+                        House.SKWATER,
+                        House.SKWATER
+                };
+
+                Stage s = new Stage("Sector 3", 6, houseNames, 700);
+                i.putExtra("stage", s);
+                //startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
+                startActivity(i);
+                finish();
             }
         });
 
@@ -86,12 +111,18 @@ public class NodeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
         btnEquipment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), EquipmentActivity.class);
                 startActivity(i);
+            }
+        });
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GameManager.getGameManager().savePlayer();
+                Toast.makeText(getBaseContext(), "Saved!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -143,5 +174,10 @@ public class NodeActivity extends AppCompatActivity {
         c.drawLine(sector2MidX, sector2MidY, sector3MidX, sector3MidY, paint);
 
         drawArea.setImageBitmap(lines);
+    }
+
+    @Override
+    public void onBackPressed() {
+        return;
     }
 }

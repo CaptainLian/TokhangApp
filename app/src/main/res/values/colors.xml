@@ -6,6 +6,7 @@
 
     <color name="map_node_red">#9f2200</color>
     <color name="map_node_green">#1be614</color>
+    <color name="map_node_grey">#c5caca</color>
     <color name="map_node_text">#FFFFFF</color>
 
     <color name="transparent">#00000000</color>

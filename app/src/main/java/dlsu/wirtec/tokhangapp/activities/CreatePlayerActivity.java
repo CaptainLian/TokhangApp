@@ -38,7 +38,7 @@ public class CreatePlayerActivity extends AppCompatActivity {
                     etName.setError(getResources().getString(R.string.create_player_empty_name));
                 }else{
                     GameManager gameManager = GameManager.getGameManager();
-                    gameManager.createNewPlayerOverwrite(etName.getText().toString());
+                    gameManager.createNewPlayer(etName.getText().toString());
 
                     Intent i = new Intent(getBaseContext(), NodeActivity.class);
                     startActivity(i);

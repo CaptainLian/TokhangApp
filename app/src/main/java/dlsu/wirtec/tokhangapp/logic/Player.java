@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import dlsu.wirtec.tokhangapp.database.Score;
-import dlsu.wirtec.tokhangapp.miscellaneous.FixedList;
 import dlsu.wirtec.tokhangapp.managers.GunManager;
 
 /**
@@ -32,6 +31,11 @@ public class Player {
 
     private Player(){
 
+    }
+
+    public Player(String name, Gun defaultGun, int money){
+        this(name, defaultGun);
+        this.setMoney(money);
     }
 
     public Player(String name,  Gun defaultGun){
@@ -126,13 +130,10 @@ public class Player {
     }
 
     public void save(SharedPreferences.Editor editor){
-        String[] gunIDs = new String[ownedGuns.size()];
-        int index = 0;
+        Set<String> set = new android.support.v4.util.ArraySet<>(ownedGuns.size());
         for (Gun g: ownedGuns){
-            gunIDs[index] = Integer.toString(g.getGunID());
-            index++;
+            set.add(Integer.toString(g.getGunID()));
         }
-        FixedList<String> set = new FixedList<>(gunIDs);
 
         editor.putString(PREFERENCES_NAME, name.toString());
         editor.putInt(PREFERENCES_MONEY, money);
@@ -146,8 +147,10 @@ public class Player {
         int money = sp.getInt(PREFERENCES_MONEY, 0);
         int score = sp.getInt(PREFERENCES_SCORE, 0);
         int equippedID = sp.getInt(PREFERENCES_GUN_EQUIPPED, 0);
-        Set<String> ownedGuns = sp.getStringSet(PREFERENCES_GUNS_OWNED, null);
+        Set<String> defaultSet = new android.support.v4.util.ArraySet<>(1);
+        defaultSet.add(Integer.toString(gunManager.GUN_PISTOL_ID));
 
+        Set<String> ownedGuns = sp.getStringSet(PREFERENCES_GUNS_OWNED, defaultSet);
 
         Player p = new Player();
         p.name = name;

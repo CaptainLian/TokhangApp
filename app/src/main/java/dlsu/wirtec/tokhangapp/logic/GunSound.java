@@ -7,6 +7,7 @@ import android.os.Parcelable;
  */
 
 public interface GunSound{
+    public static final int RESOURCE_ID_NONE = -1;
     /**
      * sound on fire.
      * @return

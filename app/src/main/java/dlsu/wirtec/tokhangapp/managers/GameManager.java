@@ -66,12 +66,8 @@ public class GameManager {
                 preferences.contains(Player.PREFERENCES_GUN_EQUIPPED);
     }
 
-    public Player createNewPlayerOverwrite(String name){
-        this.player = new Player(name, gunManager.PISTOL);
-        this.player.setMoney(500);
-        SharedPreferences.Editor preferences = PreferenceManager.getDefaultSharedPreferences(this.context).edit();
-        preferences.clear();
-        this.player.save(preferences);
+    public Player createNewPlayer(String name){
+        this.player = new Player(name, gunManager.PISTOL, 500);
         return this.player;
     }
 
@@ -83,6 +79,10 @@ public class GameManager {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Player getPlayer(){
         return this.player;
     }
