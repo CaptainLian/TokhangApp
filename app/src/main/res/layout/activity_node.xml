@@ -2,73 +2,117 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="dlsu.wirtec.tokhangapp.activities.NodeActivity"
+    android:background="@drawable/background_node"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/iv_drawArea"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <Button
         android:id="@+id/btn_shop"
         android:text="@string/shop"
+        android:textColor="@color/silan_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:id="@+id/tv_sector1"
-        android:text="1"
-        android:textColor="@color/map_node_text"
-        android:background="@drawable/icon_circle_grey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginStart="28dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/tv_sector2"
-        android:text="2"
-        android:textColor="@color/map_node_text"
-        android:background="@drawable/icon_circle_green"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginStart="68dp"
-        android:layout_alignBaseline="@+id/tv_sector1"
-        android:layout_alignBottom="@+id/tv_sector1"
-        android:layout_toEndOf="@+id/tv_sector1" />
-
-    <TextView
-        android:id="@+id/tv_sector3"
-        android:text="3"
-        android:textColor="@color/map_node_text"
-        android:background="@drawable/icon_circle_red"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginStart="63dp"
-        android:layout_marginBottom="58dp"
-        android:layout_above="@+id/tv_sector2"
-        android:layout_toEndOf="@+id/tv_sector2" />
+        android:background="@color/transparent"
+        android:layout_above="@+id/btn_equipment"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp" />
 
     <Button
         android:id="@+id/btn_equipment"
         android:text="@string/equipment"
+        android:textColor="@color/silan_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/transparent"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignStart="@+id/btn_shop" />
+
+    <Button
+        android:id="@+id/btn_quit"
+        android:text="@string/quit"
+        android:textColor="@color/silan_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:id="@+id/btn_save"
-        android:text="save"
+        android:text="@string/save"
+        android:textColor="@color/silan_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:background="@color/transparent"
+        android:layout_below="@+id/btn_quit"
         android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/btn_stage_2"
+        android:layout_width="@dimen/node_diameter"
+        android:layout_height="@dimen/node_diameter"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:layout_marginStart="31dp"
+        android:layout_above="@+id/btn_shop"
+        android:layout_toEndOf="@+id/btn_shop" />
+
+    <ImageButton
+        android:id="@+id/btn_stage_3"
+        android:layout_width="@dimen/node_diameter"
+        android:layout_height="@dimen/node_diameter"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:layout_marginStart="104dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/btn_stage_2" />
+
+    <ImageButton
+        android:id="@+id/btn_stage_4"
+        android:layout_width="@dimen/node_diameter"
+        android:layout_height="@dimen/node_diameter"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/btn_stage_3"
+        android:layout_toEndOf="@+id/btn_stage_3" />
+
+    <ImageButton
+        android:id="@+id/btn_stage_5"
+        android:layout_width="@dimen/node_diameter"
+        android:layout_height="@dimen/node_diameter"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:layout_alignTop="@+id/btn_stage_2"
+        android:layout_toStartOf="@+id/btn_save"
+        android:layout_marginEnd="35dp" />
+
+    <ImageButton
+        android:id="@+id/btn_stage_6"
+        android:layout_width="@dimen/node_diameter"
+        android:layout_height="@dimen/node_diameter"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:layout_below="@+id/btn_stage_4"
+        android:layout_alignStart="@+id/btn_save" />
+
+    <ImageButton
+        android:id="@+id/btn_stage_1"
+        android:layout_width="@dimen/node_diameter"
+        android:layout_height="@dimen/node_diameter"
+        android:scaleType="fitXY"
+        android:background="@color/transparent"
+        android:layout_below="@+id/btn_save"
+        android:layout_toStartOf="@+id/btn_stage_2"
+        android:layout_marginEnd="10dp" />
+
+        <ImageView
+            android:id="@+id/iv_drawArea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
 </RelativeLayout>

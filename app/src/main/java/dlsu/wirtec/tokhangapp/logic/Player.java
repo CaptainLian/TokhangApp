@@ -21,10 +21,13 @@ public class Player {
     public static final String PREFERENCES_SCORE = "PLAYER_SCORE";
     public static final String PREFERENCES_GUN_EQUIPPED = "PLAYER_GUN_EQUIPPED";
     public static final String PREFERENCES_GUNS_OWNED = "PLAYER_GUNS_OWNED";
+    public static final String PREFERENCES_CURRENT_LEVEL = "PLAYER_CURRENT_LEVEL";
 
     private String name;
     private int money;
     private int score;
+
+    private int currentLevel = 0;
 
     private Gun equippedGun;
     private HashSet<Gun> ownedGuns = new HashSet<>();
@@ -136,6 +139,7 @@ public class Player {
         }
 
         editor.putString(PREFERENCES_NAME, name.toString());
+        editor.putInt(PREFERENCES_CURRENT_LEVEL, currentLevel);
         editor.putInt(PREFERENCES_MONEY, money);
         editor.putInt(PREFERENCES_SCORE, score);
         editor.putInt(PREFERENCES_GUN_EQUIPPED, equippedGun.getGunID());
@@ -143,20 +147,17 @@ public class Player {
     }
 
     public static final Player getPlayer(SharedPreferences sp, GunManager gunManager){
-        String name = sp.getString(PREFERENCES_NAME, "");
-        int money = sp.getInt(PREFERENCES_MONEY, 0);
-        int score = sp.getInt(PREFERENCES_SCORE, 0);
         int equippedID = sp.getInt(PREFERENCES_GUN_EQUIPPED, 0);
+
         Set<String> defaultSet = new android.support.v4.util.ArraySet<>(1);
         defaultSet.add(Integer.toString(gunManager.GUN_PISTOL_ID));
-
         Set<String> ownedGuns = sp.getStringSet(PREFERENCES_GUNS_OWNED, defaultSet);
 
         Player p = new Player();
-        p.name = name;
-        p.money = money;
-        p.score = score;
-
+        p.name = sp.getString(PREFERENCES_NAME, "");
+        p.money = sp.getInt(PREFERENCES_MONEY, 0);
+        p.score = sp.getInt(PREFERENCES_SCORE, 0);;
+        p.currentLevel = sp.getInt(PREFERENCES_CURRENT_LEVEL, 1);
         for (String gunID : ownedGuns){
             int id = Integer.parseInt(gunID);
             Gun g = gunManager.getGun(id);
@@ -165,5 +166,17 @@ public class Player {
         p.equippedGun = gunManager.getGun(equippedID);
 
         return p;
+    }
+
+    public int getCurrentLevel() {
+        return this.currentLevel;
+    }
+
+    public void setCurrentLevel(int currentLevel) {
+        this.currentLevel = currentLevel;
+    }
+
+    public void incrementLevel(){
+        this.currentLevel++;
     }
 }

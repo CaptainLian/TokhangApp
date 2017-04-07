@@ -8,16 +8,17 @@ import android.os.Parcelable;
  */
 
 public class Stage implements Parcelable {
-    public static final String EXTRA_STAGE = "stage";
 
+    public static final String INTENT_EXTRA_STAGE = "stage";
+
+    public final int ID;
     private String stageName;
     private int numberOfHouses;
     private String[] typeOfHouse;
     private int spriteSpawningInterval;
 
-    public Stage () {}
-
-    public Stage(java.lang.String stageName, int numberOfHouses, String[] typeOfHouse, int spriteSpawningInterval) {
+    public Stage(int id, String stageName, int numberOfHouses, String[] typeOfHouse, int spriteSpawningInterval) {
+        this.ID = id;
         this.stageName = stageName;
         this.numberOfHouses = numberOfHouses;
         this.typeOfHouse = typeOfHouse;
@@ -28,7 +29,7 @@ public class Stage implements Parcelable {
         numberOfHouses --;
     }
 
-    public java.lang.String getStageName() {
+    public String getStageName() {
         return stageName;
     }
 
@@ -61,6 +62,7 @@ public class Stage implements Parcelable {
     }
 
     protected Stage(Parcel in) {
+        ID = in.readInt();
         stageName = in.readString();
         numberOfHouses = in.readInt();
         typeOfHouse = in.createStringArray();
@@ -74,12 +76,12 @@ public class Stage implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(ID);
         dest.writeString(stageName);
         dest.writeInt(numberOfHouses);
         dest.writeStringArray(typeOfHouse);
         dest.writeInt(spriteSpawningInterval);
     }
-
 
     @SuppressWarnings("unused")
     public static final Parcelable.Creator<Stage> CREATOR = new Parcelable.Creator<Stage>() {

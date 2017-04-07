@@ -41,6 +41,8 @@
     <string name="name">Name</string>
     <string name="proceed">Proceed</string>
     <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="quit">Quit</string>
 
     <!-- CreatePlayerActivity -->
     <string name="create_player_enter_name">Enter your name</string>
