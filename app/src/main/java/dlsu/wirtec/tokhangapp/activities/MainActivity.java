@@ -2,15 +2,10 @@ package dlsu.wirtec.tokhangapp.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
-import org.w3c.dom.Node;
 
 import dlsu.wirtec.tokhangapp.R;
 import dlsu.wirtec.tokhangapp.managers.GameManager;
@@ -89,8 +84,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         btnContinue.setClickable(GameManager.getGameManager().isSavedPlayerExist());
+        SoundManager soundManager = GameManager.getSoundManager();
+        if(soundManager.isMusicPlaying()){
+            soundManager.startMusic();
+        }else{
+            soundManager.playMusic(R.raw.music_heytdrags_trap_short, null, null);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        GameManager.getSoundManager().pauseMusic();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        GameManager.getSoundManager().stopMusic();
     }
 }

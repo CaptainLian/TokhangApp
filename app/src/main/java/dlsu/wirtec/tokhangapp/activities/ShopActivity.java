@@ -27,7 +27,6 @@ public class ShopActivity extends AppCompatActivity {
 
     private Button btnReturn;
     private TextView tvCoinAmount;
-    private View.OnLongClickListener longListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,62 +70,28 @@ public class ShopActivity extends AppCompatActivity {
 
         ));
 
-        View.OnClickListener listener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Gun g =((ShopGunIconAdapter) v.getTag()).GUN;
-
-                SoundManager soundManager = GameManager.getSoundManager();
-                GunSound sound = g.getGunSound();
-
-                if(sound != null){
-                    int onViewID = sound.getOnShopViewSoundID();
-                    if(onViewID != SimpleGunSound.ID_NONE){
-                        soundManager.playSound(onViewID);
-                    }
-                }
-            }
-        };
-        btnGunAuto.setOnClickListener(listener);
-        btnGunShotgun.setOnClickListener(listener);
-        btnGunSniper.setOnClickListener(listener);
-        btnGunRocket.setOnClickListener(listener);
-
-        longListener = new View.OnLongClickListener() {
+        View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                final ShopGunIconAdapter sgia = (ShopGunIconAdapter) v.getTag();
-                //Toast.makeText(getBaseContext(), "Gun long clicked: " + g.getName(), Toast.LENGTH_SHORT).show();
+                GunSound gunSound = ((ShopGunIconAdapter) v.getTag()).GUN.getGunSound();
 
-                Bundle args = new Bundle();
-                args.putString(ShopDialogFragment.ARGUMENT_GUN_NAME, sgia.GUN.getName());
-                args.putString(ShopDialogFragment.ARGUMENT_GUN_DESCRIPTION, sgia.GUN.getDescription());
-                args.putInt(ShopDialogFragment.ARGUMENT_GUN_COST, sgia.GUN.getCost());
+                SoundManager soundManager = GameManager.getSoundManager();
 
-                ShopDialogFragment dialog = new ShopDialogFragment();
-                dialog.setArguments(args);
-                dialog.setDialogListener(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch(which){
-                            case DialogInterface.BUTTON_POSITIVE:
-                                Player p = GameManager.getGameManager().getPlayer();
-                                SoundManager soundManager = GameManager.getSoundManager();
-                                if(p.purchaseGun(sgia.GUN)){
-                                    soundManager.playSound(soundManager.SOUND_SHOP_PURCHASE1);
+                if(gunSound != null){
+                    int id = gunSound.getOnShopViewSoundID();
+                    if(id != -1){
+                        soundManager.playSound(id);
+                    }
+                }
 
-                                    tvCoinAmount.setText(Integer.toString(GameManager.getGameManager().getPlayer().getMoney()));
-                                }else{
-                                    soundManager.playSound(soundManager.SOUND_MENU_ERROR1);
-                                }// can player purchase GUN
-                                break;
-                        }//switch
-                    }//function onClick
-                });//setDialogListener
-                dialog.show(getSupportFragmentManager(), ShopDialogFragment.DIALOG_TAG_SHOP);
                 return true;
             }
         };
+
+        btnGunAuto.setOnLongClickListener(longClickListener);
+        btnGunShotgun.setOnLongClickListener(longClickListener);
+        btnGunSniper.setOnLongClickListener(longClickListener);
+        btnGunRocket.setOnLongClickListener(longClickListener);
 
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,46 +109,46 @@ public class ShopActivity extends AppCompatActivity {
         };
     }
 
+    private View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(final View v) {
+            final ShopGunIconAdapter sgia = (ShopGunIconAdapter) v.getTag();
+            //Toast.makeText(getBaseContext(), "Gun long clicked: " + g.getName(), Toast.LENGTH_SHORT).show();
+
+            Bundle args = new Bundle();
+            args.putString(ShopDialogFragment.ARGUMENT_GUN_NAME, sgia.GUN.getName());
+            args.putString(ShopDialogFragment.ARGUMENT_GUN_DESCRIPTION, sgia.GUN.getDescription());
+            args.putInt(ShopDialogFragment.ARGUMENT_GUN_COST, sgia.GUN.getCost());
+
+            ShopDialogFragment dialog = new ShopDialogFragment();
+            dialog.setArguments(args);
+            dialog.setDialogListener(new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch(which){
+                        case DialogInterface.BUTTON_POSITIVE:
+                            Player p = GameManager.getGameManager().getPlayer();
+                            SoundManager soundManager = GameManager.getSoundManager();
+                            if(p.purchaseGun(sgia.GUN)){
+                                soundManager.playSound(soundManager.SOUND_SHOP_PURCHASE1);
+                                ImageButton b = (ImageButton) v;
+                                b.setOnLongClickListener(null);
+                                b.setImageResource(sgia.DRAWABLE_ID_SOLD);
+                                tvCoinAmount.setText(Integer.toString(GameManager.getGameManager().getPlayer().getMoney()));
+                            }else{
+                                soundManager.playSound(soundManager.SOUND_MENU_ERROR1);
+                            }// can player purchase GUN
+                            break;
+                    }//switch
+                }//function onClick
+            });//setDialogListener
+            dialog.show(getSupportFragmentManager(), ShopDialogFragment.DIALOG_TAG_SHOP);
+        }
+    };
+
     @Override
     protected void onResume() {
         super.onResume();
-        View.OnLongClickListener longListener = new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(final View v) {
-                final ShopGunIconAdapter sgia = (ShopGunIconAdapter) v.getTag();
-                //Toast.makeText(getBaseContext(), "Gun long clicked: " + g.getName(), Toast.LENGTH_SHORT).show();
-
-                Bundle args = new Bundle();
-                args.putString(ShopDialogFragment.ARGUMENT_GUN_NAME, sgia.GUN.getName());
-                args.putString(ShopDialogFragment.ARGUMENT_GUN_DESCRIPTION, sgia.GUN.getDescription());
-                args.putInt(ShopDialogFragment.ARGUMENT_GUN_COST, sgia.GUN.getCost());
-
-                ShopDialogFragment dialog = new ShopDialogFragment();
-                dialog.setArguments(args);
-                dialog.setDialogListener(new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch(which){
-                            case DialogInterface.BUTTON_POSITIVE:
-                                Player p = GameManager.getGameManager().getPlayer();
-                                SoundManager soundManager = GameManager.getSoundManager();
-                                if(p.purchaseGun(sgia.GUN)){
-                                    soundManager.playSound(soundManager.SOUND_SHOP_PURCHASE1);
-                                    ImageButton b = (ImageButton) v;
-                                    b.setOnLongClickListener(null);
-                                    b.setImageResource(sgia.DRAWABLE_ID_SOLD);
-                                    tvCoinAmount.setText(Integer.toString(GameManager.getGameManager().getPlayer().getMoney()));
-                                }else{
-                                    soundManager.playSound(soundManager.SOUND_MENU_ERROR1);
-                                }// can player purchase GUN
-                                break;
-                        }//switch
-                    }//function onClick
-                });//setDialogListener
-                dialog.show(getSupportFragmentManager(), ShopDialogFragment.DIALOG_TAG_SHOP);
-                return true;
-            }
-        };
 
         Player p = GameManager.getGameManager().getPlayer();
 
@@ -191,10 +156,10 @@ public class ShopActivity extends AppCompatActivity {
             ShopGunIconAdapter sgia = (ShopGunIconAdapter) b.getTag();
             if(p.isGunOwned(sgia.GUN)){
                 b.setImageResource(sgia.DRAWABLE_ID_SOLD);
-                b.setOnLongClickListener(null);
+                b.setOnClickListener(null);
             }else{
                 b.setImageResource(sgia.DRAWABLE_ID_PURCHASED);
-                b.setOnLongClickListener(longListener);
+                b.setOnClickListener(clickListener);
             }
         }
     }

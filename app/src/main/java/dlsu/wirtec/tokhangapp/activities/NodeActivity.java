@@ -15,22 +15,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import dlsu.wirtec.tokhangapp.R;
-import dlsu.wirtec.tokhangapp.game.House;
 import dlsu.wirtec.tokhangapp.game.Stage;
 import dlsu.wirtec.tokhangapp.managers.GameManager;
 
 public class NodeActivity extends AppCompatActivity {
+
     public static final int ACTIVITY_RESULT_OKAY = 0;
     public static final int ACTIVITY_RESULT_DEATH = 1;
 
     public static final int ACTIVITY_REQUEST_CODE_GAME = 0;
 
-    /* nodes */
+
     private ImageView drawArea;
     private TextView tvSector1, tvSector2, tvSector3;
     private Button btnShop, btnEquipment;
     private Button btnSave;
+
     private Bitmap lines;
+
+    private View.OnClickListener sectorClickedListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Stage s = (Stage) v.getTag();
+
+            Intent i = new Intent(getBaseContext(), GameActivity.class);
+            i.putExtra("stage", s);
+
+            startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,71 +57,24 @@ public class NodeActivity extends AppCompatActivity {
         tvSector1 = (TextView) findViewById(R.id.tv_sector1);
         tvSector2 = (TextView) findViewById(R.id.tv_sector2);
         tvSector3 = (TextView) findViewById(R.id.tv_sector3);
+        TextView[] sectors = {tvSector1, tvSector2, tvSector3};
 
         btnShop = (Button) findViewById(R.id.btn_shop);
         btnEquipment = (Button) findViewById(R.id.btn_equipment);
         btnSave = (Button) findViewById(R.id.btn_save);
 
-        tvSector1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), GameActivity.class);
+        GameManager gameManager = GameManager.getGameManager();
 
-                String[] houseNames = {
-                        House.BUNGALOW,
-                        House.SKWATER,
-                        House.SKWATER
-                };
-
-                Stage s = new Stage("Sector 1", 6, houseNames, 700);
-                i.putExtra("stage", s);
-                //startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
-                startActivity(i);
-                finish();
-            }
-        });
-
-        tvSector2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), GameActivity.class);
-
-                String[] houseNames = {
-                        House.BUNGALOW,
-                        House.SKWATER,
-                        House.SKWATER
-                };
-
-                Stage s = new Stage("Sector 2", 6, houseNames, 700);
-                i.putExtra("stage", s);
-                //startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
-                startActivity(i);
-                finish();
-            }
-        });
-        tvSector3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getBaseContext(), GameActivity.class);
-
-                String[] houseNames = {
-                        House.BUNGALOW,
-                        House.SKWATER,
-                        House.SKWATER
-                };
-
-                Stage s = new Stage("Sector 3", 6, houseNames, 700);
-                i.putExtra("stage", s);
-                //startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
-                startActivity(i);
-                finish();
-            }
-        });
+        for(int i = 0; i < sectors.length; i++){
+            sectors[i].setTag(gameManager.getStage(i));
+            sectors[i].setOnClickListener(sectorClickedListener);
+        }
 
         btnShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(getBaseContext(), ShopActivity.class);
+                overridePendingTransition(R.anim.in_left_right, R.anim.out_center_right);
                 startActivity(i);
             }
         });
@@ -176,8 +143,27 @@ public class NodeActivity extends AppCompatActivity {
         drawArea.setImageBitmap(lines);
     }
 
+
     @Override
     public void onBackPressed() {
         return;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case ACTIVITY_REQUEST_CODE_GAME:
+                switch (resultCode){
+                    case ACTIVITY_RESULT_OKAY:
+
+                        break;
+                    case ACTIVITY_RESULT_DEATH:
+
+                        break;
+                }//sresultcode
+                break;
+        }//requestCode
     }
 }

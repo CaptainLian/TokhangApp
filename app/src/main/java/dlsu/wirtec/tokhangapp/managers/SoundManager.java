@@ -4,6 +4,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
+import android.support.annotation.Nullable;
 
 import dlsu.wirtec.tokhangapp.R;
 
@@ -22,7 +23,6 @@ public class SoundManager{
     private MediaPlayer currentMusicPlayer;
 
     private float volume;
-
 
     public final int SOUND_PLAYER_DEATH2;
     public final int SOUND_PLAYER_PAIN1;
@@ -47,6 +47,8 @@ public class SoundManager{
     public final int SOUND_GUN_SHOTGUN_COCK1;
 
     public final int SOUND_POWERUP_PICKUP1;
+
+
 
     SoundManager(Context context){
         this(context, 1.0f);
@@ -83,30 +85,62 @@ public class SoundManager{
         SOUND_EQUIPMENT_LOAD1 = soundPlayer.load(context, R.raw.sound_equipment_load1, DEFAULT_LOAD_PRIORITY);
         SOUND_EQUIPMENT_LOAD2 = soundPlayer.load(context, R.raw.sound_equipment_load2, DEFAULT_LOAD_PRIORITY);
         SOUND_EQUIPMENT_LOAD3 = soundPlayer.load(context, R.raw.sound_equipment_load3, DEFAULT_LOAD_PRIORITY);
+
     }
 
     public void playSound(int soundID){
         soundPlayer.play(soundID, volume, volume, DEFAULT_PLAY_PRIORITY, 0, 1f);
     }
 
-    public void playMusic(int rawID) {
+    public void playMusic(int rawID, @Nullable final MediaPlayer.OnCompletionListener completionListener, @Nullable final  MediaPlayer.OnPreparedListener preparedListener) {
+        stopMusic();
+        currentMusicPlayer = MediaPlayer.create(context, rawID);
+        currentMusicPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                if(completionListener != null) {
+                    completionListener.onCompletion(mp);
+                }
+            }
+        });
+        currentMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                if(preparedListener != null){
+                    preparedListener.onPrepared(mp);
+                }
+                mp.start();
+            }
+        });
+    }
+
+    public MediaPlayer getCurrentMusicPlayer(){
+       return currentMusicPlayer;
+   }
+
+    public void startMusic(){
+        if(currentMusicPlayer != null){
+            currentMusicPlayer.start();
+        }
+    }
+
+    public boolean isMusicPlaying(){
+        if(currentMusicPlayer != null){
+            return currentMusicPlayer.isPlaying();
+        }
+        return false;
+    }
+    public void stopMusic(){
         if(currentMusicPlayer != null){
             currentMusicPlayer.stop();
             currentMusicPlayer.release();
             currentMusicPlayer = null;
         }
-
-        currentMusicPlayer = MediaPlayer.create(context, rawID);
-        currentMusicPlayer.start();
     }
 
-   public MediaPlayer getCurrentMusicPlayer(){
-       return currentMusicPlayer;
-   }
-
-    public void stopMusic(){
+    public void pauseMusic(){
         if(currentMusicPlayer != null){
-            currentMusicPlayer.stop();
+            currentMusicPlayer.pause();
         }
     }
 
@@ -130,6 +164,4 @@ public class SoundManager{
     public Context getContext(){
         return context;
     }
-
-
 }
