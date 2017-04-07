@@ -10,4 +10,6 @@
     <dimen name="shop_weapon_padding">8dp</dimen>
 
     <dimen name="map_node_size">32dp</dimen>
+    
+    <dimen name="node_diameter">24dp</dimen>
 </resources>

@@ -91,7 +91,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        btnContinue.setClickable(GameManager.getGameManager().isSavedPlayerExist());
+
+        if(GameManager.getGameManager().isSavedPlayerExist()){
+            btnContinue.setClickable(true);
+            btnContinue.setImageResource(R.mipmap.menu_button_continue);
+        }else{
+            btnContinue.setClickable(false);
+            btnContinue.setImageResource(0);
+        }
         SoundManager soundManager = GameManager.getSoundManager();
         if(soundManager.isMusicPlaying()){
             soundManager.startMusic();

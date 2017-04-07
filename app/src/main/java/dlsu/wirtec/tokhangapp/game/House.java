@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
  */
 
 public class House extends  Sprite{
+
     public static final String BUNGALOW = "bungalow";
     public static final String SKWATER = "skwater";
 

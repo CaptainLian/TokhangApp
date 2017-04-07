@@ -45,31 +45,35 @@ public class GameManager {
 
             gameManager.stages =  new Stage[]{
                     new Stage(
+                            0,
                             "Sector 1",
                             3,
                             new String[]{
                                     House.BUNGALOW,
                                     House.SKWATER
                             },
-                            700
+                            800
                     ),
                     new Stage(
+                            1,
                             "Sector 2",
                             5,
                             new String[]{
                                 House.BUNGALOW
                             },
-                            600
+                            720
                     ),
                     new Stage(
+                            2,
                             "Sector 3",
                             5,
                             new String[]{
                                House.SKWATER
                             },
-                            600
+                            720
                     ),
                     new Stage(
+                            3,
                             "Sector 4",
                             7,
                             new String[]{
@@ -78,7 +82,31 @@ public class GameManager {
                                     House.BUNGALOW,
                                     House.SKWATER
                             },
-                            550
+                            640
+                    ),
+                    new Stage(
+                            4,
+                            "Sector 5",
+                            7,
+                            new String[]{
+                                    House.SKWATER,
+                                    House.BUNGALOW,
+                                    House.BUNGALOW,
+                                    House.SKWATER
+                            },
+                            500
+                    ),
+                    new Stage(
+                            5,
+                            "Sector 6",
+                            7,
+                            new String[]{
+                                    House.SKWATER,
+                                    House.BUNGALOW,
+                                    House.BUNGALOW,
+                                    House.SKWATER
+                            },
+                            420
                     )
             };//Stage array
         }//if gameManager or SoundManager or gunManager is null.
@@ -118,7 +146,8 @@ public class GameManager {
                 preferences.contains(Player.PREFERENCES_SCORE) &&
                 preferences.contains(Player.PREFERENCES_MONEY) &&
                 preferences.contains(Player.PREFERENCES_GUNS_OWNED) &&
-                preferences.contains(Player.PREFERENCES_GUN_EQUIPPED);
+                preferences.contains(Player.PREFERENCES_GUN_EQUIPPED) &&
+                preferences.contains(Player.PREFERENCES_CURRENT_LEVEL);
     }
 
     public Player createNewPlayer(String name){
@@ -134,19 +163,11 @@ public class GameManager {
         }
     }
 
-    /**
-     *
-     * @return
-     */
     public Player getPlayer(){
         return this.player;
     }
 
     public Stage getStage(int level){
-        if(level < 0 || level >= stages.length){
-            throw new IllegalArgumentException("Invalid level " + level + ". Min: 0, Max: " + stages.length);
-        }
-
         return stages[level];
     }
 }

@@ -3,15 +3,14 @@ package dlsu.wirtec.tokhangapp.activities;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import dlsu.wirtec.tokhangapp.R;
@@ -25,13 +24,16 @@ public class NodeActivity extends AppCompatActivity {
 
     public static final int ACTIVITY_REQUEST_CODE_GAME = 0;
 
-
     private ImageView drawArea;
-    private TextView tvSector1, tvSector2, tvSector3;
-    private Button btnShop, btnEquipment;
-    private Button btnSave;
-
     private Bitmap lines;
+
+    private Button btnShop, btnEquipment;
+    private Button btnSave, btnQuit;
+
+    private ImageButton btnStage1, btnStage2, btnStage3, btnStage4, btnStage5, btnStage6;
+    private ImageButton[] stages;
+
+    private boolean beingDrawn = true;
 
     private View.OnClickListener sectorClickedListener = new View.OnClickListener() {
         @Override
@@ -39,7 +41,7 @@ public class NodeActivity extends AppCompatActivity {
             Stage s = (Stage) v.getTag();
 
             Intent i = new Intent(getBaseContext(), GameActivity.class);
-            i.putExtra("stage", s);
+            i.putExtra(Stage.INTENT_EXTRA_STAGE, s);
 
             startActivityForResult(i, ACTIVITY_REQUEST_CODE_GAME);
         }
@@ -54,21 +56,22 @@ public class NodeActivity extends AppCompatActivity {
         /* node view initalization */
         drawArea = (ImageView) findViewById(R.id.iv_drawArea);
 
-        tvSector1 = (TextView) findViewById(R.id.tv_sector1);
-        tvSector2 = (TextView) findViewById(R.id.tv_sector2);
-        tvSector3 = (TextView) findViewById(R.id.tv_sector3);
-        TextView[] sectors = {tvSector1, tvSector2, tvSector3};
-
         btnShop = (Button) findViewById(R.id.btn_shop);
         btnEquipment = (Button) findViewById(R.id.btn_equipment);
         btnSave = (Button) findViewById(R.id.btn_save);
+        btnQuit = (Button) findViewById(R.id.btn_quit);
+
+        btnStage1 = (ImageButton) findViewById(R.id.btn_stage_1);
+        btnStage2 = (ImageButton) findViewById(R.id.btn_stage_2);
+        btnStage3 = (ImageButton) findViewById(R.id.btn_stage_3);
+        btnStage4 = (ImageButton) findViewById(R.id.btn_stage_4);
+        btnStage5 = (ImageButton) findViewById(R.id.btn_stage_5);
+        btnStage6 = (ImageButton) findViewById(R.id.btn_stage_6);
+
+        stages = new ImageButton[]{btnStage1, btnStage2, btnStage3, btnStage4, btnStage5, btnStage6 };
 
         GameManager gameManager = GameManager.getGameManager();
 
-        for(int i = 0; i < sectors.length; i++){
-            sectors[i].setTag(gameManager.getStage(i));
-            sectors[i].setOnClickListener(sectorClickedListener);
-        }
 
         btnShop.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,22 +95,25 @@ public class NodeActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Saved!", Toast.LENGTH_SHORT).show();
             }
         });
+        btnQuit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         drawArea.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
                 drawArea.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                drawLines();
+                drawNodes();
+                beingDrawn = false;
             }
         });
         /* node view initialization end */
-    }
 
-    @Override
-    protected void onRestart() {
-        super.onResume();
-        if(lines == null){
-            drawLines();
+        for(int i = 0; i < stages.length; i++){
+            stages[i].setTag(GameManager.getGameManager().getStage(i));
         }
     }
 
@@ -121,24 +127,50 @@ public class NodeActivity extends AppCompatActivity {
         }
     }
 
-    private void drawLines(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(lines == null && !beingDrawn){
+            drawNodes();
+        }
+    }
+
+    private void drawNodes(){
+
         lines = Bitmap.createBitmap(drawArea.getWidth(), drawArea.getHeight(), Bitmap.Config.ARGB_8888);
         final Canvas c = new Canvas(lines);
         final Paint paint = new Paint();
 
-        paint.setStrokeWidth(12f);
-        paint.setColor(Color.BLACK);
+        paint.setStrokeWidth(14f);
+        int silanBlue = getResources().getColor(R.color.silan_blue);
+        paint.setColor(silanBlue);
         paint.setAntiAlias(true);
 
-        final float sector1MidX = tvSector1.getX() + tvSector1.getWidth()/2,
-                sector1MidY = tvSector1.getY() + tvSector1.getHeight()/2;
-        final float sector2MidX = tvSector2.getX() + tvSector2.getWidth()/2,
-                sector2MidY = tvSector2.getY() + tvSector2.getHeight()/2;
-        final float sector3MidX = tvSector3.getX() + tvSector3.getWidth()/2,
-                sector3MidY = tvSector3.getY() + tvSector3.getHeight()/2;
+        for (int current = 1; current < stages.length; current++){
+            int previous = current - 1;
+            final float firstNodeMidX = stages[current].getX() + stages[current].getWidth()/2.0f,
+                        firstNodeMidY = stages[current].getY() + stages[current].getHeight()/2.0f;
+            final float secondNodeMidX = stages[current - 1].getX() + stages[current].getWidth()/2.0f,
+                        secondNodeMidY = stages[current - 1].getY() + stages[current].getHeight()/2.0f;
 
-        c.drawLine(sector2MidX, sector2MidY, sector1MidX, sector1MidY, paint);
-        c.drawLine(sector2MidX, sector2MidY, sector3MidX, sector3MidY, paint);
+            c.drawLine(firstNodeMidX, firstNodeMidY, secondNodeMidX, secondNodeMidY, paint);
+        }
+
+
+        int playerLevel = GameManager.getGameManager().getPlayer().getCurrentLevel();
+        for(ImageButton stage: stages){
+            Stage s = (Stage) stage.getTag();
+            if(s.ID == playerLevel){
+                stage.setImageResource(R.drawable.icon_node_current);
+                stage.setOnClickListener(sectorClickedListener);
+            }else if(s.ID > playerLevel){
+                stage.setImageResource(R.drawable.icon_node_locked);
+            }else{
+                stage.setImageResource(R.drawable.icon_node_complete);
+                stage.setOnClickListener(sectorClickedListener);
+            }
+            stage.bringToFront();
+        }
 
         drawArea.setImageBitmap(lines);
     }
