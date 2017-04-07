@@ -42,11 +42,12 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        gameView.destroy();
+        gameView.destroyBitmaps();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        gameView.destroyBitmaps();
     }
 }

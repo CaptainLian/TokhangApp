@@ -49,8 +49,8 @@ public class GameManager {
                             "Sector 1",
                             3,
                             new String[]{
-                                    House.BUNGALOW,
-                                    House.SKWATER
+                                    House.BUILDING1,
+                                    House.BUILDING2
                             },
                             800
                     ),
@@ -59,7 +59,7 @@ public class GameManager {
                             "Sector 2",
                             5,
                             new String[]{
-                                House.BUNGALOW
+                                House.BUILDING3
                             },
                             720
                     ),
@@ -68,7 +68,7 @@ public class GameManager {
                             "Sector 3",
                             5,
                             new String[]{
-                               House.SKWATER
+                               House.BUILDING1
                             },
                             720
                     ),
@@ -77,10 +77,10 @@ public class GameManager {
                             "Sector 4",
                             7,
                             new String[]{
-                                    House.SKWATER,
-                                    House.BUNGALOW,
-                                    House.BUNGALOW,
-                                    House.SKWATER
+                                    House.BUILDING1,
+                                    House.BUILDING2,
+                                    House.BUILDING2,
+                                    House.BUILDING3
                             },
                             640
                     ),
@@ -89,10 +89,10 @@ public class GameManager {
                             "Sector 5",
                             7,
                             new String[]{
-                                    House.SKWATER,
-                                    House.BUNGALOW,
-                                    House.BUNGALOW,
-                                    House.SKWATER
+                                    House.BUILDING2,
+                                    House.BUILDING1,
+                                    House.BUILDING1,
+                                    House.BUILDING3
                             },
                             500
                     ),
@@ -101,10 +101,10 @@ public class GameManager {
                             "Sector 6",
                             7,
                             new String[]{
-                                    House.SKWATER,
-                                    House.BUNGALOW,
-                                    House.BUNGALOW,
-                                    House.SKWATER
+                                    House.BUILDING1,
+                                    House.BUILDING3,
+                                    House.BUILDING3,
+                                    House.BUILDING2
                             },
                             420
                     )

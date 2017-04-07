@@ -7,9 +7,9 @@ import android.graphics.Bitmap;
  */
 
 public class House extends  Sprite{
-
-    public static final String BUNGALOW = "bungalow";
-    public static final String SKWATER = "skwater";
+    public static final String BUILDING1 = "building1";
+    public static final String BUILDING2 = "building2";
+    public static final String BUILDING3 = "building3";
 
     private String name; // name of House
     private float x; // leftmost part of the house

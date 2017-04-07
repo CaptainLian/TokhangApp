@@ -44,13 +44,17 @@ public class GameView extends SurfaceView implements Runnable {
     private Stage stage;
 
     // Background
+    private int frameWidth;
     private Sprite bg;
     private int bgX1;
     private int bgX2;
     private int bgMoveRate = 5;
-    private int frameWidth;
-    private long laseBgMoveChangeTime;
-    Bitmap bgBitmap = null;
+    private long lastBgMoveChangeTime;
+    private Sprite bgBridge;
+    private int bgBridgeX1;
+    private int bgBridgeX2;
+    private int bgBridgeMoveRate = 1;
+    private long lastBgBridgeMoveChangeTime;
 
     // FPS data
     private long fps;
@@ -63,22 +67,24 @@ public class GameView extends SurfaceView implements Runnable {
 
     // House Data
     private House currentHouse;
-    private int houseWidth = 2000;
-    private int houseHeight = 1000;
+    private int houseWidth = 1200;
+    private int houseHeight = 1700;
     private int houseSpawnX;
-    private int houseSpawnY = 220;
-    private int houseDestinationX1 = 300;
+    private int houseSpawnY = -150;
+    private int houseDestinationX1 = 700;
     private int houseDestinationX2 = -2000;
-    private int houseTranslationDuration = 4000;
+    private int houseTranslationDuration = 3000;
 
     // Main character data
     private MainCharacter mainChar;
-    private int mainCharAddictionWidth = 900;
-    private int mainCharAddictionHeight = 300;
-    private int mainCharWidth = 500;
-    private int mainCharHeight = 500;
+    private int mainCharAddictionWidth = 1000;
+    private int mainCharAddictionHeight = 400;
+    private int mainCharAddictionX = 30;
+    private int mainCharAddictionY = 1130;
+    private int mainCharWidth = 250;
+    private int mainCharHeight = 250;
     private int mainCharX = 75;
-    private int mainCharY = 850;
+    private int mainCharY = 975;
     private int defaultSourceFrame = 17;
     private int defaultDestinationFrame = 17;
     private long mainCharLastFrameChangeTime = 0;
@@ -105,12 +111,20 @@ public class GameView extends SurfaceView implements Runnable {
     private int characterInterval;
 
     // Item data
+    private Sprite itemTitle;
+    private int itemTitleWidth = 100;
+    private int itemTitleLength = 50;
+    private int itemTitleX = 1825;
+    private int itemTitleY = 1200;
     private ArrayList<Item> items;
     private Sprite defaultItemSprite;
     private int itemWidth = 150;
     private int itemLength = 150;
-    private int slotX = 1700;
-    private int slotY = 1200;
+    private int slotX = 1600;
+    private int slotY = 1250;
+
+    // DamageAnimation data
+    private ArrayList<DamageAnimation> damageAnimations;
 
     // extras
     private int points;
@@ -121,13 +135,15 @@ public class GameView extends SurfaceView implements Runnable {
 
     public GameView(final Context context, Stage stage) {
         super(context);
+        // Damage Initialization
+        damageAnimations = new ArrayList<DamageAnimation>();
+
         // Stage Initialization
         this.stage = stage;
         characterInterval = stage.getSpriteSpawningInterval();
 
         frameWidth = context.getResources().getDisplayMetrics().widthPixels;
-        bgX1 = 0;
-        bgX2 = frameWidth;
+
         ourHolder = getHolder();
         paint = new Paint();
         timer = new Timer();
@@ -143,9 +159,16 @@ public class GameView extends SurfaceView implements Runnable {
 
 
         // BG instantiation
-        bgBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.citybg2);
+        bgX1 = 0;
+        bgX2 = frameWidth;
+        bgBridgeX1 = 0;
+        bgBridgeX2 = frameWidth;
+        Bitmap bgBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.citybg);
         bgBitmap = Bitmap.createScaledBitmap(bgBitmap, context.getResources().getDisplayMetrics().widthPixels,context.getResources().getDisplayMetrics().heightPixels, false);
         bg = new Sprite (bgBitmap);
+        Bitmap bgBridgeBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.citybgbridge);
+        bgBridgeBitmap = Bitmap.createScaledBitmap(bgBridgeBitmap, context.getResources().getDisplayMetrics().widthPixels,context.getResources().getDisplayMetrics().heightPixels, false);
+        bgBridge = new Sprite (bgBridgeBitmap);
         //Main character instantiation
         Bitmap mainCharBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.soldier4);
         mainCharBitmap = Bitmap.createScaledBitmap(mainCharBitmap, 600, 300,false);
@@ -157,6 +180,9 @@ public class GameView extends SurfaceView implements Runnable {
         mainCharBitmap.recycle();
         healthBitmap.recycle();
         //Item instantiation
+        Bitmap itemTitleBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.itemtitle);
+        itemTitleBitmap = Bitmap.createScaledBitmap(itemTitleBitmap, itemTitleWidth, itemTitleLength, false);
+        itemTitle = new Sprite (itemTitleBitmap);
         items = new ArrayList<Item>();
         Bitmap slotBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.itemslot1);
         slotBitmap = Bitmap.createScaledBitmap(slotBitmap, itemWidth, itemLength, false);
@@ -206,7 +232,9 @@ public class GameView extends SurfaceView implements Runnable {
         checkIfHouseDone();
         moveHouse(houseTranslationDuration);
         moveCharacter();
+        moveDamage();
         moveBg(bgMoveRate);
+        moveBgBridge(bgBridgeMoveRate);
         shakeCharacter();
     }
 
@@ -215,31 +243,49 @@ public class GameView extends SurfaceView implements Runnable {
             canvas = ourHolder.lockCanvas();
 
             canvas.drawColor(Color.WHITE);
+            // Background Drawing
             canvas.drawBitmap(bg.getBitmap(),bgX1,0,paint);
             canvas.drawBitmap(bg.getBitmap(),bgX2,0,paint);
+            // Building/ House Drawing
             canvas.drawBitmap(currentHouse.getBitmap(), currentHouse.getX(), currentHouse.getY(), paint);
+            // Background Bridge Drawing
+            canvas.drawBitmap(bgBridge.getBitmap(),bgBridgeX1,0,paint);
+            canvas.drawBitmap(bgBridge.getBitmap(),bgBridgeX2,0,paint);
+            // Character Drawing
             for(int i = 0; i < chars.size(); i++) {
                 canvas.drawBitmap(chars.get(i).returnBitmapToDraw(), chars.get(i).getX(), chars.get(i).getY(), paint);
             }
+            //Score Drawing
             paint.setColor(Color.WHITE);
             paint.setTextSize(50);
             canvas.drawText("SCORE: " + points , 1500, 50, paint);
-            canvas.drawBitmap(mainChar.getAddictionSprite().getBitmap(),0,0,paint);
+            // MainCharacter Drawing
+            canvas.drawBitmap(mainChar.getAddictionSprite().getBitmap(), mainCharAddictionX, mainCharAddictionY,paint);
             canvas.drawBitmap(mainChar.getCurrentSprite().getBitmap(), mainChar.getX(), mainChar.getY(), paint);
+            // Item Drawing
             for(int i = 0; i < items.size();i++) {
                 canvas.drawBitmap(items.get(i).getSprite().getBitmap(), items.get(i).getX(), items.get(i).getY(), paint);
             }
+            canvas.drawBitmap(itemTitle.getBitmap(), itemTitleX, itemTitleY, paint);
+            // Damage Drawing
+            for(int i = 0 ; i < damageAnimations.size(); i ++) {
+                canvas.drawText(damageAnimations.get(i).getDamageValue()+"", damageAnimations.get(i).getDamageX(), damageAnimations.get(i).getDamageY(), paint);
+            }
 
+            // Debug Drawing
             if(debug) {
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(45);
                 canvas.drawText("FPS: " + fps + " Cur Ms: " + currentMillisecond + " Character Count: " + chars.size(), 20, 40, paint);
-                canvas.drawText("X: " + touchX + " Y: " + touchY, 20, 80, paint);
+                canvas.drawText("X: " + touchX + " Y: " + touchY , 20, 80, paint);
                 canvas.drawText("Points: " + points + " " + mainChar.getX(), 20, 120, paint);
                 canvas.drawText(mainChar.getSourceSpriteIndex() + "." + mainChar.getCurrentSpriteIndex() + "." + mainChar.getDestinationSpriteIndex(), 20, 160, paint);
                 canvas.drawText("HP: " + mainChar.getAddiction(), 20, 200, paint);
                 canvas.drawText("House X: " + currentHouse.getX(), 20, 240, paint);
                 canvas.drawText("Remaining houses: " + stage.getNumberOfHouses() + " " + characterCount + " " + countTouch, 20, 280, paint);
+                for(int i = 0; i < damageAnimations.size(); i ++) {
+                    canvas.drawText("DamageAnimation: " + damageAnimations.get(i).getDamageDestinationY() + " " + damageAnimations.get(i).getDamageY() + " " + damageAnimations.get(i).getOriginalY(), 20, 320, paint);
+                }
             }
             if(currentState == END_STATE) {
                 paint.setColor(Color.WHITE);
@@ -266,8 +312,9 @@ public class GameView extends SurfaceView implements Runnable {
         gameThread.start();
     }
 
-    public void destroy() {
-        bgBitmap.recycle();
+    public void destroyBitmaps() {
+        bg.destroyBitmap();
+        bgBridge.destroyBitmap();
         mainChar.destroyBitmaps();
         defaultItemSprite.destroyBitmap();
         for(int i = 0; i < chars.size(); i++) {
@@ -287,13 +334,15 @@ public class GameView extends SurfaceView implements Runnable {
                     countTouch ++;
                     touchX = motionEvent.getX();
                     touchY = motionEvent.getY();
+                    damageAnimations.add(new DamageAnimation(5, touchX, touchY, (touchY-200f), currentMillisecond));
                     if (mainChar.isAlive() && currentState == GAME_STATE) {
                         mainCharacterShoot();
                     } else if (currentState == END_STATE) {
                         /*
                         Intent i = new Intent(getContext(), MainActivity.class);
                         getContext().startActivity(i);
-                        ((Activity) getContext()).finish();*/
+                        ((Activity) getContext()).finish();
+                        */
                     }
                 }
                 break;
@@ -320,16 +369,19 @@ public class GameView extends SurfaceView implements Runnable {
         int r = new Random().nextInt(stage.getTypeOfHouse().length);
         houseSpawnX=frameWidth;
         int[] xSpawns = {620, 1570, 2060, 740, 1000, 700};
-        //int[] xSpawns = {620};
         int[] ySpawns = {570, 540, 415, 890, 500, 650};
-        //int[] ySpawns = {570};
-        if(stage.getTypeOfHouse()[r].equals("bungalow")) {
-            Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.house1);
+        if(stage.getTypeOfHouse()[r].equals(House.BUILDING1)) {
+            Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.building1);
             currentHouse = new House(Bitmap.createScaledBitmap(houseBitmap, houseWidth, houseHeight,false), houseSpawnX, houseSpawnY, houseDestinationX1, currentMillisecond, 3,xSpawns, ySpawns);
             houseBitmap.recycle();
         }
-        else if(stage.getTypeOfHouse()[r].equals("skwater")) {
-            Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.house3);
+        else if(stage.getTypeOfHouse()[r].equals(House.BUILDING2)) {
+            Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.building2);
+            currentHouse = new House(Bitmap.createScaledBitmap(houseBitmap, houseWidth, houseHeight,false), houseSpawnX, houseSpawnY, houseDestinationX1, currentMillisecond, 5,xSpawns, ySpawns);
+            houseBitmap.recycle();
+        }
+        else if(stage.getTypeOfHouse()[r].equals(House.BUILDING3)) {
+            Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.building3);
             currentHouse = new House(Bitmap.createScaledBitmap(houseBitmap, houseWidth, houseHeight,false), houseSpawnX, houseSpawnY, houseDestinationX1, currentMillisecond, 5,xSpawns, ySpawns);
             houseBitmap.recycle();
         }
@@ -346,8 +398,8 @@ public class GameView extends SurfaceView implements Runnable {
             SpriteAnimation animation2 = createAnimation(smoke, 1, 5, 100, 100, charWidth, charHeight);
             smoke.recycle();
 
-            int r = new Random().nextInt(3); // spawns a drug if 0, spawns an innocent if 1, spawns an item if 2
-            if(r ==  0) {
+            int r = new Random().nextInt(100); // spawns a drug if 0 - 69, spawns an innocent if 70 - 89 , spawns an item if  90 - 99
+            if(r <= 69) {
                 int charType = new Random().nextInt(1);
                 if(charType == 0) {
                     Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.drug2);
@@ -357,7 +409,7 @@ public class GameView extends SurfaceView implements Runnable {
                     chars.add(new Character("drugs", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 5, 0, 0, 5));
                 }
             }
-            else if (r == 1) {
+            else if (r <= 89) {
                 int charType = new Random().nextInt(1);
                 if (charType == 0) {
                     Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
@@ -367,7 +419,7 @@ public class GameView extends SurfaceView implements Runnable {
                     chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, -5, 0, 0, 5));
                 }
             }
-            else if (r == 2) {
+            else if (r <= 99) {
                 int charType = new Random().nextInt(1);
                 if (charType == 0) {
                     Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.health);
@@ -495,7 +547,7 @@ public class GameView extends SurfaceView implements Runnable {
 
     public void checkTouchedItem() {
         for(int i = 0; i < items.size(); i ++) {
-            if(items.get(i).getEffect() != 0 && items.get(i).checkIfItemTouched(touchX, touchY)) {
+            if(items.get(i).getEffect() != 0 && items.get(i).checkIfItemTouched(touchX, touchY) && currentState != END_STATE) {
                 if(items.get(i).getEffect() == 1) {
                     mainChar.decreaseAddiction();
                     items.get(i).setSprite(defaultItemSprite);
@@ -533,7 +585,7 @@ public class GameView extends SurfaceView implements Runnable {
         // damages the main character as soon as they collide
         for(int i = 0; i < chars.size(); i ++ ) {
             if(chars.get(i).isDue()&& chars.get(i).getName().toString().equals("drugs")){
-                float changeInX = mainChar.getX()+ 200 - chars.get(i).getOriginalX();
+                float changeInX = mainChar.getX() - chars.get(i).getOriginalX();
                 float changeInY = mainChar.getY() + 150 - chars.get(i).getOriginalY();
                 float progress = (currentMillisecond - chars.get(i).getTimeOfDue())/charTranslationDuration;
                 chars.get(i).setX(chars.get(i).getOriginalX()+changeInX*progress);
@@ -557,12 +609,21 @@ public class GameView extends SurfaceView implements Runnable {
         }
     }
 
+    public void moveDamage() {
+        for(int i = 0; i < damageAnimations.size(); i++) {
+            if(damageAnimations.get(i).moveDamage(currentMillisecond, 200) >=1) {
+                damageAnimations.remove(i--);
+            }
+        }
+    }
+
     public void moveHouse (int houseTranslationDuration) {
         // moves the house from source x to destination x based on the house movement rate
         currentHouse.moveHouseToDestination(currentMillisecond,houseTranslationDuration);
         if(!currentHouse.isMoving() && currentState == MOVE_STATE && currentState != GAME_STATE) {
             if (currentHouse.getX() <= houseDestinationX2 + 40) {
                 if (stage.getNumberOfHouses() <= 1) {
+                    mainChar.setSpriteAnimation(defaultSourceFrame, defaultDestinationFrame);
                     currentState = END_STATE;
                 }
                 else if(stage.getNumberOfHouses() > 0) {
@@ -602,14 +663,30 @@ public class GameView extends SurfaceView implements Runnable {
     public void moveBg(int bgMoveRate) {
         if(currentHouse.isMoving()) {
             long time = System.currentTimeMillis();
-            if (time > laseBgMoveChangeTime + bgMoveRate) {
-                laseBgMoveChangeTime = time;
+            if (time > lastBgMoveChangeTime + bgMoveRate) {
+                lastBgMoveChangeTime = time;
                 bgX1--;
                 bgX2--;
                 if (bgX1 == -frameWidth) {
                     bgX1 = frameWidth;
                 } else if (bgX2 == -frameWidth) {
                     bgX2 = frameWidth;
+                }
+            }
+        }
+    }
+
+    public void moveBgBridge(int bgBridgeMoveRate) {
+        if(currentHouse.isMoving()) {
+            long time = System.currentTimeMillis();
+            if (time > lastBgBridgeMoveChangeTime + bgBridgeMoveRate) {
+                lastBgBridgeMoveChangeTime = time;
+                bgBridgeX1-=2;
+                bgBridgeX2-=2;
+                if (bgBridgeX1 == -frameWidth) {
+                    bgBridgeX1 = frameWidth;
+                } else if (bgBridgeX2 == -frameWidth) {
+                    bgBridgeX2 = frameWidth;
                 }
             }
         }
