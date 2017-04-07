@@ -51,6 +51,9 @@ public class Character extends SpriteAnimation {
                 touched = true;
     }
 
+    public void damageCharacter (int damageValue) {
+        health-= damageValue;
+    }
     public Bitmap returnBitmapToDraw() {
         return getCurrentSprite().getBitmap();
     }
