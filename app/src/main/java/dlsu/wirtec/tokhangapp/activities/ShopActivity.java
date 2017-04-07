@@ -133,7 +133,6 @@ public class ShopActivity extends AppCompatActivity {
                             if(p.purchaseGun(sgia.GUN)){
                                 soundManager.playSound(soundManager.SOUND_SHOP_PURCHASE1);
                                 ImageButton b = (ImageButton) v;
-                                b.setOnLongClickListener(null);
                                 b.setImageResource(sgia.DRAWABLE_ID_SOLD);
                                 tvCoinAmount.setText(Integer.toString(GameManager.getGameManager().getPlayer().getMoney()));
                             }else{

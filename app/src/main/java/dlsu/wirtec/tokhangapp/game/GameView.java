@@ -8,17 +8,25 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import dlsu.wirtec.tokhangapp.R;
+import dlsu.wirtec.tokhangapp.activities.NodeActivity;
+import dlsu.wirtec.tokhangapp.logic.Gun;
+import dlsu.wirtec.tokhangapp.logic.GunSound;
+import dlsu.wirtec.tokhangapp.logic.Player;
+import dlsu.wirtec.tokhangapp.managers.GameManager;
+import dlsu.wirtec.tokhangapp.managers.SoundManager;
 
 /**
  * Created by Denmark on 3/2/2017.
@@ -133,7 +141,11 @@ public class GameView extends SurfaceView implements Runnable {
     private int characterCount = 0;
     private int countTouch;
 
-    public GameView(final Context context, Stage stage) {
+    private SoundManager soundManager;
+    private Player player;
+
+    private Activity context;
+    public GameView(final Activity context, Stage stage) {
         super(context);
         // Damage Initialization
         damageAnimations = new ArrayList<DamageAnimation>();
@@ -191,6 +203,11 @@ public class GameView extends SurfaceView implements Runnable {
         items.add(new Item("empty", defaultItemSprite, 0, slotX+200, slotY));
         items.add(new Item("empty", defaultItemSprite, 0, slotX+400, slotY));
         initialize(context);
+
+        player = GameManager.getGameManager().getPlayer();
+        soundManager = GameManager.getSoundManager();
+
+        this.context = context;
     }
 
     @Override
@@ -227,7 +244,6 @@ public class GameView extends SurfaceView implements Runnable {
         checkCharacterIfLastFrame();
         checkCharacterIfDue();
         checkIfMainCharacterDead();
-        checkTouchedCharacters();
         checkTouchedItem();
         checkIfHouseDone();
         moveHouse(houseTranslationDuration);
@@ -287,11 +303,14 @@ public class GameView extends SurfaceView implements Runnable {
                     canvas.drawText("DamageAnimation: " + damageAnimations.get(i).getDamageDestinationY() + " " + damageAnimations.get(i).getDamageY() + " " + damageAnimations.get(i).getOriginalY(), 20, 320, paint);
                 }
             }
+
             if(currentState == END_STATE) {
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(100);
                 canvas.drawText("TAP ANYWHERE ON THE SCREEN TO EXIT", 250, 800, paint);
+                soundManager.playSound(soundManager.SOUND_PLAYER_DEATH2);
             }
+
             ourHolder.unlockCanvasAndPost(canvas);
         }
     }
@@ -334,15 +353,45 @@ public class GameView extends SurfaceView implements Runnable {
                     countTouch ++;
                     touchX = motionEvent.getX();
                     touchY = motionEvent.getY();
-                    damageAnimations.add(new DamageAnimation(5, touchX, touchY, (touchY-200f), currentMillisecond));
+
                     if (mainChar.isAlive() && currentState == GAME_STATE) {
                         mainCharacterShoot();
+
+                        Gun g = player.getEquippedGun();
+
+                        GunSound sound = g.getGunSound();
+
+                        if(sound != null){
+                            int id = sound.getFireSoundID();
+                            if(id != GunSound.RESOURCE_ID_NONE){
+                                soundManager.playSound(id);
+                            }
+                        }
+
+                        List<Character> affectedChars = g.fire(touchX, touchY, chars);
+
+                        for (Character c: affectedChars){
+                            c.setTouched(true);
+                            c.setSpriteAnimation(touchedStartAnimationIndex, touchedEndAnimationIndex);
+
+                            final double midX = c.getMidX();
+                            final double midY = c.getMidY();
+                            damageAnimations.add(new DamageAnimation(g.getDamage(), (float) midX, (float) midY, (float) (midY - 200.0f), currentMillisecond));
+                        }
+
+
+
                     } else if (currentState == END_STATE) {
-                        /*
-                        Intent i = new Intent(getContext(), MainActivity.class);
-                        getContext().startActivity(i);
-                        ((Activity) getContext()).finish();
-                        */
+                        if(mainChar.isAlive()){
+                            Intent data = new Intent();
+                            data.putExtra(NodeActivity.RESULT_INTENT_SCORE, points);
+
+                            context.setResult(NodeActivity.ACTIVITY_RESULT_OKAY, data);
+                        }else{
+                            context.setResult(NodeActivity.ACTIVITY_RESULT_DEATH);
+                        }
+
+                        context.finish();
                     }
                 }
                 break;
@@ -353,7 +402,6 @@ public class GameView extends SurfaceView implements Runnable {
                 touchY = -1;
                 if(mainChar.isAlive() && currentState == GAME_STATE) {
                     mainCharacterShoot();
-
                 }
                 break;
         }
@@ -532,18 +580,6 @@ public class GameView extends SurfaceView implements Runnable {
 
     }
 
-    public void checkTouchedCharacters() {
-        // checks if a character is touched
-        for(int i = chars.size()-1; i>=0; i--) {
-            if(!chars.get(i).isTouched()) {
-                chars.get(i).setTouched(touchX, touchY);
-                if (chars.get(i).isTouched() && !chars.get(i).isDue()) {
-                    // sets the touched animation for the character
-                    chars.get(i).setSpriteAnimation(touchedStartAnimationIndex, touchedEndAnimationIndex);
-                }
-            }
-        }
-    }
 
     public void checkTouchedItem() {
         for(int i = 0; i < items.size(); i ++) {
@@ -628,7 +664,7 @@ public class GameView extends SurfaceView implements Runnable {
                 }
                 else if(stage.getNumberOfHouses() > 0) {
                     stage.deductHouse();
-                    initialize(getContext());
+                    initialize(context);
                 }
             }
             else if(currentHouse.getX() <= houseDestinationX1 + 40) {
@@ -706,6 +742,7 @@ public class GameView extends SurfaceView implements Runnable {
             }
         }
     }
+
 
     public SpriteAnimation createAnimation (Bitmap bitmap, int row, int column, int spriteWidth, int spriteHeight, int frameWidth, int frameHeight) {
         SpriteAnimation animation = new SpriteAnimation();

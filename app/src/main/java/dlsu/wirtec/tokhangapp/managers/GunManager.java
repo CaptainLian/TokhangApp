@@ -41,7 +41,7 @@ public class GunManager {
                400, // reloadDelay
                0, // cost,
                new SimpleGunSound(
-                       -1,
+                       soundManager.SOUND_GUN_PISTOL_FIRE1,
                        -1,
                        -1,
                        -1
@@ -57,7 +57,7 @@ public class GunManager {
                 550, // reload Delay
                 500, // cost
                 new SimpleGunSound(
-                        -1,
+                        soundManager.SOUND_GUN_RIFLE_FIRE1,
                         -1,
                         -1,
                         soundManager.SOUND_SHOP_BRRT
@@ -72,8 +72,8 @@ public class GunManager {
                 600,// fireDelay
                 700, // reloadDelay
                 1200, //cost
-                300, //spread
-                32, // pelletRadius
+                300.0, //spread
+                32.0, // pelletRadius
                 8, // pellet count
                 new SimpleGunSound(
                         soundManager.SOUND_GUN_SHOTGUN_FIRE1,
@@ -106,8 +106,8 @@ public class GunManager {
                 1,
                 0,
                 1200,
-                3200,
-                700,
+                1,
+                250.0,
                 new SimpleGunSound(
                         -1,
                         -1,

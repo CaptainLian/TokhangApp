@@ -46,6 +46,10 @@ public class SoundManager{
     public final int SOUND_GUN_SHOTGUN_RELOAD1;
     public final int SOUND_GUN_SHOTGUN_COCK1;
 
+    public final int SOUND_GUN_PISTOL_FIRE1;
+
+    public final int SOUND_GUN_RIFLE_FIRE1;
+
     public final int SOUND_POWERUP_PICKUP1;
 
 
@@ -79,6 +83,11 @@ public class SoundManager{
         SOUND_GUN_SHOTGUN_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_fire1, DEFAULT_LOAD_PRIORITY);
         SOUND_GUN_SHOTGUN_RELOAD1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_reload1, DEFAULT_LOAD_PRIORITY);
         SOUND_GUN_SHOTGUN_COCK1 = soundPlayer.load(context, R.raw.sound_gun_shotgun_cock1, DEFAULT_LOAD_PRIORITY);
+
+        //pistol
+        SOUND_GUN_PISTOL_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_pistol_fire1, DEFAULT_LOAD_PRIORITY);
+
+        SOUND_GUN_RIFLE_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_rifle_fire1, DEFAULT_LOAD_PRIORITY);
 
         SOUND_POWERUP_PICKUP1 = soundPlayer.load(context, R.raw.sound_powerup_pickup1, DEFAULT_LOAD_PRIORITY);
 

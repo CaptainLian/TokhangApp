@@ -2,6 +2,11 @@ package dlsu.wirtec.tokhangapp.logic;
 
 import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+import dlsu.wirtec.tokhangapp.game.Character;
+
 /**
  * Created by lyssa on 21/03/2017.
  */
@@ -11,11 +16,11 @@ public class Shotgun extends Gun {
     /**
      * The radius the pellet will scatter
      */
-    private int spreadRadius;
+    private double spreadRadius;
     /**
      * The damage radius for each pellet
      */
-    private int pelletRadius;
+    private double pelletRadius;
     /**
      * The amount of pellets that will be scattered within spread radius
      */
@@ -34,7 +39,7 @@ public class Shotgun extends Gun {
      * @param pelletAmount The amount of pellets the GUN fires.
      * @throws IllegalArgumentException
      */
-    public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int spreadRadius, int pelletRadius, int pelletAmount) throws IllegalArgumentException{
+    public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, double spreadRadius, double pelletRadius, int pelletAmount) throws IllegalArgumentException{
         this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, spreadRadius, pelletRadius, pelletAmount, null, null);
     }
 
@@ -52,7 +57,7 @@ public class Shotgun extends Gun {
      * @param gunSound
      * @throws IllegalArgumentException
      */
-    public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int spreadRadius, int pelletRadius, int pelletAmount, @Nullable GunSound gunSound, @Nullable String description) {
+    public Shotgun(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, double spreadRadius, double pelletRadius, int pelletAmount, @Nullable GunSound gunSound, @Nullable String description) {
         super(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, gunSound, description);
         setSpreadRadius(spreadRadius);
         setPelletAmount(pelletAmount);
@@ -65,7 +70,7 @@ public class Shotgun extends Gun {
      * @param spreadRadius
      * @throws IllegalArgumentException If the radius is less than or equal to zero (0).
      */
-    public void setSpreadRadius(int spreadRadius) throws IllegalArgumentException {
+    public void setSpreadRadius(double spreadRadius) throws IllegalArgumentException {
         if(spreadRadius <= 0)
             throw new IllegalArgumentException("Spread radius cannot be less than or equal to zero (0).");
         this.spreadRadius = spreadRadius;
@@ -76,7 +81,7 @@ public class Shotgun extends Gun {
      * @param pelletRadius
      * @throws IllegalArgumentException If the radius is less than or equal to zero (0).
      */
-    public void setPelletRadius(int pelletRadius) throws IllegalArgumentException  {
+    public void setPelletRadius(double pelletRadius) throws IllegalArgumentException  {
         if(pelletRadius <= 0 )
             throw new IllegalArgumentException("Pellet radius cannot be less than or equal to zero (0).");
         this.pelletRadius = pelletRadius;
@@ -93,11 +98,11 @@ public class Shotgun extends Gun {
         this.pelletAmount = pelletAmount;
     }
 
-    public int getSpreadRadius() {
+    public double getSpreadRadius() {
         return spreadRadius;
     }
 
-    public int getPelletRadius() {
+    public double getPelletRadius() {
         return pelletRadius;
     }
 
@@ -105,8 +110,4 @@ public class Shotgun extends Gun {
         return pelletAmount;
     }
 
-    @Override
-    public void fire(int x, int y) {
-        super.fire(x, y);
-    }
 }

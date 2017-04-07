@@ -2,6 +2,14 @@ package dlsu.wirtec.tokhangapp.logic;
 
 import android.support.annotation.Nullable;
 
+import dlsu.wirtec.tokhangapp.game.Character;
+import dlsu.wirtec.tokhangapp.game.Sprite;
+import dlsu.wirtec.tokhangapp.managers.GameManager;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * Created by lyssa on 21/03/2017.
  */
@@ -148,13 +156,24 @@ public class Gun {
         return gunSound;
     }
 
-    /**
-     * Fires the GUN at the specified point (x, y)
-     * @param x x-coordinate
-     * @param y y-coordinate
-     */
-    public void fire(int x, int y){
 
+    /**
+     * Fires the gun in the specified x and y coordinate.
+     * ALL GUNS OVERRIDING THIS METHOD SHOULD RETURN A LIST OF AFFECTED CHARACTERS, WHICH WOULD BE ITERATED OVER BY THE GAME
+     * LINKED LIST CAN BE USED FOR EFFICIENCY
+     * @param touchX
+     * @param touchY
+     * @param characters The touchable characters in the game area
+     * @return The affected characters in the area
+     */
+    public List<Character> fire(float touchX, float touchY, ArrayList<Character> characters){
+        LinkedList<Character> affectedChars = new LinkedList<>();
+        for(Character c: characters){
+            if(c.isTouched(touchX, touchY)){
+                affectedChars.add(c);
+            }
+        }
+        return affectedChars;
     }
 
     public int getGunID(){

@@ -50,4 +50,9 @@ public class GameActivity extends AppCompatActivity {
         super.onStop();
         gameView.destroyBitmaps();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

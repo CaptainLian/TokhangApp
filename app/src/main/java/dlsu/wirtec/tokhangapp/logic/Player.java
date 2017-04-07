@@ -179,4 +179,5 @@ public class Player {
     public void incrementLevel(){
         this.currentLevel++;
     }
+
 }

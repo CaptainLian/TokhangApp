@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import dlsu.wirtec.tokhangapp.R;
 import dlsu.wirtec.tokhangapp.game.Stage;
+import dlsu.wirtec.tokhangapp.logic.Player;
 import dlsu.wirtec.tokhangapp.managers.GameManager;
 
 public class NodeActivity extends AppCompatActivity {
@@ -23,6 +24,8 @@ public class NodeActivity extends AppCompatActivity {
     public static final int ACTIVITY_RESULT_DEATH = 1;
 
     public static final int ACTIVITY_REQUEST_CODE_GAME = 0;
+
+    public static final String RESULT_INTENT_SCORE = "GAME_SCORE";
 
     private ImageView drawArea;
     private Bitmap lines;
@@ -150,8 +153,8 @@ public class NodeActivity extends AppCompatActivity {
             int previous = current - 1;
             final float firstNodeMidX = stages[current].getX() + stages[current].getWidth()/2.0f,
                         firstNodeMidY = stages[current].getY() + stages[current].getHeight()/2.0f;
-            final float secondNodeMidX = stages[current - 1].getX() + stages[current].getWidth()/2.0f,
-                        secondNodeMidY = stages[current - 1].getY() + stages[current].getHeight()/2.0f;
+            final float secondNodeMidX = stages[previous].getX() + stages[previous].getWidth()/2.0f,
+                        secondNodeMidY = stages[previous].getY() + stages[previous].getHeight()/2.0f;
 
             c.drawLine(firstNodeMidX, firstNodeMidY, secondNodeMidX, secondNodeMidY, paint);
         }
@@ -189,6 +192,13 @@ public class NodeActivity extends AppCompatActivity {
             case ACTIVITY_REQUEST_CODE_GAME:
                 switch (resultCode){
                     case ACTIVITY_RESULT_OKAY:
+
+                        int score = data.getIntExtra(RESULT_INTENT_SCORE, 0);
+                        Player p = GameManager.getGameManager().getPlayer();
+
+                        p.incrementScore(score);
+                        p.incrementLevel();
+                        p.incrementMoney(500);
 
                         break;
                     case ACTIVITY_RESULT_DEATH:

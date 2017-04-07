@@ -2,13 +2,20 @@ package dlsu.wirtec.tokhangapp.logic;
 
 import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+import dlsu.wirtec.tokhangapp.game.Character;
+import dlsu.wirtec.tokhangapp.game.Sprite;
+
 /**
  * Created by lyssa on 21/03/2017.
  */
 
 public class RocketLauncher extends Gun {
 
-    private int explosiveRadius;
+    private double explosiveRadius;
     /**
      * @param name
      * @param damage
@@ -19,7 +26,7 @@ public class RocketLauncher extends Gun {
      * @param explosiveRadius
      * @throws IllegalArgumentException
      */
-    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int explosiveRadius) throws IllegalArgumentException {
+    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, double explosiveRadius) throws IllegalArgumentException {
         this(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, explosiveRadius, null, null);
     }
 
@@ -33,21 +40,31 @@ public class RocketLauncher extends Gun {
      * @param explosiveRadius
      * @param gunSound
      */
-    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, int explosiveRadius, @Nullable GunSound gunSound, @Nullable String description) {
+    public RocketLauncher(@Nullable String name, int damage, int maxAmmoCapacity, long fireDelayTime, long reloadTime, int cost, double explosiveRadius, @Nullable GunSound gunSound, @Nullable String description) {
         super(name, damage, maxAmmoCapacity, fireDelayTime, reloadTime, cost, gunSound, description);
         setExplosiveRadius(explosiveRadius);
     }
 
 
-    public void setExplosiveRadius(int explosiveRadius){
+    public void setExplosiveRadius(double explosiveRadius){
         if(explosiveRadius < 0){
             throw new IllegalArgumentException("explosive radius cannot be negative");
         }
-        this.explosiveRadius = explosiveRadius;
+        this.explosiveRadius = explosiveRadius*explosiveRadius;
     }
 
     @Override
-    public void fire(int x, int y) {
-        super.fire(x, y);
+    public List<Character> fire(float touchX, float touchY, ArrayList<Character> characters) {
+        LinkedList<Character> affectedCharacters = new LinkedList<>();
+        for(int i = 0, size = characters.size(); i < size; i++){
+            Character c = characters.get(i);
+
+            final double deltaX = c.getMidX() - touchX;
+            final double deltaY = c.getMidY() - touchY;
+            if(deltaX*deltaX + deltaY*deltaY <= explosiveRadius){
+                affectedCharacters.add(c);
+            }
+        }
+        return affectedCharacters;
     }
 }

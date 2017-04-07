@@ -10,6 +10,8 @@ public class Character extends SpriteAnimation {
     private String name; //name of the character
     private float x; //leftmost touched part of the image
     private float y; // uppermost touched part of the image
+    private float midX;
+    private float midY;
     private float originalX;
     private float originalY;
     private int timeOfDue;
@@ -46,9 +48,13 @@ public class Character extends SpriteAnimation {
     }
 
     public void setTouched(float touchX, float touchY) {
-        if (touchX <= getCurrentSprite().getFrameWidth() + this.x && touchX >= this.x
-                    && touchY <= getCurrentSprite().getFrameHeight() + this.y && touchY >= this.y)
-                touched = true;
+        this.touched = touchX <= getCurrentSprite().getFrameWidth() + this.x && touchX >= this.x
+                && touchY <= getCurrentSprite().getFrameHeight() + this.y && touchY >= this.y;
+    }
+
+    public boolean isTouched(float touchX, float touchY){
+        return touchX <= getCurrentSprite().getFrameWidth() + this.x && touchX >= this.x
+                && touchY <= getCurrentSprite().getFrameHeight() + this.y && touchY >= this.y;
     }
 
     public Bitmap returnBitmapToDraw() {
@@ -153,5 +159,13 @@ public class Character extends SpriteAnimation {
 
     public void setY(float y) {
         this.y = y;
+    }
+
+    public double getMidX(){
+        return this.x + getCurrentSprite().getFrameWidth()/2.0f;
+    }
+
+    public double getMidY(){
+        return this.y +getCurrentSprite().getFrameHeight()/2.0f;
     }
 }
