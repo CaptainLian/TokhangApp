@@ -57,6 +57,9 @@ public class Character extends SpriteAnimation {
                 && touchY <= getCurrentSprite().getFrameHeight() + this.y && touchY >= this.y;
     }
 
+    public void damageCharacter (int damageValue) {
+        health-= damageValue;
+    }
     public Bitmap returnBitmapToDraw() {
         return getCurrentSprite().getBitmap();
     }
