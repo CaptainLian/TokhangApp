@@ -461,19 +461,23 @@ public class GameView extends SurfaceView implements Runnable {
         //House instantiation
         int r = new Random().nextInt(stage.getTypeOfHouse().length);
         houseSpawnX=frameWidth;
-        int[] xSpawns = {620, 1570, 2060, 740, 1000, 700};
-        int[] ySpawns = {570, 540, 415, 890, 500, 650};
         if(stage.getTypeOfHouse()[r].equals(House.BUILDING1)) {
+            int[] xSpawns = {840, 1060, 1280, 840, 1060, 1280, 840, 1060, 1280, 840, 1060, 1280, 840, 1060, 1280};
+            int[] ySpawns = {320, 320, 320, 485, 485, 485, 650, 650, 650, 815, 815, 815, 980, 980, 980};
             Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.building1);
-            currentHouse = new House(Bitmap.createScaledBitmap(houseBitmap, houseWidth, houseHeight,false), houseSpawnX, houseSpawnY, houseDestinationX1, currentMillisecond, 3,xSpawns, ySpawns);
+            currentHouse = new House(Bitmap.createScaledBitmap(houseBitmap, houseWidth, houseHeight,false), houseSpawnX, houseSpawnY, houseDestinationX1, currentMillisecond, 5,xSpawns, ySpawns);
             houseBitmap.recycle();
         }
         else if(stage.getTypeOfHouse()[r].equals(House.BUILDING2)) {
+            int[] xSpawns = {915, 1135, 1335, 1565, 915, 1335, 915, 1145, 1350};
+            int[] ySpawns = {675, 675, 675, 675, 848, 848, 1021, 1021, 1021};
             Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.building2);
             currentHouse = new House(Bitmap.createScaledBitmap(houseBitmap, houseWidth, houseHeight,false), houseSpawnX, houseSpawnY, houseDestinationX1, currentMillisecond, 5,xSpawns, ySpawns);
             houseBitmap.recycle();
         }
         else if(stage.getTypeOfHouse()[r].equals(House.BUILDING3)) {
+            int[] xSpawns = {855, 1040, 1225, 1410, 1595, 880, 1175, 1470, 880, 1175, 1470};
+            int[] ySpawns = {360, 360, 360, 360, 360, 620, 620, 620, 1000, 1000, 1000};
             Bitmap houseBitmap = BitmapFactory.decodeResource(this.getResources(), R.drawable.building3);
             currentHouse = new House(Bitmap.createScaledBitmap(houseBitmap, houseWidth, houseHeight,false), houseSpawnX, houseSpawnY, houseDestinationX1, currentMillisecond, 5,xSpawns, ySpawns);
             houseBitmap.recycle();
@@ -503,13 +507,27 @@ public class GameView extends SurfaceView implements Runnable {
                 }
             }
             else if (r <= 89) {
-                int charType = new Random().nextInt(1);
+                int charType = new Random().nextInt(3);
                 if (charType == 0) {
                     Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
                     character = Bitmap.createScaledBitmap(character, 100, 100, false);
                     SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
                     character.recycle();
                     chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, -5, 0, 0, 5));
+                }
+                else if (charType == 1) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 1000, -5, 0, 0, 5));
+                }
+                else if (charType == 2) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2500, -5, 0, 0, 5));
                 }
             }
             else if (r <= 99) {
@@ -519,7 +537,7 @@ public class GameView extends SurfaceView implements Runnable {
                     character = Bitmap.createScaledBitmap(character, 100, 100, false);
                     SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
                     character.recycle();
-                    chars.add(new Character("item_health", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 0, 0, 0, 5));
+                    chars.add(new Character("item_health", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 300, 0, 0, 0, 5));
                 }
             }
 
@@ -746,11 +764,11 @@ public class GameView extends SurfaceView implements Runnable {
             long time = System.currentTimeMillis();
             if (time > lastBgMoveChangeTime + bgMoveRate) {
                 lastBgMoveChangeTime = time;
-                bgX1--;
-                bgX2--;
-                if (bgX1 == -frameWidth) {
+                bgX1-=2;
+                bgX2-=2;
+                if (bgX1 <= -frameWidth) {
                     bgX1 = frameWidth;
-                } else if (bgX2 == -frameWidth) {
+                } else if (bgX2 <= -frameWidth) {
                     bgX2 = frameWidth;
                 }
             }
@@ -762,11 +780,11 @@ public class GameView extends SurfaceView implements Runnable {
             long time = System.currentTimeMillis();
             if (time > lastBgBridgeMoveChangeTime + bgBridgeMoveRate) {
                 lastBgBridgeMoveChangeTime = time;
-                bgBridgeX1-=2;
-                bgBridgeX2-=2;
-                if (bgBridgeX1 == -frameWidth) {
+                bgBridgeX1-=7;
+                bgBridgeX2-=7;
+                if (bgBridgeX1 <= -frameWidth) {
                     bgBridgeX1 = frameWidth;
-                } else if (bgBridgeX2 == -frameWidth) {
+                } else if (bgBridgeX2 <= -frameWidth) {
                     bgBridgeX2 = frameWidth;
                 }
             }

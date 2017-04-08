@@ -1,22 +1,22 @@
 [
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_continue.png",
+        "source": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_continue.png"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_settings.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_settings.png"
+        "merged": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_start.png",
+        "source": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_start.png"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_start.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_start.png"
+        "merged": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_score.png",
+        "source": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_score.png"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_score.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_score.png"
+        "merged": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_continue.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_continue.png"
+        "merged": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\menu_button_settings.png",
+        "source": "C:\\Users\\Denmark\\Desktop\\Workspaces\\wirtecTayongS15\\TokhangApp\\app\\src\\main\\res\\mipmap-xxhdpi\\menu_button_settings.png"
     }
 ]
