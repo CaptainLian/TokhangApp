@@ -107,7 +107,6 @@ public class ShopActivity extends AppCompatActivity {
                 btnGunSniper,
                 btnGunRocket
         };
-
     }
 
     private View.OnClickListener clickListener = new View.OnClickListener() {

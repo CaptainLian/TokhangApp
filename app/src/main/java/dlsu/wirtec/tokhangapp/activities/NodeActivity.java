@@ -169,7 +169,7 @@ public class NodeActivity extends AppCompatActivity {
             }else if(s.ID > playerLevel){
                 stage.setImageResource(R.drawable.icon_node_locked);
             }else{
-                stage.setImageResource(R.drawable.icon_node_complete);
+                stage.setImageResource(R.drawable.icon_node_completed);
                 stage.setOnClickListener(sectorClickedListener);
             }
             stage.bringToFront();

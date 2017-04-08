@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -43,7 +44,7 @@ public class GameView extends SurfaceView implements Runnable {
     private boolean debug = true;
 
     // States
-    private final int END_STATE = 2; // end state is where the stage is already finished
+    private final int END_STATE = 2; // lastDraw state is where the stage is already finished
     private final int GAME_STATE = 1; // game state is where the user would be able to shoot enemies
     private final int MOVE_STATE = 0; // move state is where the house is moving in place
     private int currentState = 0;
@@ -144,8 +145,15 @@ public class GameView extends SurfaceView implements Runnable {
     private SoundManager soundManager;
     private Player player;
 
+    private boolean lastUpdate = false;
+    private boolean lastDraw = false;
+
     private Activity context;
-    public GameView(final Activity context, Stage stage) {
+
+    private GameStateListener gameStateListener;
+
+    private Random random = new Random(new Random().nextLong());
+    public GameView(final Activity context, Stage stage, @Nullable GameStateListener gameStateListener) {
         super(context);
         // Damage Initialization
         damageAnimations = new ArrayList<DamageAnimation>();
@@ -204,10 +212,26 @@ public class GameView extends SurfaceView implements Runnable {
         items.add(new Item("empty", defaultItemSprite, 0, slotX+400, slotY));
         initialize(context);
 
-        player = GameManager.getGameManager().getPlayer();
-        soundManager = GameManager.getSoundManager();
+        this.player = GameManager.getGameManager().getPlayer();
+        this.soundManager = GameManager.getSoundManager();
 
         this.context = context;
+        this.gameStateListener = gameStateListener;
+
+        switch(random.nextInt(4)){
+            case 0:
+                soundManager.playSound(soundManager.SOUND_GAME_GO1);
+                break;
+            case 1:
+                soundManager.playSound(soundManager.SOUND_GAME_GO2);
+                break;
+            case 2:
+                soundManager.playSound(soundManager.SOUND_GAME_GO3);
+                break;
+            case 3:
+                soundManager.playSound(soundManager.SOUND_GAME_GO4);
+                break;
+        }
     }
 
     @Override
@@ -255,6 +279,9 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void draw() {
+
+
+
         if(ourHolder.getSurface().isValid()) {
             canvas = ourHolder.lockCanvas();
 
@@ -308,9 +335,28 @@ public class GameView extends SurfaceView implements Runnable {
                 paint.setColor(Color.WHITE);
                 paint.setTextSize(100);
                 canvas.drawText("TAP ANYWHERE ON THE SCREEN TO EXIT", 250, 800, paint);
-                soundManager.playSound(soundManager.SOUND_PLAYER_DEATH2);
-            }
 
+                if(!lastDraw && mainChar.isAlive()){
+                    lastDraw = true;
+                    soundManager.playSound(soundManager.SOUND_PLAYER_DEATH2);
+                }else if(!lastDraw){
+                    lastDraw = true;
+
+                    switch (random.nextInt(3)){
+                        case 0:
+                            soundManager.playSound(soundManager.SOUND_GAME_CLEAR1);
+                            break;
+                        case 1:
+                            soundManager.playSound(soundManager.SOUND_GAME_CLEAR2);
+                            break;
+                        case 2:
+                            soundManager.playSound(soundManager.SOUND_GAME_CLEAR3);
+                            break;
+                    }
+
+
+                }
+            }
             ourHolder.unlockCanvasAndPost(canvas);
         }
     }
@@ -379,20 +425,19 @@ public class GameView extends SurfaceView implements Runnable {
                             damageAnimations.add(new DamageAnimation(g.getDamage(), (float) midX, (float) midY, (float) (midY - 200.0f), currentMillisecond));
                         }
 
-
+                        affectedChars.clear();
 
                     } else if (currentState == END_STATE) {
                         if(mainChar.isAlive()){
-                            Intent data = new Intent();
-                            data.putExtra(NodeActivity.RESULT_INTENT_SCORE, points);
-
-                            context.setResult(NodeActivity.ACTIVITY_RESULT_OKAY, data);
+                            if(gameStateListener != null){
+                                gameStateListener.onPlayerSuccess(points);
+                            }
                         }else{
-                            context.setResult(NodeActivity.ACTIVITY_RESULT_DEATH);
-                        }
-
-                        context.finish();
-                    }
+                            if(gameStateListener != null){
+                                gameStateListener.onPlayerDeath(points);
+                            }
+                        }//if(mainChar.isAlive())
+                    }//currentState == END_STATE
                 }
                 break;
 

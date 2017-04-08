@@ -2,9 +2,12 @@ package dlsu.wirtec.tokhangapp.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.ImageButton;
 
 import dlsu.wirtec.tokhangapp.R;
@@ -15,6 +18,8 @@ import dlsu.wirtec.tokhangapp.ui.NewGameDialogFragment;
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton btnStartNewGame, btnContinue, btnLeaderboard;
+
+    private SoundManager soundManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });//setOnClickListener
 
+
         btnLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        soundManager = GameManager.getSoundManager();
     }
 
     private final void goToMap() {
@@ -99,9 +106,11 @@ public class MainActivity extends AppCompatActivity {
             btnContinue.setClickable(false);
             btnContinue.setImageResource(0);
         }
-        SoundManager soundManager = GameManager.getSoundManager();
-        if(soundManager.isMusicPlaying()){
-            soundManager.startMusic();
+
+        if(soundManager.isMusicExists() ){
+            if(!soundManager.isMusicPlaying()){
+                soundManager.startMusic();
+            }
         }else{
             soundManager.playMusic(R.raw.music_heytdrags_trap_short, null, null);
         }
@@ -110,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        GameManager.getSoundManager().pauseMusic();
+        soundManager.pauseMusic();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        GameManager.getSoundManager().stopMusic();
+        soundManager.stopMusic();
     }
-}
+}//class

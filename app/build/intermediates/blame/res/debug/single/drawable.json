@@ -20,10 +20,6 @@
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_plus_signin_btn_text_dark.xml"
     },
     {
-        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_node_complete.png",
-        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\icon_node_complete.png"
-    },
-    {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\common_plus_signin_btn_text_light.xml",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\8.4.0\\res\\drawable\\common_plus_signin_btn_text_light.xml"
     },
@@ -158,6 +154,10 @@
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\background_equipment_vault.jpg",
         "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\background_equipment_vault.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\icon_node_completed.png",
+        "source": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\src\\main\\res\\drawable\\icon_node_completed.png"
     },
     {
         "merged": "C:\\Users\\lyssa\\AndroidStudioProjects\\TokhangApp\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",

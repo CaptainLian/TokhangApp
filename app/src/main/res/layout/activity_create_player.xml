@@ -21,10 +21,12 @@
     <Button
         android:id="@+id/btn_proceed"
         android:text="@string/proceed"
+        android:textColor="@color/silan_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@color/transparent" />
 
     <TextView
         android:id="@+id/tv_enterName"
@@ -39,8 +41,10 @@
     <Button
         android:id="@+id/btn_cancel"
         android:text="@string/cancel"
+        android:textColor="@color/silan_blue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/transparent" />
 </RelativeLayout>

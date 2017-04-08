@@ -52,6 +52,14 @@ public class SoundManager{
 
     public final int SOUND_POWERUP_PICKUP1;
 
+    public final int SOUND_GAME_CLEAR1;
+    public final int SOUND_GAME_CLEAR2;
+    public final int SOUND_GAME_CLEAR3;
+
+    public final int SOUND_GAME_GO1;
+    public final int SOUND_GAME_GO2;
+    public final int SOUND_GAME_GO3;
+    public final int SOUND_GAME_GO4;
 
 
     SoundManager(Context context){
@@ -95,6 +103,15 @@ public class SoundManager{
         SOUND_EQUIPMENT_LOAD2 = soundPlayer.load(context, R.raw.sound_equipment_load2, DEFAULT_LOAD_PRIORITY);
         SOUND_EQUIPMENT_LOAD3 = soundPlayer.load(context, R.raw.sound_equipment_load3, DEFAULT_LOAD_PRIORITY);
 
+        SOUND_GAME_CLEAR1 = soundPlayer.load(context, R.raw.sound_game_clear_idf, DEFAULT_LOAD_PRIORITY);
+        SOUND_GAME_CLEAR2 = soundPlayer.load(context, R.raw.sound_game_clear_gign, DEFAULT_LOAD_PRIORITY);
+        SOUND_GAME_CLEAR3 = soundPlayer.load(context, R.raw.sound_game_clear_gsg, DEFAULT_LOAD_PRIORITY);
+
+        SOUND_GAME_GO1 = soundPlayer.load(context, R.raw.sound_game_go_phoenix, DEFAULT_LOAD_PRIORITY);
+        SOUND_GAME_GO2 = soundPlayer.load(context, R.raw.sound_game_go_phoenix1, DEFAULT_LOAD_PRIORITY);
+        SOUND_GAME_GO3 = soundPlayer.load(context, R.raw.sound_game_go_sas1, DEFAULT_LOAD_PRIORITY);
+        SOUND_GAME_GO4 = soundPlayer.load(context, R.raw.sound_game_go_sas2, DEFAULT_LOAD_PRIORITY);
+
     }
 
     public void playSound(int soundID){
@@ -104,23 +121,20 @@ public class SoundManager{
     public void playMusic(int rawID, @Nullable final MediaPlayer.OnCompletionListener completionListener, @Nullable final  MediaPlayer.OnPreparedListener preparedListener) {
         stopMusic();
         currentMusicPlayer = MediaPlayer.create(context, rawID);
-        currentMusicPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        if(completionListener != null){
+            currentMusicPlayer.setOnCompletionListener(completionListener);
+        }
+
+        currentMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
-            public void onCompletion(MediaPlayer mp) {
+            public void onPrepared(MediaPlayer mp) {
+                mp.start();
                 if(completionListener != null) {
                     completionListener.onCompletion(mp);
                 }
             }
         });
-        currentMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                if(preparedListener != null){
-                    preparedListener.onPrepared(mp);
-                }
-                mp.start();
-            }
-        });
+
     }
 
     public MediaPlayer getCurrentMusicPlayer(){
@@ -133,12 +147,14 @@ public class SoundManager{
         }
     }
 
-    public boolean isMusicPlaying(){
-        if(currentMusicPlayer != null){
-            return currentMusicPlayer.isPlaying();
-        }
-        return false;
+    public boolean isMusicExists(){
+        return currentMusicPlayer != null;
     }
+
+    public boolean isMusicPlaying(){
+        return currentMusicPlayer.isPlaying();
+    }
+
     public void stopMusic(){
         if(currentMusicPlayer != null){
             currentMusicPlayer.stop();
