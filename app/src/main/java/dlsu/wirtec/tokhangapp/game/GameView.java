@@ -41,7 +41,7 @@ public class GameView extends SurfaceView implements Runnable {
     private volatile boolean playing;
     private Canvas canvas;
     private Paint paint;
-    private boolean debug = true;
+    private boolean debug = false;
 
     // States
     private final int END_STATE = 2; // lastDraw state is where the stage is already finished
@@ -298,7 +298,7 @@ public class GameView extends SurfaceView implements Runnable {
             //Score Drawing
             paint.setColor(Color.WHITE);
             paint.setTextSize(50);
-            canvas.drawText("SCORE: " + points , 1500, 50, paint);
+            canvas.drawText("SCORE: " + points , 2000, 50, paint);
             // MainCharacter Drawing
             canvas.drawBitmap(mainChar.getAddictionSprite().getBitmap(), mainCharAddictionX, mainCharAddictionY,paint);
             canvas.drawBitmap(mainChar.getCurrentSprite().getBitmap(), mainChar.getX(), mainChar.getY(), paint);
@@ -492,37 +492,58 @@ public class GameView extends SurfaceView implements Runnable {
 
             int r = new Random().nextInt(100); // spawns a drug if 0 - 69, spawns an innocent if 70 - 89 , spawns an item if  90 - 99
             if(r <= 69) {
-                int charType = new Random().nextInt(1);
+                int charType = new Random().nextInt(3);
                 if(charType == 0) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.drug1);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("drugs", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 5, 0, 0, 3));
+                }
+                else if(charType == 1) {
                     Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.drug2);
                     character = Bitmap.createScaledBitmap(character, 100, 100, false);
                     SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
                     character.recycle();
-                    chars.add(new Character("drugs", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 5, 0, 0, 5));
+                    chars.add(new Character("drugs", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 10, 0, 0, 7));
+                }
+                else if(charType == 2) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.drug3);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("drugs", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, 2, 0, 0, 1));
                 }
             }
             else if (r <= 89) {
-                int charType = new Random().nextInt(3);
+                int charType = new Random().nextInt(4);
                 if (charType == 0) {
-                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent1);
                     character = Bitmap.createScaledBitmap(character, 100, 100, false);
                     SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
                     character.recycle();
-                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, -5, 0, 0, 5));
+                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 1000, -2, 0, 0, 1));
                 }
                 else if (charType == 1) {
-                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent2);
                     character = Bitmap.createScaledBitmap(character, 100, 100, false);
                     SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
                     character.recycle();
-                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 1000, -5, 0, 0, 5));
+                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 1500, -5, 0, 0, 1));
                 }
                 else if (charType == 2) {
-                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent);
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent3);
                     character = Bitmap.createScaledBitmap(character, 100, 100, false);
                     SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
                     character.recycle();
-                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2500, -5, 0, 0, 5));
+                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2000, -10, 0, 0, 1));
+                }
+                else if (charType == 3) {
+                    Bitmap character = BitmapFactory.decodeResource(this.getResources(), R.drawable.innocent4);
+                    character = Bitmap.createScaledBitmap(character, 100, 100, false);
+                    SpriteAnimation animation1 = createAnimation(character, 1, 1, 100, 100, charWidth, charHeight);
+                    character.recycle();
+                    chars.add(new Character("innocent", animation1, currentHouse.getxSpawns()[spawnIndex], currentHouse.getySpawns()[spawnIndex], currentMillisecond, 2500, -20, 0, 0, 1));
                 }
             }
             else if (r <= 99) {
