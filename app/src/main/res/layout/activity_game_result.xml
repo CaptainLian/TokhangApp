@@ -79,17 +79,8 @@
         android:textColor="#31e137"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tv_totalMoney"
         android:layout_alignBottom="@+id/tv_totalMoney"
         android:layout_toEndOf="@+id/tv_totalMoney" />
-
-    <TextView
-        android:id="@+id/tv_totalScoreAdditional"
-        android:textColor="#31e137"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/tv_totalScore"
-        android:layout_toEndOf="@+id/tv_totalScore" />
 
     <TextView
         android:id="@+id/tv_totalScore"
@@ -99,6 +90,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_totalMoney"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tv_totalScoreAdditional"
+        android:textColor="#31e137"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/tv_totalScore"
+        android:layout_toEndOf="@+id/tv_totalScore" />
 
     <TextView
         android:id="@+id/tv_score"

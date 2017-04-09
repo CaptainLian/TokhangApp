@@ -3057,8 +3057,8 @@ containing a value of this type.
         public static final int tv_success=0x7f0e008a;
         public static final int tv_totalAdditionMoney=0x7f0e0091;
         public static final int tv_totalMoney=0x7f0e008f;
-        public static final int tv_totalScore=0x7f0e0093;
-        public static final int tv_totalScoreAdditional=0x7f0e0092;
+        public static final int tv_totalScore=0x7f0e0092;
+        public static final int tv_totalScoreAdditional=0x7f0e0093;
         public static final int up=0x7f0e000d;
         public static final int useLogo=0x7f0e0018;
         public static final int view_offset_helper=0x7f0e000e;
