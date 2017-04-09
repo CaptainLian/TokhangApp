@@ -48,6 +48,7 @@
     <string name="total_score">Total Score</string>
     <string name="money">Money</string>
     <string name="score">Score</string>
+    <string name="final_score">Final Score</string>
 
     <!-- CreatePlayerActivity -->
     <string name="create_player_enter_name">Enter your name</string>

@@ -46,73 +46,72 @@ public class GameManager {
             gameManager.stages =  new Stage[]{
                     new Stage(
                             0,
-                            620,
+                            700,
                             "Sector 1",
                             6,
                             new String[]{
                                     House.BUILDING1,
                                     House.BUILDING2
                             },
-                            800
+                            700
                     ),
                     new Stage(
                             1,
-                            650,
+                            800,
                             "Sector 2",
                             7,
                             new String[]{
-                                House.BUILDING3
+                                House.BUILDING3,
+                                House.BUILDING1
                             },
-                            720
+                            630
                     ),
                     new Stage(
                             2,
-                            700,
+                            1000,
                             "Sector 3",
                             7,
                             new String[]{
-                               House.BUILDING1
+                               House.BUILDING1,
+                                House.BUILDING2
                             },
-                            720
+                            580
                     ),
                     new Stage(
                             3,
-                            740,
+                            1300,
                             "Sector 4",
                             9,
                             new String[]{
                                     House.BUILDING1,
                                     House.BUILDING2,
-                                    House.BUILDING2,
-                                    House.BUILDING3
-                            },
-                            640
-                    ),
-                    new Stage(
-                            4,
-                            800,
-                            "Sector 5",
-                            9,
-                            new String[]{
-                                    House.BUILDING2,
-                                    House.BUILDING1,
-                                    House.BUILDING1,
                                     House.BUILDING3
                             },
                             500
                     ),
                     new Stage(
+                            4,
+                            1500,
+                            "Sector 5",
+                            9,
+                            new String[]{
+                                    House.BUILDING2,
+                                    House.BUILDING1,
+                                    House.BUILDING3
+                            },
+                            420
+                    ),
+                    new Stage(
                             5,
-                            1200,
+                            5000,
                             "Sector 6",
                             11,
                             new String[]{
                                     House.BUILDING1,
                                     House.BUILDING3,
-                                    House.BUILDING3,
                                     House.BUILDING2
                             },
-                            420
+                            200
                     )
             };//Stage array
         }//if gameManager or SoundManager or gunManager is null.
