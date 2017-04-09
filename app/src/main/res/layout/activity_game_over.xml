@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context="dlsu.wirtec.tokhangapp.activities.GameOverActivity"
     android:background="@drawable/background_game_over">
-
     <Button
         android:id="@+id/btn_proceed"
         android:text="@string/proceed"
@@ -17,4 +16,13 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true" />
 
+    <TextView
+        android:id="@+id/tv_score"
+        android:text="@string/final_score"
+        android:textColor="@color/silan_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btn_proceed"
+        android:layout_alignBottom="@+id/btn_proceed"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

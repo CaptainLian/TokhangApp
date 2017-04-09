@@ -20,6 +20,7 @@ public class GameOverProceedDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         return new AlertDialog.Builder(getContext())
+                .setMessage(R.string.dialog_proceed_game_over)
                 .setPositiveButton(R.string.yes, clickListener)
                 .setNegativeButton(R.string.no, clickListener)
                 .create();
