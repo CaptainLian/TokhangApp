@@ -55,7 +55,7 @@ public class GunManager {
                 30, // ammo
                 350, // fireDelay
                 550, // reload Delay
-                700, // cost
+                700 , // cost
                 new SimpleGunSound(
                         soundManager.SOUND_GUN_RIFLE_FIRE1,
                         -1,
@@ -92,7 +92,7 @@ public class GunManager {
                 600, // reload delay
                 2000, // cost
                 new SimpleGunSound(
-                        -1,
+                        soundManager.SOUND_GUN_RIFLE_FIRE1,
                         -1,
                         -1,
                         soundManager.SOUND_SHOP_PEW
@@ -107,7 +107,7 @@ public class GunManager {
                 0,
                 1200,
                 2500,
-                250.0,
+                300.0,
                 new SimpleGunSound(
                         soundManager.SOUND_GUN_ROCKET_FIRE1,
                         -1,

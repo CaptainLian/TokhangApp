@@ -48,11 +48,11 @@ public class GameResultActivity extends AppCompatActivity {
         tvMoneyReceived.setText(r.getString(R.string.money) + ": " + money);
         tvScoreReceived.setText(r.getString(R.string.score) + ": " + score);
 
-        tvTotalMoney.setText(r.getString(R.string.total_money) + ": " + Integer.toString(p.getMoney() - money));
-        tvTotalScore.setText(r.getString(R.string.total_score) + ": " + Integer.toString(p.getScore() - score));
-
         tvTotalMoneyAdditional.setText(" +" + money);
         tvTotalScoreAdditional.setText(" +" + score);
+
+        tvTotalMoney.setText(r.getString(R.string.total_money) + ": " + Integer.toString(p.getMoney() - money));
+        tvTotalScore.setText(r.getString(R.string.total_score) + ": " + Integer.toString(p.getScore() - score));
 
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override

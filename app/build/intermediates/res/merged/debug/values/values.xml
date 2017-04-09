@@ -678,6 +678,7 @@
     <string name="dialog_quit_message">Do you wish to save before quitting? All unsaved progress would be lost.</string>
     <string name="dialog_quit_title">Quit?! Pft.</string>
     <string name="equipment">Equipment</string>
+    <string name="final_score">Final Score</string>
     <string name="game_result_subtitle">All drugs have been eliminated.</string>
     <string name="game_result_success">Success!</string>
     <string name="gun_pistol_description">A basic reliant weapon that requires alot of tapping</string>

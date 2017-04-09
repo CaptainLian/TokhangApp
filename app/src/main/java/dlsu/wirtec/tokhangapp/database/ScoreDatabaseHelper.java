@@ -58,24 +58,26 @@ public class ScoreDatabaseHelper extends SQLiteOpenHelper {
         return affectedRowCount;
     }
 
+    public static final String[] SELECT = {
+            Score.COLUMN_ID,
+            Score.COLUMN_NAME,
+            Score.COLUMN_SCORE
+    };
+
     public Score getScore(final int id){
         Score s = null;
         SQLiteDatabase db = getReadableDatabase();
 
         final String[] args = {String.valueOf(id)};
-        final String[] select = {
-                Score.COLUMN_ID,
-                Score.COLUMN_NAME,
-                Score.COLUMN_SCORE
-        };
+
 
         Cursor c = db.query(Score.TABLE,
-                select,
+                SELECT,
                 Score.COLUMN_ID + " = ?", // where clause
                 args, // where aguments
                 null, // group by
                 null, // having
-                null); // order by
+                Score.COLUMN_SCORE); // order by
 
         if(c.moveToFirst()){
             final String name = c.getString(c.getColumnIndex(Score.COLUMN_NAME));
@@ -96,7 +98,7 @@ public class ScoreDatabaseHelper extends SQLiteOpenHelper {
                 null, // where aguments
                 null, // group by
                 null, // having
-                null); // order by
+                Score.COLUMN_SCORE  +  " DESC"); // order by
 
         return c;
     }
@@ -121,9 +123,4 @@ public class ScoreDatabaseHelper extends SQLiteOpenHelper {
         s.setID(-1);
         return this.deleteScore(id);
     }
-
-    public void createScore(){
-
-    }
-
 }

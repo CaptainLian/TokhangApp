@@ -35,6 +35,11 @@ import dlsu.wirtec.tokhangapp.managers.SoundManager;
 
 public class GameView extends SurfaceView implements Runnable {
 
+    public final int[] PLAYER_PAIN_SOUND_IDS;
+    public final int[] PLAYER_DEATH_SOUND_IDS;
+    public final int[] GAME_CLEAR_SOUND_IDS;
+    public final int[] GAME_GO_SOUND_IDS;
+
     // Important stuff
     private Thread gameThread = null;
     private SurfaceHolder ourHolder;
@@ -218,20 +223,32 @@ public class GameView extends SurfaceView implements Runnable {
         this.context = context;
         this.gameStateListener = gameStateListener;
 
-        switch(random.nextInt(4)){
-            case 0:
-                soundManager.playSound(soundManager.SOUND_GAME_GO1);
-                break;
-            case 1:
-                soundManager.playSound(soundManager.SOUND_GAME_GO2);
-                break;
-            case 2:
-                soundManager.playSound(soundManager.SOUND_GAME_GO3);
-                break;
-            case 3:
-                soundManager.playSound(soundManager.SOUND_GAME_GO4);
-                break;
-        }
+        GAME_GO_SOUND_IDS = new int[]{
+            soundManager.SOUND_GAME_GO1,
+            soundManager.SOUND_GAME_GO2,
+            soundManager.SOUND_GAME_GO3,
+            soundManager.SOUND_GAME_GO4
+        };
+
+        GAME_CLEAR_SOUND_IDS = new int[]{
+            soundManager.SOUND_GAME_CLEAR1,
+            soundManager.SOUND_GAME_CLEAR2,
+            soundManager.SOUND_GAME_CLEAR3
+        };
+
+        PLAYER_DEATH_SOUND_IDS = new int[]{
+            soundManager.SOUND_PLAYER_DEATH1,
+            soundManager.SOUND_PLAYER_DEATH2,
+            soundManager.SOUND_PLAYER_DEATH3
+        };
+
+        PLAYER_PAIN_SOUND_IDS = new int[]{
+          soundManager.SOUND_PLAYER_PAIN1,
+          soundManager.SOUND_PLAYER_PAIN2,
+          soundManager.SOUND_PLAYER_PAIN3
+        };
+
+        soundManager.playSound(GAME_GO_SOUND_IDS[random.nextInt(GAME_GO_SOUND_IDS.length)]);
     }
 
     @Override
@@ -337,19 +354,9 @@ public class GameView extends SurfaceView implements Runnable {
                     lastDraw = true;
 
                     if(mainChar.isAlive()){
-                        switch (random.nextInt(3)){
-                            case 0:
-                                soundManager.playSound(soundManager.SOUND_GAME_CLEAR1);
-                                break;
-                            case 1:
-                                soundManager.playSound(soundManager.SOUND_GAME_CLEAR2);
-                                break;
-                            case 2:
-                                soundManager.playSound(soundManager.SOUND_GAME_CLEAR3);
-                                break;
-                        }
+                        soundManager.playSound(GAME_CLEAR_SOUND_IDS[random.nextInt(GAME_CLEAR_SOUND_IDS.length)]);
                     }else{
-                        soundManager.playSound(soundManager.SOUND_PLAYER_DEATH2);
+                        soundManager.playSound(PLAYER_DEATH_SOUND_IDS[random.nextInt(PLAYER_DEATH_SOUND_IDS.length)]);
                     }//if(mainChar.isAlive())
                 }//if (!lastDraw)
             }//if(currentState == END_STATE)
@@ -578,6 +585,7 @@ public class GameView extends SurfaceView implements Runnable {
             mainChar.increaseAddiction();
             hurtRemainingSeconds = hurtDuration;
             mainChar.setSpriteAnimation(6, 6);
+            soundManager.playSound(PLAYER_PAIN_SOUND_IDS[random.nextInt(PLAYER_PAIN_SOUND_IDS.length)]);
         }
     }
 

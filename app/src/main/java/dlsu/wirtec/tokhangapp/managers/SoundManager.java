@@ -24,7 +24,10 @@ public class SoundManager{
 
     private float volume;
 
+    public final int SOUND_PLAYER_DEATH1;
     public final int SOUND_PLAYER_DEATH2;
+    public final int SOUND_PLAYER_DEATH3;
+
     public final int SOUND_PLAYER_PAIN1;
     public final int SOUND_PLAYER_PAIN2;
     public final int SOUND_PLAYER_PAIN3;
@@ -50,6 +53,8 @@ public class SoundManager{
 
     public final int SOUND_GUN_RIFLE_FIRE1;
 
+    public final int SOUND_GUN_SNIPER_FIRE1;
+
     public final int SOUND_GUN_ROCKET_FIRE1;
 
     public final int SOUND_POWERUP_PICKUP1;
@@ -74,7 +79,10 @@ public class SoundManager{
         soundPlayer = new SoundPool(DEFAULT_MAX_SOUND_STREAMS, AudioManager.STREAM_MUSIC, 0);
 
         /* Load player sounds*/
+        SOUND_PLAYER_DEATH1 = soundPlayer.load(context, R.raw.sound_player_death1, DEFAULT_LOAD_PRIORITY);
         SOUND_PLAYER_DEATH2 = soundPlayer.load(context, R.raw.sound_player_death2, DEFAULT_LOAD_PRIORITY);
+        SOUND_PLAYER_DEATH3 = soundPlayer.load(context, R.raw.sound_player_death3, DEFAULT_LOAD_PRIORITY);
+
         SOUND_PLAYER_PAIN1 = soundPlayer.load(context, R.raw.sound_player_pain1, DEFAULT_LOAD_PRIORITY);
         SOUND_PLAYER_PAIN2 = soundPlayer.load(context, R.raw.sound_player_pain2, DEFAULT_LOAD_PRIORITY);
         SOUND_PLAYER_PAIN3 = soundPlayer.load(context, R.raw.sound_player_pain3, DEFAULT_LOAD_PRIORITY);
@@ -97,6 +105,8 @@ public class SoundManager{
         SOUND_GUN_PISTOL_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_pistol_fire1, DEFAULT_LOAD_PRIORITY);
 
         SOUND_GUN_RIFLE_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_rifle_fire1, DEFAULT_LOAD_PRIORITY);
+
+        SOUND_GUN_SNIPER_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_rifle_fire1, DEFAULT_LOAD_PRIORITY);
 
         SOUND_GUN_ROCKET_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_rocket_fire1, DEFAULT_LOAD_PRIORITY);
 

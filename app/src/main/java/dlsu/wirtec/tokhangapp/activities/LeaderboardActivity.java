@@ -1,5 +1,6 @@
 package dlsu.wirtec.tokhangapp.activities;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -38,7 +39,13 @@ public class LeaderboardActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if(isTaskRoot()){
+                    Intent i = new Intent(getBaseContext(), MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }else{
+                    finish();
+                }
             }
         });// call setOnclickListener
     }//function onCreate
