@@ -218,8 +218,9 @@ public class NodeActivity extends AppCompatActivity {
 
                         break;
                     case ACTIVITY_RESULT_DEATH:
-
-
+                        Intent i1 = new Intent(getBaseContext(), GameOverActivity.class);
+                        startActivity(i1);
+                        finish();
                         break;
                 }//sresultcode
                 break;

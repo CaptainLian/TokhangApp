@@ -15,6 +15,7 @@
     <string name="dialog_quit_message">Do you wish to save before quitting? All unsaved progress would be lost.</string>
 
 
+    <string name="dialog_proceed_game_over">Do you wish to add your score to the leaderboards?</string>
     <!-- NewGameDialogFragment -->
 
     <!-- GameMapActivity Shop -->
