@@ -24,6 +24,7 @@ public class GameResultActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_game_result);
 
         tvName = (TextView) findViewById(R.id.tv_name);
@@ -40,17 +41,18 @@ public class GameResultActivity extends AppCompatActivity {
         Player p = GameManager.getGameManager().getPlayer();
 
         Intent i = getIntent();
-        String money = Integer.toString(i.getIntExtra(INTENT_EXTRA_MONEY_RECEIVED, 0));
-        String score = Integer.toString(i.getIntExtra(INTENT_EXTRA_SCORE_RECEIVED, 0));
+        int money = i.getIntExtra(INTENT_EXTRA_MONEY_RECEIVED, 0);
+        int score = i.getIntExtra(INTENT_EXTRA_SCORE_RECEIVED, 0);
 
         tvName.setText(p.getName());
         tvMoneyReceived.setText(r.getString(R.string.money) + ": " + money);
-        tvScoreReceived.setText(r.getString(R.string.score) + ": " +score);
+        tvScoreReceived.setText(r.getString(R.string.score) + ": " + score);
 
-        tvTotalMoney.setText(r.getString(R.string.total_money) + ": " + Integer.toString(p.getMoney()));
-        tvTotalScore.setText(r.getString(R.string.total_score) + ": " +Integer.toString(p.getScore()));
-        tvTotalMoneyAdditional.setText(" + " + money);
-        tvTotalScoreAdditional.setText(" + " + score);
+        tvTotalMoney.setText(r.getString(R.string.total_money) + ": " + Integer.toString(p.getMoney() - money));
+        tvTotalScore.setText(r.getString(R.string.total_score) + ": " + Integer.toString(p.getScore() - score));
+
+        tvTotalMoneyAdditional.setText(" +" + money);
+        tvTotalScoreAdditional.setText(" +" + score);
 
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override

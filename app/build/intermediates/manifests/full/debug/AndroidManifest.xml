@@ -58,6 +58,9 @@
         <activity
             android:name="dlsu.wirtec.tokhangapp.activities.GameResultActivity"
             android:screenOrientation="sensorLandscape" />
+        <activity
+            android:name="dlsu.wirtec.tokhangapp.activities.GameOverActivity"
+            android:screenOrientation="sensorLandscape" />
     </application>
 
 </manifest>
