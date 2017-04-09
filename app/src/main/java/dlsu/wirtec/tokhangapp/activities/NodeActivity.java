@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -17,6 +18,7 @@ import dlsu.wirtec.tokhangapp.R;
 import dlsu.wirtec.tokhangapp.game.Stage;
 import dlsu.wirtec.tokhangapp.logic.Player;
 import dlsu.wirtec.tokhangapp.managers.GameManager;
+import dlsu.wirtec.tokhangapp.ui.QuitDialogFragment;
 
 public class NodeActivity extends AppCompatActivity {
 
@@ -26,7 +28,9 @@ public class NodeActivity extends AppCompatActivity {
     public static final int ACTIVITY_REQUEST_CODE_GAME = 0;
 
     public static final String RESULT_INTENT_SCORE = "GAME_SCORE";
+    public static final String RESULT_INTENT_STAGEID = "GAME_STAGEID";
 
+    private static final String DIALOG_TAG_QUIT = "DIALOG_QUIT";
     private ImageView drawArea;
     private Bitmap lines;
 
@@ -101,18 +105,12 @@ public class NodeActivity extends AppCompatActivity {
         btnQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                DialogFragment quitDalog = new QuitDialogFragment();
+                quitDalog.show(getSupportFragmentManager(), DIALOG_TAG_QUIT);
             }
         });
 
-        drawArea.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                drawArea.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                drawNodes();
-                beingDrawn = false;
-            }
-        });
+
         /* node view initialization end */
 
         for(int i = 0; i < stages.length; i++){
@@ -133,7 +131,17 @@ public class NodeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(lines == null && !beingDrawn){
+
+        if(lines == null && beingDrawn){
+            drawArea.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    drawArea.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    drawNodes();
+                    beingDrawn = false;
+                }
+            });
+        }else if (lines == null){
             drawNodes();
         }
     }
@@ -194,14 +202,23 @@ public class NodeActivity extends AppCompatActivity {
                     case ACTIVITY_RESULT_OKAY:
 
                         int score = data.getIntExtra(RESULT_INTENT_SCORE, 0);
+                        int stageID = data.getIntExtra(RESULT_INTENT_STAGEID, 0);
+
+                        Stage s = GameManager.getGameManager().getStage(stageID);
                         Player p = GameManager.getGameManager().getPlayer();
 
                         p.incrementScore(score);
                         p.incrementLevel();
-                        p.incrementMoney(500);
+                        p.incrementMoney(s.MONEY_AWARD);
+
+                        Intent i = new Intent(getBaseContext(), GameResultActivity.class);
+                        i.putExtra(GameResultActivity.INTENT_EXTRA_MONEY_RECEIVED, s.MONEY_AWARD);
+                        i.putExtra(GameResultActivity.INTENT_EXTRA_SCORE_RECEIVED, score);
+                        startActivity(i);
 
                         break;
                     case ACTIVITY_RESULT_DEATH:
+
 
                         break;
                 }//sresultcode

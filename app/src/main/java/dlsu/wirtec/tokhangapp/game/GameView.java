@@ -279,9 +279,6 @@ public class GameView extends SurfaceView implements Runnable {
     }
 
     public void draw() {
-
-
-
         if(ourHolder.getSurface().isValid()) {
             canvas = ourHolder.lockCanvas();
 
@@ -336,30 +333,29 @@ public class GameView extends SurfaceView implements Runnable {
                 paint.setTextSize(100);
                 canvas.drawText("TAP ANYWHERE ON THE SCREEN TO EXIT", 250, 800, paint);
 
-                if(!lastDraw && mainChar.isAlive()){
-                    lastDraw = true;
-                    soundManager.playSound(soundManager.SOUND_PLAYER_DEATH2);
-                }else if(!lastDraw){
+                if(!lastDraw){
                     lastDraw = true;
 
-                    switch (random.nextInt(3)){
-                        case 0:
-                            soundManager.playSound(soundManager.SOUND_GAME_CLEAR1);
-                            break;
-                        case 1:
-                            soundManager.playSound(soundManager.SOUND_GAME_CLEAR2);
-                            break;
-                        case 2:
-                            soundManager.playSound(soundManager.SOUND_GAME_CLEAR3);
-                            break;
-                    }
-
-
-                }
-            }
+                    if(mainChar.isAlive()){
+                        switch (random.nextInt(3)){
+                            case 0:
+                                soundManager.playSound(soundManager.SOUND_GAME_CLEAR1);
+                                break;
+                            case 1:
+                                soundManager.playSound(soundManager.SOUND_GAME_CLEAR2);
+                                break;
+                            case 2:
+                                soundManager.playSound(soundManager.SOUND_GAME_CLEAR3);
+                                break;
+                        }
+                    }else{
+                        soundManager.playSound(soundManager.SOUND_PLAYER_DEATH2);
+                    }//if(mainChar.isAlive())
+                }//if (!lastDraw)
+            }//if(currentState == END_STATE)
             ourHolder.unlockCanvasAndPost(canvas);
-        }
-    }
+        }//if surface Valid
+    }//function draw
 
     public void pause() {
         playing = false;
@@ -368,7 +364,6 @@ public class GameView extends SurfaceView implements Runnable {
         } catch (InterruptedException e) {
             Log.e("Error:", "joining thread");
         }
-
     }
 
     public void resume() {

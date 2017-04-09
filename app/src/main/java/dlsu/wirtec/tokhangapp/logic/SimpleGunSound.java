@@ -3,10 +3,10 @@ package dlsu.wirtec.tokhangapp.logic;
 public class SimpleGunSound implements GunSound{
     public static final int ID_NONE = -1;
 
-    private int fireSoundID;
-    private int reloadSoundID;
-    private int cockSoundID;
-    private int shopViewSoundID;
+    public final int fireSoundID;
+    public final int reloadSoundID;
+    public final int cockSoundID;
+    public final int shopViewSoundID;
 
 
     public SimpleGunSound(int fireSoundID, int reloadSoundID, int cockSoundID, int shopViewSoundID) {

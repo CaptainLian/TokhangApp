@@ -180,4 +180,7 @@ public class Player {
         this.currentLevel++;
     }
 
+    public String getName(){
+        return this.name;
+    }
 }

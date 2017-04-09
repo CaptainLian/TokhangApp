@@ -59,10 +59,12 @@ public class RocketLauncher extends Gun {
         for(int i = 0, size = characters.size(); i < size; i++){
             Character c = characters.get(i);
 
-            final double deltaX = c.getMidX() - touchX;
-            final double deltaY = c.getMidY() - touchY;
-            if(deltaX*deltaX + deltaY*deltaY <= explosiveRadius){
-                affectedCharacters.add(c);
+            if(Character.DRUGS.equals(c.getName())){
+                final double deltaX = c.getMidX() - touchX;
+                final double deltaY = c.getMidY() - touchY;
+                if(deltaX*deltaX + deltaY*deltaY <= explosiveRadius){
+                    affectedCharacters.add(c);
+                }
             }
         }
         return affectedCharacters;

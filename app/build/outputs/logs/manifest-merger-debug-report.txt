@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:2:1-55:12
+ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:2:1-57:12
 	package
 		ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:3:5-37
 		INJECTED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml
@@ -18,20 +18,20 @@ ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\sr
 	android:name
 		ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:5:22-63
 application
-ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:7:5-53:19
-MERGED from [com.android.support:design:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\AndroidManifest.xml:19:5-20
-MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\AndroidManifest.xml:25:5-20
+ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:7:5-55:19
+MERGED from [com.android.support:design:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.1.1\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.1.1\AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\transition\25.1.1\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-appindexing:8.4.0] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.4.0] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.1\AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.1.1] C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.1\AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:10:9-47
 	android:supportsRtl
@@ -108,9 +108,11 @@ ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\sr
 	android:name
 		ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:50:13-60
 activity#dlsu.wirtec.tokhangapp.activities.GameResultActivity
-ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:52:9-76
+ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:52:9-54:59
+	android:screenOrientation
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:54:13-56
 	android:name
-		ADDED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml:52:19-64
+		ADDED from C:\Users\lyssa\AndroidStudioProjects\TokhangApp\app\src\main\AndroidManifest.xml:53:13-58
 uses-sdk
 INJECTED from C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:design:25.1.1] C:\Users\Denmark\Desktop\Workspaces\wirtecTayongS15\TokhangApp\app\build\intermediates\exploded-aar\com.android.support\design\25.1.1\AndroidManifest.xml:21:5-23:62

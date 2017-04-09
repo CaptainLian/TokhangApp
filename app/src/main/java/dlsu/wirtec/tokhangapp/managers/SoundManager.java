@@ -50,6 +50,8 @@ public class SoundManager{
 
     public final int SOUND_GUN_RIFLE_FIRE1;
 
+    public final int SOUND_GUN_ROCKET_FIRE1;
+
     public final int SOUND_POWERUP_PICKUP1;
 
     public final int SOUND_GAME_CLEAR1;
@@ -60,7 +62,6 @@ public class SoundManager{
     public final int SOUND_GAME_GO2;
     public final int SOUND_GAME_GO3;
     public final int SOUND_GAME_GO4;
-
 
     SoundManager(Context context){
         this(context, 1.0f);
@@ -97,6 +98,8 @@ public class SoundManager{
 
         SOUND_GUN_RIFLE_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_rifle_fire1, DEFAULT_LOAD_PRIORITY);
 
+        SOUND_GUN_ROCKET_FIRE1 = soundPlayer.load(context, R.raw.sound_gun_rocket_fire1, DEFAULT_LOAD_PRIORITY);
+
         SOUND_POWERUP_PICKUP1 = soundPlayer.load(context, R.raw.sound_powerup_pickup1, DEFAULT_LOAD_PRIORITY);
 
         SOUND_EQUIPMENT_LOAD1 = soundPlayer.load(context, R.raw.sound_equipment_load1, DEFAULT_LOAD_PRIORITY);
@@ -111,7 +114,6 @@ public class SoundManager{
         SOUND_GAME_GO2 = soundPlayer.load(context, R.raw.sound_game_go_phoenix1, DEFAULT_LOAD_PRIORITY);
         SOUND_GAME_GO3 = soundPlayer.load(context, R.raw.sound_game_go_sas1, DEFAULT_LOAD_PRIORITY);
         SOUND_GAME_GO4 = soundPlayer.load(context, R.raw.sound_game_go_sas2, DEFAULT_LOAD_PRIORITY);
-
     }
 
     public void playSound(int soundID){

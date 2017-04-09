@@ -12,13 +12,15 @@ public class Stage implements Parcelable {
     public static final String INTENT_EXTRA_STAGE = "stage";
 
     public final int ID;
+    public final int MONEY_AWARD;
     private String stageName;
     private int numberOfHouses;
     private String[] typeOfHouse;
     private int spriteSpawningInterval;
 
-    public Stage(int id, String stageName, int numberOfHouses, String[] typeOfHouse, int spriteSpawningInterval) {
+    public Stage(int id, int moneyAward, String stageName, int numberOfHouses, String[] typeOfHouse, int spriteSpawningInterval) {
         this.ID = id;
+        this.MONEY_AWARD = moneyAward;
         this.stageName = stageName;
         this.numberOfHouses = numberOfHouses;
         this.typeOfHouse = typeOfHouse;
@@ -26,7 +28,7 @@ public class Stage implements Parcelable {
     }
 
     public void deductHouse() {
-        numberOfHouses --;
+        numberOfHouses--;
     }
 
     public String getStageName() {
@@ -61,12 +63,14 @@ public class Stage implements Parcelable {
         this.spriteSpawningInterval = spriteSpawningInterval;
     }
 
+
     protected Stage(Parcel in) {
         ID = in.readInt();
+        MONEY_AWARD = in.readInt();
         stageName = in.readString();
         numberOfHouses = in.readInt();
-        typeOfHouse = in.createStringArray();
         spriteSpawningInterval = in.readInt();
+        typeOfHouse = in.createStringArray();
     }
 
     @Override
@@ -77,10 +81,11 @@ public class Stage implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(ID);
+        dest.writeInt(MONEY_AWARD);
         dest.writeString(stageName);
         dest.writeInt(numberOfHouses);
-        dest.writeStringArray(typeOfHouse);
         dest.writeInt(spriteSpawningInterval);
+        dest.writeStringArray(typeOfHouse);
     }
 
     @SuppressWarnings("unused")

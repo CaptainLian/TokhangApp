@@ -8,11 +8,11 @@ import java.util.Random;
 
 public class GunComplexFireSound implements GunSound {
 
-    private Random random;
-    private int[] fireSoundIDs;
-    private int reloadSoundID;
-    private int cockSoundID;
-    private int shopViewSoundID;
+    public final Random random;
+    public final int[] fireSoundIDs;
+    public final int reloadSoundID;
+    public final int cockSoundID;
+    public final int shopViewSoundID;
 
     public GunComplexFireSound(int[] fireSoundIDs, int reloadSoundID, int cockSoundID, int shopViewSoundID){
         this.fireSoundIDs = fireSoundIDs;
