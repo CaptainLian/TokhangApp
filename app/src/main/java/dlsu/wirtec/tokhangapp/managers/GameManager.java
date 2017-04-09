@@ -46,8 +46,9 @@ public class GameManager {
             gameManager.stages =  new Stage[]{
                     new Stage(
                             0,
+                            620,
                             "Sector 1",
-                            3,
+                            6,
                             new String[]{
                                     House.BUILDING1,
                                     House.BUILDING2
@@ -56,8 +57,9 @@ public class GameManager {
                     ),
                     new Stage(
                             1,
+                            650,
                             "Sector 2",
-                            5,
+                            7,
                             new String[]{
                                 House.BUILDING3
                             },
@@ -65,8 +67,9 @@ public class GameManager {
                     ),
                     new Stage(
                             2,
+                            700,
                             "Sector 3",
-                            5,
+                            7,
                             new String[]{
                                House.BUILDING1
                             },
@@ -74,8 +77,9 @@ public class GameManager {
                     ),
                     new Stage(
                             3,
+                            740,
                             "Sector 4",
-                            7,
+                            9,
                             new String[]{
                                     House.BUILDING1,
                                     House.BUILDING2,
@@ -86,8 +90,9 @@ public class GameManager {
                     ),
                     new Stage(
                             4,
+                            800,
                             "Sector 5",
-                            7,
+                            9,
                             new String[]{
                                     House.BUILDING2,
                                     House.BUILDING1,
@@ -98,8 +103,9 @@ public class GameManager {
                     ),
                     new Stage(
                             5,
+                            1200,
                             "Sector 6",
-                            7,
+                            11,
                             new String[]{
                                     House.BUILDING1,
                                     House.BUILDING3,

@@ -7,6 +7,11 @@ import android.graphics.Bitmap;
  */
 
 public class Character extends SpriteAnimation {
+
+    public static final String DRUGS = "drugs";
+    public static final String INNOCENT = "innocent";
+    public static final String ITEM_HEALTH = "item_health";
+
     private String name; //name of the character
     private float x; //leftmost touched part of the image
     private float y; // uppermost touched part of the image

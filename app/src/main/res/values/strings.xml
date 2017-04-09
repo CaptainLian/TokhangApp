@@ -12,10 +12,8 @@
 
     <!-- QuitDialogFragment.java -->
     <string name="dialog_quit_title">Quit?! Pft.</string>
-    <string name="dialog_quit_message">Are you sure you want to quit? All unsaved changes will be gone</string>
-    <string name="dialog_quit_positive">Yes!</string>
-    <string name="dialog_quit_negative">No!</string>
-    <string name="dialog_quit_neutral">Meh.</string>
+    <string name="dialog_quit_message">Do you wish to save before quitting? All unsaved progress would be lost.</string>
+
 
     <!-- NewGameDialogFragment -->
 
@@ -43,6 +41,12 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="quit">Quit</string>
+    <string name="received">Received</string>
+    <string name="player_status">Player Status</string>
+    <string name="total_money">Total Money</string>
+    <string name="total_score">Total Score</string>
+    <string name="money">Money</string>
+    <string name="score">Score</string>
 
     <!-- CreatePlayerActivity -->
     <string name="create_player_enter_name">Enter your name</string>
@@ -62,4 +66,7 @@
 
     <string name="gun_rocket_name">Rocket Launcher</string>
     <string name="gun_rocket_description">A high damage area-of-effect weapon :D</string>
+
+    <string name="game_result_success">Success!</string>
+    <string name="game_result_subtitle">All drugs have been eliminated.</string>
 </resources>
